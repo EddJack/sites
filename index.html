@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduardo builds websites for LA small businesses</title>
+<meta name="description" content="Fast, bilingual (English/Spanish) websites and Google + Yelp cleanup for family-owned businesses in southeast LA County. Live in a week.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161514'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23F0531C' text-anchor='middle'%3Ee%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#161514;
+    --ink-2:#33302c;
+    --paper:#FCFBF9;
+    --concrete:#EFEDE8;
+    --line:#E1DDD5;
+    --flame:#E0491B;      /* safety-orange: the trades accent */
+    --flame-deep:#B63912;
+    --muted:#6c675f;
+    --display:'Futura-CondensedExtraBold','AvenirNextCondensed-Bold','Avenir Next Condensed','Arial Narrow',sans-serif;
+    --body:'Avenir Next',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+
+  /* hero */
+  .top{background:var(--ink);color:var(--paper);padding:1.3rem 0}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{font-family:var(--display);text-transform:uppercase;letter-spacing:.03em;font-size:1.15rem}
+  .brand .dot{color:var(--flame)}
+  .top a.mail{font-family:var(--body);font-weight:700;font-size:.9rem;text-decoration:none;color:var(--paper);border:1.5px solid #4a4640;padding:.45rem .9rem;border-radius:8px}
+  .top a.mail:hover{border-color:var(--paper)}
+
+  .hero{background:var(--ink);color:var(--paper);padding:3.5rem 0 4.5rem;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--flame)}
+  .hero h1{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.6rem,7vw,5rem);line-height:.95;letter-spacing:.01em;max-width:16ch;text-wrap:balance}
+  .hero h1 em{font-style:normal;color:var(--flame)}
+  .hero p.sub{font-size:1.15rem;color:#cfc9c0;max-width:42rem;margin-top:1.4rem}
+  .hero p.es{font-size:1rem;color:#8f8a82;margin-top:.5rem;font-style:italic}
+  .hero .meta{display:flex;gap:.5rem 2rem;flex-wrap:wrap;margin-top:2rem;font-size:.92rem;color:#cfc9c0}
+  .hero .meta b{color:var(--paper)}
+
+  section{padding:4rem 0}
+  .eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;color:var(--flame);font-size:1rem}
+  h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.02;margin-top:.3rem;text-wrap:balance}
+
+  /* work */
+  .work-card{display:grid;gap:0;margin-top:2rem;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 34px rgba(22,21,20,.08)}
+  @media(min-width:820px){.work-card{grid-template-columns:1.15fr .85fr}}
+  .work-card .shot{position:relative;min-height:280px;background:#16336E}
+  .work-card .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .work-card .body{padding:2rem 2rem 1.7rem;display:flex;flex-direction:column}
+  .work-card .tag{font-family:var(--body);font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .work-card h3{font-family:var(--display);text-transform:uppercase;font-size:1.8rem;margin:.3rem 0 .2rem}
+  .work-card p{color:var(--ink-2);font-size:.98rem;margin-bottom:1.3rem}
+  .work-card .stats{display:flex;gap:1.5rem;font-size:.85rem;color:var(--muted);margin-bottom:1.4rem}
+  .work-card .stats b{color:var(--ink);font-family:var(--display);font-size:1.3rem;display:block}
+  .btn{align-self:flex-start;margin-top:auto;display:inline-block;text-decoration:none;font-family:var(--body);font-weight:700;background:var(--flame);color:#fff;padding:.8rem 1.5rem;border-radius:10px}
+  .btn:hover{background:var(--flame-deep)}
+
+  /* what I do */
+  .services{background:var(--concrete)}
+  .svc-grid{display:grid;gap:1.5rem;margin-top:2rem}
+  @media(min-width:700px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
+  .svc h3{font-family:var(--display);text-transform:uppercase;font-size:1.15rem;margin-bottom:.3rem}
+  .svc h3 span{color:var(--flame)}
+  .svc p{font-size:.93rem;color:var(--ink-2)}
+
+  /* contact */
+  .contact{text-align:center}
+  .contact h2{font-size:clamp(2rem,5vw,3.2rem)}
+  .contact p{color:var(--muted);max-width:36rem;margin:.8rem auto 0}
+  .contact .actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+  .contact .actions a{text-decoration:none;font-weight:700;font-family:var(--body);padding:.85rem 1.6rem;border-radius:10px}
+  .contact .actions .primary{background:var(--ink);color:var(--paper)}
+  .contact .actions .primary:hover{background:var(--ink-2)}
+  .contact .actions .ghost{border:1.5px solid var(--ink);color:var(--ink)}
+
+  footer{background:var(--ink);color:#8f8a82;font-size:.82rem;padding:1.6rem 0;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <span class="brand">Eduardo<span class="dot">.</span> Websites</span>
+    <a class="mail" href="mailto:eddjack30@gmail.com">Get in touch</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Websites that make local shops <em>impossible to miss.</em></h1>
+    <p class="sub">I build fast, bilingual websites and clean up Google &amp; Yelp for family-owned businesses across southeast LA County. Real photos, real reviews, live in about a week.</p>
+    <p class="es">Sitios web rápidos y bilingües para negocios familiares. Publicados en una semana.</p>
+    <div class="meta">
+      <span>📍 Lynwood &amp; the surrounding cities</span>
+      <span><b>English</b> &amp; <b>Español</b></span>
+      <span>One-time build, optional monthly upkeep</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Recent work</span>
+    <h2>Selected projects</h2>
+    <div class="work-card">
+      <a class="shot" href="rubios-tire-shop/" aria-label="Open the Rubio's Tire Shop site">
+        <img src="rubios-tire-shop/img/storefront.jpg" alt="Rubio's Tire Shop, the blue storefront on Atlantic Ave in Lynwood">
+      </a>
+      <div class="body">
+        <span class="tag">Tire shop · Lynwood · EN / ES</span>
+        <h3>Rubio's Tire Shop</h3>
+        <p>A family llantera with a perfect rating and no website. I built them a bilingual one-pager around their own signage, with a live map, their real photos, and one-tap calling.</p>
+        <div class="stats">
+          <span><b>48</b> five-star reviews</span>
+          <span><b>1 wk</b> to live</span>
+          <span><b>EN/ES</b> one tap</span>
+        </div>
+        <a class="btn" href="rubios-tire-shop/">View the site →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <span class="eyebrow">What I do</span>
+    <h2>Three things, done well</h2>
+    <div class="svc-grid">
+      <div class="svc">
+        <h3>The website</h3>
+        <p>A clean, fast one-page site in English and Spanish. Your services, hours, photos, and a map, built to bring in phone calls, not win design awards.</p>
+      </div>
+      <div class="svc">
+        <h3>Google &amp; Yelp</h3>
+        <p>I fill out and claim your profiles, add your photos and services, and write friendly replies to every review, so your reputation actually shows up when people search.</p>
+      </div>
+      <div class="svc">
+        <h3>Keeping it fresh</h3>
+        <p>Optional monthly upkeep: new photos and review replies, so your listing keeps working while you run the shop. No contract.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <span class="eyebrow">Let's talk</span>
+    <h2>Own a shop that deserves to be found?</h2>
+    <p>Tell me your business and I'll show you what your site could look like — usually before you've decided anything. Free to look.</p>
+    <div class="actions">
+      <a class="primary" href="mailto:eddjack30@gmail.com">Email me</a>
+      <a class="ghost" href="rubios-tire-shop/">See a live example</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Eduardo · Websites for local businesses · Lynwood, CA · Hecho con orgullo</div>
+</footer>
+
+</body>
+</html>

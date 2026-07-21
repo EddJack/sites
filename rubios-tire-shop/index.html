@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubio's Tire Shop — Lynwood | Llantas Nuevas y Usadas</title>
+<meta name="description" content="Family-owned tire shop on Atlantic Ave in Lynwood. New and used tires, flat repair, 48 five-star reviews. Se habla español.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%232149A1'/%3E%3Crect x='10' y='47' width='44' height='7' rx='2' fill='%23FFD23F' transform='skewX(-8)' transform-origin='32 50'/%3E%3Ctext x='32' y='46' font-family='Arial, Helvetica, sans-serif' font-size='40' font-weight='900' fill='%23FBFBFA' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --blue:#2149A1;          /* the awning */
+    --blue-deep:#16336E;     /* board shadow, footer */
+    --brick:#FBFBFA;         /* white painted brick, chroma ~0 */
+    --ink:#17181B;           /* rubber black */
+    --ink-soft:#4b4e55;
+    --crayon:#FFD23F;        /* tire crayon: prices + one underline only */
+    --jack-red:#B5352B;      /* their floor jacks; Yelp button only */
+    --line:#E4E4E1;
+    --display:'Futura-CondensedExtraBold','AvenirNextCondensed-Bold','Avenir Next Condensed','Arial Narrow',sans-serif;
+    --script:'Snell Roundhand','Savoye LET',cursive;
+    --body:Georgia,'Times New Roman',serif;
+    --ui:'Avenir Next',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{animation:none!important;transition:none!important}}
+  body{font-family:var(--body);background:var(--brick);color:var(--ink);line-height:1.65;font-size:17px}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+
+  body[data-lang="en"] .es{display:none!important}
+  body[data-lang="es"] .en{display:none!important}
+
+  .demo-note{background:var(--ink);color:#9a9da3;text-align:center;font-family:var(--ui);font-size:.72rem;letter-spacing:.06em;padding:.4rem 1rem;text-transform:uppercase}
+  .demo-note b{color:var(--crayon)}
+
+  /* header */
+  header{position:sticky;top:0;z-index:20;background:rgba(251,251,250,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;gap:1rem;padding-top:.65rem;padding-bottom:.65rem}
+  .wordmark{margin-right:auto;text-decoration:none;line-height:1.05}
+  .wordmark b{font-family:var(--display);font-size:1.35rem;text-transform:uppercase;letter-spacing:.02em;color:var(--blue);display:block}
+  .wordmark small{font-family:var(--ui);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .lang-toggle{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;font-family:var(--ui);font-size:.78rem;font-weight:700}
+  .lang-toggle button{appearance:none;border:0;background:transparent;padding:.4rem .8rem;font:inherit;cursor:pointer;color:var(--ink)}
+  .lang-toggle button[aria-pressed="true"]{background:var(--blue);color:#fff}
+  .lang-toggle button:focus-visible{outline:3px solid var(--crayon);outline-offset:-3px}
+  .head-call{display:none;text-decoration:none;background:var(--blue);color:#fff;font-family:var(--ui);font-weight:700;padding:.5rem 1rem;border-radius:9px;font-size:.88rem}
+  .head-call:hover{background:var(--blue-deep)}
+  @media(min-width:640px){.head-call{display:inline-block}}
+
+  /* hero: the photograph is the design */
+  .hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--blue-deep)}
+  .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:rotate(-1.6deg) scale(1.07);transform-origin:center 55%}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,29,64,.88) 0%,rgba(15,29,64,.35) 45%,rgba(15,29,64,.12) 100%)}
+  .hero .wrap{position:relative;z-index:1;padding-top:5rem;padding-bottom:3rem;width:100%}
+  .script-kicker{font-family:var(--script);font-size:clamp(1.6rem,4vw,2.4rem);color:var(--crayon);display:block;transform:rotate(-2deg);text-shadow:0 1px 8px rgba(0,0,0,.35);margin-bottom:.2rem}
+  .hero h1{font-family:var(--display);font-size:clamp(2.8rem,8vw,5.4rem);line-height:.96;text-transform:uppercase;letter-spacing:.015em;text-wrap:balance;text-shadow:0 2px 14px rgba(0,0,0,.4);max-width:13ch}
+  .hero p.sub{font-size:1.08rem;max-width:34rem;margin-top:1rem;color:#e8ebf2;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+  .hero p.sub b{color:#fff}
+  .cta-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem;align-items:center}
+  .btn{display:inline-block;text-decoration:none;font-family:var(--ui);font-weight:700;border-radius:10px;padding:.85rem 1.5rem;font-size:1rem}
+  .btn:focus-visible{outline:3px solid var(--crayon);outline-offset:2px}
+  .btn-call{background:var(--crayon);color:#211a00}
+  .btn-call:hover{filter:brightness(1.05)}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.75);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.14)}
+  .trust{position:relative;z-index:1;background:var(--blue);color:#fff;font-family:var(--ui)}
+  .trust .wrap{display:flex;gap:.4rem 2rem;flex-wrap:wrap;justify-content:center;padding:.7rem 22px;font-size:.92rem}
+  .trust b{font-weight:700}
+  .trust .star{color:var(--crayon)}
+
+  /* shingle divider: the awning band */
+  .shingle{height:16px;background:
+    repeating-linear-gradient(90deg,var(--blue) 0 34px,var(--blue-deep) 34px 36px);
+    border-bottom:4px solid var(--blue-deep)}
+
+  section{padding:4rem 0;scroll-margin-top:76px}
+  h2{font-family:var(--display);font-size:clamp(1.9rem,4.5vw,2.9rem);text-transform:uppercase;letter-spacing:.02em;line-height:1.02;text-wrap:balance}
+  .h2-mark{position:relative;display:inline-block;z-index:0}
+  .h2-mark::after{content:"";position:absolute;left:-.06em;right:-.06em;bottom:.02em;height:.26em;background:var(--crayon);z-index:-1;transform:skewX(-9deg)}
+  .lead{color:var(--ink-soft);max-width:44rem;margin-top:.7rem}
+
+  /* the price board — the signature */
+  .board-wrap{display:grid;gap:2rem;align-items:start;margin-top:2.2rem}
+  @media(min-width:880px){.board-wrap{grid-template-columns:1.15fr .85fr}}
+  .board{background:var(--blue);border:6px solid #fff;outline:1px solid var(--line);border-radius:6px;box-shadow:0 14px 38px rgba(22,51,110,.28);color:#fff;padding:1.8rem 1.7rem 1.4rem}
+  .board h3{font-family:var(--display);text-transform:uppercase;font-size:1.5rem;letter-spacing:.04em;text-align:center;border-bottom:2px solid rgba(255,255,255,.35);padding-bottom:.7rem;margin-bottom:.5rem}
+  .board ul{list-style:none}
+  .board li{display:flex;align-items:baseline;gap:.7rem;padding:.85rem 0;border-bottom:1px dashed rgba(255,255,255,.25)}
+  .board li:last-child{border-bottom:none}
+  .board .svc{font-family:var(--ui);font-weight:600;font-size:1rem}
+  .board .svc small{display:block;font-weight:400;font-size:.84rem;color:#c9d4ea;font-family:var(--body);font-style:italic}
+  .board .dots{flex:1;border-bottom:2px dotted rgba(255,255,255,.4);transform:translateY(-4px)}
+  .board .price{font-family:var(--display);font-size:1.9rem;color:var(--crayon);letter-spacing:.02em;white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+  .board .price small{font-family:var(--ui);font-size:.66rem;font-weight:600;color:#c9d4ea;display:block;text-align:right;letter-spacing:.08em;text-transform:uppercase}
+  .board-note{font-family:var(--ui);font-size:.78rem;color:#c9d4ea;text-align:center;margin-top:1rem}
+  .aside-copy p{margin-bottom:1rem}
+  .aside-copy p:first-child{font-size:1.15rem}
+  .aside-copy .phone-big{font-family:var(--display);font-size:2rem;color:var(--blue);text-decoration:none;display:inline-block;margin-top:.3rem}
+
+  /* photos: asymmetric mosaic */
+  .mosaic{display:grid;gap:12px;margin-top:2.2rem;grid-template-columns:repeat(2,1fr)}
+  @media(min-width:760px){.mosaic{grid-template-columns:repeat(4,1fr);grid-auto-rows:190px}}
+  .mosaic figure{position:relative;overflow:hidden;border-radius:8px;background:var(--blue-deep);min-height:160px}
+  .mosaic img{width:100%;height:100%;object-fit:cover}
+  @media(min-width:760px){
+    .mosaic .big{grid-column:span 2;grid-row:span 2}
+    .mosaic .tall{grid-row:span 2}
+  }
+  .mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.4rem .8rem .55rem;font-family:var(--ui);font-size:.74rem;color:#fff;background:linear-gradient(to top,rgba(15,29,64,.75),transparent)}
+
+  /* reviews: one dominant quote + varied support */
+  .quote-hero{border-left:none;margin-top:2.2rem}
+  .quote-hero p{font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1.25;font-style:italic;max-width:26ch;text-wrap:balance}
+  .quote-hero p::before{content:"“";color:var(--blue);font-size:1.4em;line-height:0;vertical-align:-.3em;margin-right:.05em}
+  .quote-hero footer{font-family:var(--ui);font-size:.85rem;color:var(--ink-soft);margin-top:.9rem}
+  .quote-row{display:grid;gap:1.6rem 2.4rem;margin-top:2.6rem}
+  @media(min-width:760px){.quote-row{grid-template-columns:1fr 1fr}}
+  .q p{font-style:italic}
+  .q footer{font-family:var(--ui);font-size:.8rem;color:var(--ink-soft);margin-top:.45rem}
+  .q footer .src{color:var(--blue);font-weight:600}
+  .ratings-line{font-family:var(--ui);margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;gap:.5rem 2.2rem;flex-wrap:wrap;font-size:.95rem}
+  .ratings-line .star{color:var(--blue)}
+
+  .leave{background:#fff;border:1px solid var(--line);border-radius:10px;margin-top:2.4rem;padding:1.7rem;display:grid;gap:1.3rem;align-items:center}
+  @media(min-width:780px){.leave{grid-template-columns:1fr auto}}
+  .leave h3{font-family:var(--display);font-size:1.5rem;text-transform:uppercase}
+  .leave p{color:var(--ink-soft);font-size:.98rem;max-width:32rem;margin-top:.4rem}
+  .leave-btns{display:flex;flex-direction:column;gap:.6rem}
+  .btn-rev{background:var(--blue);color:#fff;text-align:center;white-space:nowrap}
+  .btn-rev:hover{background:var(--blue-deep)}
+  .btn-rev.yelp{background:var(--jack-red)}
+  .btn-rev.yelp:hover{filter:brightness(.9)}
+  .qr-hint{font-family:var(--ui);font-size:.78rem;color:var(--ink-soft);text-align:center}
+
+  /* hours + map */
+  .find-grid{display:grid;gap:1.6rem;margin-top:2.2rem}
+  @media(min-width:800px){.find-grid{grid-template-columns:.95fr 1.05fr}}
+  .hours{background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.5rem 1.6rem}
+  .hours table{width:100%;border-collapse:collapse;font-family:var(--ui);font-size:.95rem}
+  .hours td{padding:.6rem 0;border-bottom:1px solid var(--line)}
+  .hours tr:last-child td{border-bottom:none}
+  .hours td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+  .addr{margin-top:1.1rem;font-family:var(--ui);font-size:.95rem;line-height:1.7}
+  .addr a{color:var(--blue);font-weight:700;text-decoration:none}
+  .map{border-radius:10px;overflow:hidden;min-height:280px;border:1px solid var(--line);position:relative}
+  .map iframe{width:100%;height:100%;min-height:280px;border:0;display:block}
+  .map .dir{position:absolute;left:12px;bottom:12px;background:var(--blue);color:#fff;text-decoration:none;font-family:var(--ui);font-weight:700;font-size:.85rem;padding:.5rem .95rem;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+  .map .dir:hover{background:var(--blue-deep)}
+
+  /* closing band: drenched */
+  .closing{background:var(--blue);color:#fff;text-align:center;padding:4rem 22px}
+  .closing .script-kicker{color:var(--crayon)}
+  .closing h2{color:#fff}
+  .closing p{max-width:32rem;margin:1rem auto 0;color:#dfe6f4}
+  .closing .btn{background:#fff;color:var(--blue);font-size:1.15rem;margin-top:1.6rem}
+
+  footer.site{background:var(--blue-deep);color:#9fb0d4;font-family:var(--ui);font-size:.82rem;padding:1.6rem 0;text-align:center}
+</style>
+</head>
+<body data-lang="en">
+
+<div class="demo-note"><b>Demo preview</b> · <span class="en">mockup prepared for the owner of Rubio's Tire Shop · not a live website</span><span class="es">maqueta preparada para el dueño de Rubio's Tire Shop · no es un sitio publicado</span></div>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="#top"><b>Rubio's Tire Shop</b>
+      <small class="en">Atlantic Ave · Lynwood · Family owned</small>
+      <small class="es">Atlantic Ave · Lynwood · Negocio familiar</small>
+    </a>
+    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+      <button type="button" id="btn-en" aria-pressed="true" onclick="setLang('en')">EN</button>
+      <button type="button" id="btn-es" aria-pressed="false" onclick="setLang('es')">ES</button>
+    </div>
+    <a class="head-call" href="tel:+13106318623">(310) 631-8623</a>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <img class="bg" src="img/storefront.jpg" alt="The blue shingled storefront of Rubio's Tire Shop on Atlantic Ave, tires stacked by the open bays under a clear Lynwood sky" fetchpriority="high">
+  <div class="wrap">
+    <span class="script-kicker" aria-hidden="true"><span class="en">new &amp; used</span><span class="es">nuevas y usadas</span></span>
+    <h1>
+      <span class="en">The blue tire shop on Atlantic.</span>
+      <span class="es">La llantera azul de Atlantic.</span>
+    </h1>
+    <p class="sub en">Rubio and his twin brother have patched, mounted, and balanced Lynwood's tires for more than fifteen years. Honest prices, no appointment. <b>Se habla español.</b></p>
+    <p class="sub es">Rubio y su hermano gemelo llevan más de quince años parchando, montando y balanceando las llantas de Lynwood. Precios honestos, sin cita. <b>We speak English.</b></p>
+    <div class="cta-row">
+      <a class="btn btn-call" href="tel:+13106318623"><span class="en">Call for today's price</span><span class="es">Pida el precio de hoy</span></a>
+      <a class="btn btn-ghost" href="#find"><span class="en">Hours &amp; directions</span><span class="es">Horario y dirección</span></a>
+    </div>
+  </div>
+</div>
+<div class="trust" role="note">
+  <div class="wrap">
+    <span><span class="star">★</span> <b>5.0</b> Google</span>
+    <span><span class="star">★</span> <b>4.9</b> Yelp</span>
+    <span class="en"><b>48</b> five-star reviews</span>
+    <span class="es"><b>48</b> reseñas de cinco estrellas</span>
+  </div>
+</div>
+
+<section id="prices">
+  <div class="wrap">
+    <h2><span class="en">The <span class="h2-mark">price board</span></span><span class="es">La <span class="h2-mark">tabla de precios</span></span></h2>
+    <div class="board-wrap">
+      <div class="board" role="table" aria-label="Services and prices">
+        <h3><span class="en">Servicios · Services</span><span class="es">Services · Servicios</span></h3>
+        <ul>
+          <li>
+            <span class="svc"><span class="en">Quality used tires</span><span class="es">Llantas usadas de calidad</span>
+              <small class="en">tread and sidewalls inspected, installed</small><small class="es">piso y costados inspeccionados, instalada</small></span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="price">$35<small class="en">and up</small><small class="es">en adelante</small></span>
+          </li>
+          <li>
+            <span class="svc"><span class="en">Flat repair</span><span class="es">Reparación de ponchaduras</span>
+              <small class="en">patched from the inside, while you wait</small><small class="es">parchada por dentro, mientras espera</small></span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="price">$15<small class="en">and up</small><small class="es">en adelante</small></span>
+          </li>
+          <li>
+            <span class="svc"><span class="en">Rotation &amp; balance</span><span class="es">Rotación y balanceo</span>
+              <small class="en">all four wheels</small><small class="es">las cuatro ruedas</small></span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="price">$25<small class="en">and up</small><small class="es">en adelante</small></span>
+          </li>
+          <li>
+            <span class="svc"><span class="en">New tires, all brands</span><span class="es">Llantas nuevas, todas las marcas</span>
+              <small class="en">ordered same week, mounted and balanced</small><small class="es">pedidas la misma semana, montadas y balanceadas</small></span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="price"><span class="en">CALL</span><span class="es">LLAME</span><small class="en">for today's price</small><small class="es">precio de hoy</small></span>
+          </li>
+          <li>
+            <span class="svc"><span class="en">Tire inspection</span><span class="es">Inspección de llantas</span>
+              <small class="en">an honest answer: fix it now or it can wait</small><small class="es">respuesta honesta: se arregla ya o puede esperar</small></span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="price"><span class="en">FREE</span><span class="es">GRATIS</span><small class="en">no appointment</small><small class="es">sin cita</small></span>
+          </li>
+        </ul>
+        <p class="board-note en">Prices are starting points; your size sets the final number. Fleet and work-truck pricing available.</p>
+        <p class="board-note es">Los precios son desde; la medida de su llanta define el número final. Hay precio especial para flotillas.</p>
+      </div>
+      <div class="aside-copy">
+        <p class="en">No menus, no upsells. You tell us the size, we tell you the price, and the truck is back on the road while your coffee is still warm.</p>
+        <p class="es">Sin menús ni ventas forzadas. Usted nos dice la medida, nosotros el precio, y la troca vuelve a la calle antes de que se enfríe su café.</p>
+        <p class="en">Call ahead with your tire size and it will be waiting when you pull in:</p>
+        <p class="es">Llame con la medida de su llanta y aquí lo espera lista:</p>
+        <a class="phone-big" href="tel:+13106318623">(310) 631-8623</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="shingle" aria-hidden="true"></div>
+
+<section id="shop">
+  <div class="wrap">
+    <h2><span class="en">You've driven past us</span><span class="es">Seguro ya nos ha visto</span></h2>
+    <p class="lead en">The blue roof at 12404 Atlantic Ave. Every photo below comes from the shop's own Google and Yelp pages.</p>
+    <p class="lead es">El techo azul en 12404 Atlantic Ave. Cada foto viene de las propias páginas de Google y Yelp del taller.</p>
+    <div class="mosaic">
+      <figure class="big">
+        <img src="img/shop-bay.jpg" alt="The open bay under the blue shingle awning, new and used tires stacked to the ceiling" loading="lazy">
+        <figcaption class="en">The bay on Atlantic Ave</figcaption>
+        <figcaption class="es">La bahía en Atlantic Ave</figcaption>
+      </figure>
+      <figure class="tall">
+        <img src="img/storefront-dusk.jpg" alt="The hand-lettered Rubio's Tire Shop sign glowing at dusk with the phone number painted beside it" loading="lazy">
+        <figcaption class="en">The sign at dusk</figcaption>
+        <figcaption class="es">El letrero al anochecer</figcaption>
+      </figure>
+      <figure>
+        <img src="img/work-wheels.jpg" alt="A white Chrysler 300 up on red floor jacks getting chrome wheels mounted" loading="lazy">
+        <figcaption class="en">Chrome going on a 300</figcaption>
+        <figcaption class="es">Cromo para un 300</figcaption>
+      </figure>
+      <figure>
+        <img src="img/fresh-tire.jpg" alt="A freshly mounted tire on a black Honda, floor jack still under the frame" loading="lazy">
+        <figcaption class="en">Fresh rubber, ready to go</figcaption>
+        <figcaption class="es">Llanta nueva, lista</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" style="padding-top:1rem">
+  <div class="wrap">
+    <blockquote class="quote-hero">
+      <p class="en">I've been coming here with my father since I was a child. This tire shop is a staple in the city of Lynwood.</p>
+      <p class="es">Vengo aquí con mi padre desde que era niño. Esta llantera es una institución en la ciudad de Lynwood.</p>
+      <footer><span class="en">Five-star Yelp review, quoted as written</span><span class="es">Reseña de cinco estrellas en Yelp, citada tal cual (traducida)</span></footer>
+    </blockquote>
+    <div class="quote-row">
+      <div class="q">
+        <p class="en">"Rubio was honest and fixed my tire right up. Honest, trustworthy and great prices!"</p>
+        <p class="es">"Rubio fue honesto y me arregló la llanta al momento. Honestos, de confianza y buenos precios."</p>
+        <footer><span class="src">Yelp</span> · <span class="en">five stars</span><span class="es">cinco estrellas</span></footer>
+      </div>
+      <div class="q">
+        <p class="en">"Honest, friendly, and fast service at a fair price. Highly recommend!"</p>
+        <p class="es">"Servicio honesto, amable y rápido a un precio justo. ¡Muy recomendado!"</p>
+        <footer><span class="src">Google</span> · Natalie C.</footer>
+      </div>
+      <div class="q">
+        <p class="en">"They have been fixing my tires for years and I have never had an issue with quality of their work or price. And they always give me a good laugh."</p>
+        <p class="es">"Llevan años arreglando mis llantas y nunca he tenido problema con la calidad ni el precio. Y siempre me hacen reír."</p>
+        <footer><span class="src">Yelp</span> · <span class="en">five stars</span><span class="es">cinco estrellas</span></footer>
+      </div>
+      <div class="q">
+        <p class="en">"This is where I buy all my tires. Good prices and it's a family-owned business."</p>
+        <p class="es">"Aquí compro todas mis llantas. Buenos precios y es un negocio familiar."</p>
+        <footer><span class="src">Google</span> · Jonathan A.</footer>
+      </div>
+    </div>
+    <p class="ratings-line">
+      <span><span class="star">★★★★★</span> 5.0 · 12 <span class="en">reviews on Google</span><span class="es">reseñas en Google</span></span>
+      <span><span class="star">★★★★★</span> 4.9 · 36 <span class="en">reviews on Yelp</span><span class="es">reseñas en Yelp</span></span>
+    </p>
+
+    <div class="leave">
+      <div>
+        <h3><span class="en">Happy with your tires? Tell your neighbors.</span><span class="es">¿Quedó contento? Cuéntele a sus vecinos.</span></h3>
+        <p class="en">A 20-second review on Google or Yelp is the best thank-you a family shop can get. It helps the next neighbor with a flat find us.</p>
+        <p class="es">Una reseña de 20 segundos en Google o Yelp es el mejor agradecimiento para un negocio familiar. Ayuda al próximo vecino con una ponchadura a encontrarnos.</p>
+      </div>
+      <div class="leave-btns">
+        <a class="btn btn-rev" href="https://www.google.com/maps/search/Rubio's+Tire+Shop+12404+Atlantic+Ave+Lynwood+CA" target="_blank" rel="noopener"><span class="en">★ Review on Google</span><span class="es">★ Reseña en Google</span></a>
+        <a class="btn btn-rev yelp" href="https://www.yelp.com/biz/rubio-s-tire-shop-lynwood-2" target="_blank" rel="noopener"><span class="en">★ Review on Yelp</span><span class="es">★ Reseña en Yelp</span></a>
+        <p class="qr-hint en">In the shop? Scan the QR card at the register.</p>
+        <p class="qr-hint es">¿Está en el taller? Escanee el código QR en la caja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="shingle" aria-hidden="true"></div>
+
+<section id="find">
+  <div class="wrap">
+    <h2><span class="en">Find the blue roof</span><span class="es">Busque el techo azul</span></h2>
+    <div class="find-grid">
+      <div class="hours">
+        <table>
+          <tr><td><span class="en">Monday to Friday</span><span class="es">Lunes a viernes</span></td><td>8:00 AM – 6:00 PM</td></tr>
+          <tr><td><span class="en">Saturday</span><span class="es">Sábado</span></td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td><span class="en">Sunday</span><span class="es">Domingo</span></td><td><span class="en">Closed</span><span class="es">Cerrado</span></td></tr>
+        </table>
+        <p class="addr">📍 12404 Atlantic Ave, Lynwood, CA 90262<br>
+        📞 <a href="tel:+13106318623">(310) 631-8623</a></p>
+      </div>
+      <div class="map">
+        <iframe title="Map to Rubio's Tire Shop, 12404 Atlantic Ave, Lynwood" src="https://maps.google.com/maps?q=12404%20Atlantic%20Ave%2C%20Lynwood%2C%20CA%2090262&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="dir" href="https://www.google.com/maps/dir/?api=1&destination=12404+Atlantic+Ave+Lynwood+CA+90262" target="_blank" rel="noopener"><span class="en">↗ Directions</span><span class="es">↗ Cómo llegar</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <span class="script-kicker" aria-hidden="true"><span class="en">no appointment needed</span><span class="es">sin cita</span></span>
+  <h2><span class="en">Need tires today?</span><span class="es">¿Necesita llantas hoy?</span></h2>
+  <p class="en">Call with your tire size and get an honest price over the phone.</p>
+  <p class="es">Llame con la medida de su llanta y le damos un precio honesto por teléfono.</p>
+  <a class="btn" href="tel:+13106318623">📞 (310) 631-8623</a>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <span class="en">Rubio's Tire Shop · 12404 Atlantic Ave, Lynwood, CA 90262 · Family owned &amp; operated</span>
+    <span class="es">Rubio's Tire Shop · 12404 Atlantic Ave, Lynwood, CA 90262 · Negocio familiar</span>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.body.dataset.lang = lang;
+    document.documentElement.lang = lang;
+    document.getElementById('btn-en').setAttribute('aria-pressed', lang==='en');
+    document.getElementById('btn-es').setAttribute('aria-pressed', lang==='es');
+    try{localStorage.setItem('rubios-lang', lang);}catch(e){}
+  }
+  try{
+    var saved = localStorage.getItem('rubios-lang');
+    if(saved==='es' || (!saved && navigator.language && navigator.language.startsWith('es'))) setLang('es');
+  }catch(e){}
+</script>
+</body>
+</html>
