@@ -3,167 +3,275 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eduardo builds websites for LA small businesses</title>
-<meta name="description" content="Fast, bilingual (English/Spanish) websites and Google + Yelp cleanup for family-owned businesses in southeast LA County. Live in a week.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161514'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23F0531C' text-anchor='middle'%3Ee%3C/text%3E%3C/svg%3E">
+<title>Eduardo — websites for LA's local businesses</title>
+<meta name="description" content="Premium, bilingual (English/Spanish) websites and Google + Yelp cleanup for family-owned businesses across southeast LA County. Live in about a week.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2314130F'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23E0491B' text-anchor='middle'%3Ee%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap">
 <style>
   :root{
-    --ink:#161514;
-    --ink-2:#33302c;
-    --paper:#FCFBF9;
-    --concrete:#EFEDE8;
-    --line:#E1DDD5;
-    --flame:#E0491B;      /* safety-orange: the trades accent */
-    --flame-deep:#B63912;
-    --muted:#6c675f;
-    --display:'Futura-CondensedExtraBold','AvenirNextCondensed-Bold','Avenir Next Condensed','Arial Narrow',sans-serif;
-    --body:'Avenir Next',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --ink:#14130F;
+    --ink-2:#3a3833;
+    --paper:#F5F4F1;        /* soft structural neutral, cool-warm balance, chroma minimal */
+    --surface:#FBFAF8;
+    --hair:rgba(20,19,15,.08);
+    --flame:#DC4A1E;
+    --flame-deep:#B4390F;
+    --muted:#78746c;
+    --shell:rgba(20,19,15,.035);
+    --r-lg:2rem;
+    --r-core:calc(2rem - .375rem);
+    --ease:cubic-bezier(.32,.72,0,1);
+    --display:'Clash Display','Futura-CondensedExtraBold','Arial Narrow',sans-serif;
+    --body:'Satoshi','Avenir Next',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px}
-  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-  a{color:inherit}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px;overflow-x:hidden}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.4rem)}
+  a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
 
+  body[data-lang="en"] .es{display:none!important}
+  body[data-lang="es"] .en{display:none!important}
+
+  /* subtle film grain — fixed, non-interactive, GPU-cheap */
+  body::before{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.025;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* demo/context ribbon removed — this is the real portfolio */
+
+  /* floating glass nav pill */
+  .nav{position:fixed;top:clamp(.8rem,2vw,1.4rem);left:0;right:0;z-index:90;display:flex;justify-content:center;pointer-events:none}
+  .nav-inner{pointer-events:auto;display:flex;align-items:center;gap:.5rem;background:rgba(251,250,248,.72);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid rgba(255,255,255,.6);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 12px 40px -12px rgba(20,19,15,.18);border-radius:999px;padding:.4rem .5rem .4rem 1.1rem}
+  .nav-logo{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em;margin-right:.4rem}
+  .nav-logo .dot{color:var(--flame)}
+  .lang{display:flex;background:var(--shell);border-radius:999px;padding:2px;font-family:var(--body);font-weight:700;font-size:.75rem}
+  .lang button{appearance:none;border:0;background:transparent;color:var(--muted);padding:.32rem .7rem;border-radius:999px;cursor:pointer;font:inherit;transition:color .4s var(--ease),background .4s var(--ease)}
+  .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  .lang button:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
+  .nav-cta{display:none;margin-left:.3rem}
+  @media(min-width:620px){.nav-cta{display:inline-flex}}
+
+  /* island button-in-button */
+  .island{display:inline-flex;align-items:center;gap:.7rem;background:var(--ink);color:var(--paper);font-family:var(--body);font-weight:700;font-size:.95rem;padding:.6rem .7rem .6rem 1.2rem;border-radius:999px;transition:transform .5s var(--ease),background .4s var(--ease)}
+  .island:hover{background:#000}
+  .island:active{transform:scale(.975)}
+  .island .pip{width:1.9rem;height:1.9rem;border-radius:999px;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:transform .5s var(--ease),background .4s var(--ease)}
+  .island:hover .pip{transform:translate(2px,-2px) scale(1.06);background:var(--flame)}
+  .island.flame{background:var(--flame)}
+  .island.flame:hover{background:var(--flame-deep)}
+  .island.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--hair)}
+  .island.ghost .pip{background:var(--shell)}
+  .island.ghost:hover{background:var(--shell)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(2.4rem);filter:blur(6px);transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none;filter:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;filter:none;transition:none}*{transition:none!important;scroll-behavior:auto}}
+
   /* hero */
-  .top{background:var(--ink);color:var(--paper);padding:1.3rem 0}
-  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-  .brand{font-family:var(--display);text-transform:uppercase;letter-spacing:.03em;font-size:1.15rem}
-  .brand .dot{color:var(--flame)}
-  .top a.mail{font-family:var(--body);font-weight:700;font-size:.9rem;text-decoration:none;color:var(--paper);border:1.5px solid #4a4640;padding:.45rem .9rem;border-radius:8px}
-  .top a.mail:hover{border-color:var(--paper)}
+  .hero{padding:clamp(9rem,20vh,13rem) 0 clamp(4rem,9vh,7rem)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.55rem;background:var(--surface);border:1px solid var(--hair);border-radius:999px;padding:.4rem .95rem;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+  .eyebrow .live{width:.5rem;height:.5rem;border-radius:999px;background:var(--flame);box-shadow:0 0 0 0 rgba(220,74,30,.5);animation:pulse 2.6s var(--ease) infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(220,74,30,.45)}70%{box-shadow:0 0 0 .5rem rgba(220,74,30,0)}100%{box-shadow:0 0 0 0 rgba(220,74,30,0)}}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(2.9rem,8vw,6.2rem);line-height:.94;letter-spacing:-.02em;margin-top:1.7rem;max-width:15ch;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--flame)}
+  .hero .sub{font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--ink-2);max-width:40rem;margin-top:1.6rem}
+  .hero .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.4rem;align-items:center}
+  .hero .note{font-size:.9rem;color:var(--muted);margin-top:1.4rem}
 
-  .hero{background:var(--ink);color:var(--paper);padding:3.5rem 0 4.5rem;position:relative;overflow:hidden}
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--flame)}
-  .hero h1{font-family:var(--display);text-transform:uppercase;font-size:clamp(2.6rem,7vw,5rem);line-height:.95;letter-spacing:.01em;max-width:16ch;text-wrap:balance}
-  .hero h1 em{font-style:normal;color:var(--flame)}
-  .hero p.sub{font-size:1.15rem;color:#cfc9c0;max-width:42rem;margin-top:1.4rem}
-  .hero p.es{font-size:1rem;color:#8f8a82;margin-top:.5rem;font-style:italic}
-  .hero .meta{display:flex;gap:.5rem 2rem;flex-wrap:wrap;margin-top:2rem;font-size:.92rem;color:#cfc9c0}
-  .hero .meta b{color:var(--paper)}
+  /* section scaffolding — macro whitespace */
+  section{padding:clamp(4.5rem,10vh,8rem) 0}
+  .sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:2.6rem}
+  h2{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1;letter-spacing:-.02em;text-wrap:balance}
+  .sec-head p{color:var(--muted);max-width:26rem;font-size:.98rem}
 
-  section{padding:4rem 0}
-  .eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;color:var(--flame);font-size:1rem}
-  h2{font-family:var(--display);text-transform:uppercase;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.02;margin-top:.3rem;text-wrap:balance}
+  /* featured work — double-bezel */
+  .feature{background:var(--shell);border:1px solid var(--hair);border-radius:var(--r-lg);padding:.5rem;box-shadow:0 30px 60px -30px rgba(20,19,15,.25),0 8px 24px -16px rgba(20,19,15,.2)}
+  .feature-core{background:var(--surface);border-radius:var(--r-core);overflow:hidden;box-shadow:inset 0 1px 1px rgba(255,255,255,.7);display:grid}
+  @media(min-width:860px){.feature-core{grid-template-columns:1.1fr .9fr}}
+  .feature-shot{position:relative;min-height:340px;overflow:hidden;background:#16336E}
+  .feature-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 44%;
+    transform:rotate(-1.6deg) scale(1.08);transform-origin:center 55%;transition:transform 1.2s var(--ease)}
+  .feature:hover .feature-shot img{transform:rotate(-1.6deg) scale(1.13)}
+  .feature-shot .float{position:absolute;left:1.1rem;bottom:1.1rem;display:flex;gap:.5rem;flex-wrap:wrap}
+  .chip{background:rgba(251,250,248,.86);backdrop-filter:blur(8px);border-radius:999px;padding:.4rem .85rem;font-size:.76rem;font-weight:700;color:var(--ink);box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+  .feature-body{padding:clamp(1.8rem,3.5vw,2.8rem);display:flex;flex-direction:column}
+  .kicker{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--flame)}
+  .feature-body h3{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.02;margin:.5rem 0 .7rem;letter-spacing:-.01em}
+  .feature-body p{color:var(--ink-2);font-size:1rem}
+  .stats{display:flex;gap:2rem;margin:1.6rem 0}
+  .stats b{font-family:var(--display);font-weight:600;font-size:1.7rem;display:block;line-height:1}
+  .stats span{font-size:.78rem;color:var(--muted)}
+  .feature-body .island{margin-top:auto;align-self:flex-start}
 
-  /* work */
-  .work-card{display:grid;gap:0;margin-top:2rem;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 34px rgba(22,21,20,.08)}
-  @media(min-width:820px){.work-card{grid-template-columns:1.15fr .85fr}}
-  .work-card .shot{position:relative;min-height:280px;background:#16336E}
-  .work-card .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .work-card .body{padding:2rem 2rem 1.7rem;display:flex;flex-direction:column}
-  .work-card .tag{font-family:var(--body);font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  .work-card h3{font-family:var(--display);text-transform:uppercase;font-size:1.8rem;margin:.3rem 0 .2rem}
-  .work-card p{color:var(--ink-2);font-size:.98rem;margin-bottom:1.3rem}
-  .work-card .stats{display:flex;gap:1.5rem;font-size:.85rem;color:var(--muted);margin-bottom:1.4rem}
-  .work-card .stats b{color:var(--ink);font-family:var(--display);font-size:1.3rem;display:block}
-  .btn{align-self:flex-start;margin-top:auto;display:inline-block;text-decoration:none;font-family:var(--body);font-weight:700;background:var(--flame);color:#fff;padding:.8rem 1.5rem;border-radius:10px}
-  .btn:hover{background:var(--flame-deep)}
+  /* what I do — editorial rows, not equal boxes */
+  .offer{display:grid;gap:0}
+  .offer-row{display:grid;gap:.6rem 2rem;padding:2rem 0;border-top:1px solid var(--hair);align-items:baseline}
+  @media(min-width:760px){.offer-row{grid-template-columns:.5fr 1fr;padding:2.4rem 0}}
+  .offer-row:last-child{border-bottom:1px solid var(--hair)}
+  .offer-row h3{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,2.4vw,1.8rem);letter-spacing:-.01em}
+  .offer-row .desc{color:var(--ink-2);font-size:1.02rem;max-width:38rem}
+  .offer-row .desc .em{color:var(--ink);font-weight:700}
 
-  /* what I do */
-  .services{background:var(--concrete)}
-  .svc-grid{display:grid;gap:1.5rem;margin-top:2rem}
-  @media(min-width:700px){.svc-grid{grid-template-columns:repeat(3,1fr)}}
-  .svc h3{font-family:var(--display);text-transform:uppercase;font-size:1.15rem;margin-bottom:.3rem}
-  .svc h3 span{color:var(--flame)}
-  .svc p{font-size:.93rem;color:var(--ink-2)}
+  /* dark contrast band — the pitch */
+  .band{background:var(--ink);color:var(--paper);border-radius:var(--r-lg);padding:clamp(2.6rem,6vw,4.5rem);text-align:center;position:relative;overflow:hidden}
+  .band::after{content:"";position:absolute;left:50%;top:-40%;width:70%;height:120%;transform:translateX(-50%);
+    background:radial-gradient(closest-side,rgba(220,74,30,.28),transparent 70%);pointer-events:none}
+  .band h2{color:var(--paper);position:relative;max-width:18ch;margin:0 auto}
+  .band p{color:rgba(245,244,241,.72);max-width:34rem;margin:1.1rem auto 0;position:relative}
+  .band .actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;position:relative}
+  .band .island.ghost{color:var(--paper);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.2)}
+  .band .island.ghost .pip{background:rgba(255,255,255,.12)}
+  .band .island.ghost:hover{background:rgba(255,255,255,.08)}
 
-  /* contact */
-  .contact{text-align:center}
-  .contact h2{font-size:clamp(2rem,5vw,3.2rem)}
-  .contact p{color:var(--muted);max-width:36rem;margin:.8rem auto 0}
-  .contact .actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
-  .contact .actions a{text-decoration:none;font-weight:700;font-family:var(--body);padding:.85rem 1.6rem;border-radius:10px}
-  .contact .actions .primary{background:var(--ink);color:var(--paper)}
-  .contact .actions .primary:hover{background:var(--ink-2)}
-  .contact .actions .ghost{border:1.5px solid var(--ink);color:var(--ink)}
-
-  footer{background:var(--ink);color:#8f8a82;font-size:.82rem;padding:1.6rem 0;text-align:center}
+  footer{padding:3rem 0 4rem;text-align:center;color:var(--muted);font-size:.86rem}
+  footer .fine{margin-top:.4rem;font-size:.78rem;opacity:.8}
 </style>
 </head>
-<body>
+<body data-lang="en">
 
-<div class="top">
-  <div class="wrap">
-    <span class="brand">Eduardo<span class="dot">.</span> Websites</span>
-    <a class="mail" href="mailto:eddjack30@gmail.com">Get in touch</a>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">Eduardo<span class="dot">.</span></a>
+    <div class="lang" role="group" aria-label="Language / Idioma">
+      <button type="button" id="btn-en" aria-pressed="true" onclick="setLang('en')">EN</button>
+      <button type="button" id="btn-es" aria-pressed="false" onclick="setLang('es')">ES</button>
+    </div>
+    <a class="island nav-cta" href="mailto:eddjack30@gmail.com">
+      <span class="en">Get in touch</span><span class="es">Contáctame</span>
+      <span class="pip" aria-hidden="true">↗</span>
+    </a>
   </div>
-</div>
+</nav>
 
-<div class="hero">
+<header class="hero" id="top">
   <div class="wrap">
-    <h1>Websites that make local shops <em>impossible to miss.</em></h1>
-    <p class="sub">I build fast, bilingual websites and clean up Google &amp; Yelp for family-owned businesses across southeast LA County. Real photos, real reviews, live in about a week.</p>
-    <p class="es">Sitios web rápidos y bilingües para negocios familiares. Publicados en una semana.</p>
-    <div class="meta">
-      <span>📍 Lynwood &amp; the surrounding cities</span>
-      <span><b>English</b> &amp; <b>Español</b></span>
-      <span>One-time build, optional monthly upkeep</span>
+    <span class="eyebrow reveal"><span class="live" aria-hidden="true"></span>
+      <span class="en">Lynwood, CA · English &amp; Español</span><span class="es">Lynwood, CA · Español &amp; English</span>
+    </span>
+    <h1 class="reveal">
+      <span class="en">Websites that make local shops <em>impossible to miss.</em></span>
+      <span class="es">Sitios web que hacen que un negocio local <em>no se pueda ignorar.</em></span>
+    </h1>
+    <p class="sub reveal">
+      <span class="en">I build fast, bilingual websites and clean up Google &amp; Yelp for family-owned businesses across southeast LA. Real photos, real reviews, live in about a week.</span>
+      <span class="es">Hago sitios web rápidos y bilingües y arreglo Google y Yelp para negocios familiares del sureste de LA. Fotos reales, reseñas reales, publicado en una semana.</span>
+    </p>
+    <div class="actions reveal">
+      <a class="island flame" href="#work"><span class="en">See the work</span><span class="es">Ver el trabajo</span><span class="pip" aria-hidden="true">↓</span></a>
+      <a class="island ghost" href="mailto:eddjack30@gmail.com"><span class="en">Start a project</span><span class="es">Empezar un proyecto</span><span class="pip" aria-hidden="true">↗</span></a>
+    </div>
+    <p class="note reveal"><span class="en">Try the EN / ES switch up top. Every site I build does that.</span><span class="es">Pruebe el botón EN / ES arriba. Cada sitio que hago lo hace.</span></p>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="en">Selected work</span><span class="es">Trabajo seleccionado</span></h2>
+      <p><span class="en">One shop at a time. Real businesses, real results.</span><span class="es">Un negocio a la vez. Negocios reales, resultados reales.</span></p>
+    </div>
+    <article class="feature reveal">
+      <div class="feature-core">
+        <a class="feature-shot" href="rubios-tire-shop/" aria-label="Open the Rubio's Tire Shop website">
+          <img src="rubios-tire-shop/img/storefront.jpg" alt="Rubio's Tire Shop, the blue storefront on Atlantic Ave in Lynwood, tires stacked by the open bays">
+          <span class="float">
+            <span class="chip">★ 5.0 Google</span>
+            <span class="chip">★ 4.9 Yelp</span>
+            <span class="chip">EN / ES</span>
+          </span>
+        </a>
+        <div class="feature-body">
+          <span class="kicker">Tire shop · Lynwood</span>
+          <h3>Rubio's Tire Shop</h3>
+          <p>
+            <span class="en">A family llantera with a perfect rating and no website at all. I built them a bilingual one-pager around their own hand-painted signage: a live map, their real photos, one-tap calling, and a price board like the one on their wall.</span>
+            <span class="es">Una llantera familiar con calificación perfecta y sin página web. Les hice un sitio bilingüe basado en su propio letrero pintado a mano: mapa en vivo, sus fotos reales, llamada con un toque, y una tabla de precios como la de su pared.</span>
+          </p>
+          <div class="stats">
+            <div><b>48</b><span class="en">5-star reviews</span><span class="es">reseñas 5★</span></div>
+            <div><b>1 wk</b><span class="en">to live</span><span class="es">para publicar</span></div>
+            <div><b>2</b><span class="en">languages</span><span class="es">idiomas</span></div>
+          </div>
+          <a class="island" href="rubios-tire-shop/"><span class="en">View the live site</span><span class="es">Ver el sitio</span><span class="pip" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="services" style="padding-top:clamp(1rem,3vh,2rem)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2><span class="en">What I do</span><span class="es">Lo que hago</span></h2>
+      <p><span class="en">Three things, done properly.</span><span class="es">Tres cosas, bien hechas.</span></p>
+    </div>
+    <div class="offer">
+      <div class="offer-row reveal">
+        <h3><span class="en">The website</span><span class="es">El sitio web</span></h3>
+        <p class="desc"><span class="en">A clean, fast one-page site in <span class="em">English and Spanish</span>. Your services, hours, photos, and a map, built to bring in phone calls, not to win design awards.</span><span class="es">Un sitio de una página, rápido y limpio, en <span class="em">inglés y español</span>. Sus servicios, horario, fotos y mapa, hecho para traer llamadas, no para ganar premios.</span></p>
+      </div>
+      <div class="offer-row reveal">
+        <h3><span class="en">Google &amp; Yelp</span><span class="es">Google y Yelp</span></h3>
+        <p class="desc"><span class="en">I claim and fill out your profiles, add your photos and services, and write <span class="em">friendly replies to every review</span>, so your reputation actually shows up when people search.</span><span class="es">Reclamo y completo sus perfiles, agrego sus fotos y servicios, y escribo <span class="em">respuestas amables a cada reseña</span>, para que su reputación aparezca cuando la gente busca.</span></p>
+      </div>
+      <div class="offer-row reveal">
+        <h3><span class="en">Keeping it fresh</span><span class="es">Mantenerlo al día</span></h3>
+        <p class="desc"><span class="en">Optional monthly upkeep: new photos and review replies, so your listing keeps working while you run the shop. <span class="em">No contract.</span></span><span class="es">Mantenimiento mensual opcional: fotos nuevas y respuestas a reseñas, para que su perfil siga trabajando mientras usted atiende. <span class="em">Sin contrato.</span></span></p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <section>
   <div class="wrap">
-    <span class="eyebrow">Recent work</span>
-    <h2>Selected projects</h2>
-    <div class="work-card">
-      <a class="shot" href="rubios-tire-shop/" aria-label="Open the Rubio's Tire Shop site">
-        <img src="rubios-tire-shop/img/storefront.jpg" alt="Rubio's Tire Shop, the blue storefront on Atlantic Ave in Lynwood">
-      </a>
-      <div class="body">
-        <span class="tag">Tire shop · Lynwood · EN / ES</span>
-        <h3>Rubio's Tire Shop</h3>
-        <p>A family llantera with a perfect rating and no website. I built them a bilingual one-pager around their own signage, with a live map, their real photos, and one-tap calling.</p>
-        <div class="stats">
-          <span><b>48</b> five-star reviews</span>
-          <span><b>1 wk</b> to live</span>
-          <span><b>EN/ES</b> one tap</span>
-        </div>
-        <a class="btn" href="rubios-tire-shop/">View the site →</a>
+    <div class="band reveal">
+      <h2><span class="en">Own a shop that deserves to be found?</span><span class="es">¿Tiene un negocio que merece que lo encuentren?</span></h2>
+      <p><span class="en">Tell me your business and I'll show you what your site could look like, usually before you've decided anything. Free to look.</span><span class="es">Dígame su negocio y le enseño cómo se vería su sitio, normalmente antes de que decida nada. Gratis verlo.</span></p>
+      <div class="actions">
+        <a class="island flame" href="mailto:eddjack30@gmail.com"><span class="en">Email me</span><span class="es">Envíeme un correo</span><span class="pip" aria-hidden="true">↗</span></a>
+        <a class="island ghost" href="rubios-tire-shop/"><span class="en">See a live example</span><span class="es">Ver un ejemplo</span><span class="pip" aria-hidden="true">↗</span></a>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="services">
-  <div class="wrap">
-    <span class="eyebrow">What I do</span>
-    <h2>Three things, done well</h2>
-    <div class="svc-grid">
-      <div class="svc">
-        <h3>The website</h3>
-        <p>A clean, fast one-page site in English and Spanish. Your services, hours, photos, and a map, built to bring in phone calls, not win design awards.</p>
-      </div>
-      <div class="svc">
-        <h3>Google &amp; Yelp</h3>
-        <p>I fill out and claim your profiles, add your photos and services, and write friendly replies to every review, so your reputation actually shows up when people search.</p>
-      </div>
-      <div class="svc">
-        <h3>Keeping it fresh</h3>
-        <p>Optional monthly upkeep: new photos and review replies, so your listing keeps working while you run the shop. No contract.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="contact">
-  <div class="wrap">
-    <span class="eyebrow">Let's talk</span>
-    <h2>Own a shop that deserves to be found?</h2>
-    <p>Tell me your business and I'll show you what your site could look like — usually before you've decided anything. Free to look.</p>
-    <div class="actions">
-      <a class="primary" href="mailto:eddjack30@gmail.com">Email me</a>
-      <a class="ghost" href="rubios-tire-shop/">See a live example</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">Eduardo · Websites for local businesses · Lynwood, CA · Hecho con orgullo</div>
+  <div class="wrap">
+    <div>Eduardo · <span class="en">Websites for local businesses</span><span class="es">Sitios web para negocios locales</span> · Lynwood, CA</div>
+    <div class="fine">eddjack30@gmail.com · <span class="en">Built by hand, hecho con orgullo.</span><span class="es">Hecho a mano, con orgullo.</span></div>
+  </div>
 </footer>
 
+<script>
+  function setLang(lang){
+    document.body.dataset.lang = lang;
+    document.documentElement.lang = lang;
+    document.getElementById('btn-en').setAttribute('aria-pressed', lang==='en');
+    document.getElementById('btn-es').setAttribute('aria-pressed', lang==='es');
+    try{localStorage.setItem('eddjack-lang', lang);}catch(e){}
+  }
+  try{
+    var saved = localStorage.getItem('eddjack-lang');
+    if(saved==='es' || (!saved && navigator.language && navigator.language.startsWith('es'))) setLang('es');
+  }catch(e){}
+
+  // scroll reveals — IntersectionObserver, transform/opacity only
+  var mo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!mo && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el,i){
+      el.style.transitionDelay = Math.min(i*40,180)+'ms';
+      io.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
 </body>
 </html>
