@@ -1,0 +1,21 @@
+# Never publish secrets
+.env
+.env.*
+*.env
+*.key
+*.pem
+*.p12
+secrets*
+credentials*
+*.secret
+service-account*.json
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# Deps / build (in case any tooling ever runs here)
+node_modules/
+dist/
+.cache/
