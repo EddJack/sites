@@ -86,7 +86,7 @@
 
   /* floating glass nav pill */
   .nav{position:fixed;top:clamp(.8rem,2vw,1.4rem);left:0;right:0;z-index:90;display:flex;justify-content:center;pointer-events:none}
-  .nav-inner{pointer-events:auto;display:flex;align-items:center;gap:.5rem;background:var(--glass);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid var(--glass-edge);box-shadow:0 1px 0 var(--glass-hi) inset,0 12px 40px -12px var(--glass-sh);border-radius:999px;padding:.4rem .5rem .4rem 1.1rem;transition:transform .18s cubic-bezier(.1,.8,.2,1),box-shadow .5s var(--ease),background .5s var(--ease),border-color .5s var(--ease);will-change:transform}
+  .nav-inner{pointer-events:auto;display:flex;align-items:center;gap:.5rem;background:var(--glass);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid var(--glass-edge);box-shadow:0 1px 0 var(--glass-hi) inset,0 12px 40px -12px var(--glass-sh);border-radius:999px;padding:.4rem .5rem .4rem 1.1rem;transition:box-shadow .5s var(--ease),background .5s var(--ease),border-color .5s var(--ease)}
   /* #6 nav reacts to scroll — velocity arch (JS) + accent glow + whole-pill progress ring */
   .nav-inner{position:relative}
   body.scrolled .nav-inner{border-color:rgba(255,0,84,.32);box-shadow:0 1px 0 var(--glass-hi) inset,0 12px 34px -8px rgba(255,0,84,.2)}
@@ -375,20 +375,11 @@
     navRect.setAttribute('x',ins); navRect.setAttribute('y',ins); navRect.setAttribute('width',w-sw); navRect.setAttribute('height',h-sw); navRect.setAttribute('rx',rx); navRect.setAttribute('ry',rx);
     perim=(navRect.getTotalLength?navRect.getTotalLength():2*(w+h)); navRect.style.strokeDasharray=perim;
   }
-  var lastY=window.scrollY||0, navTimer;
   function onScroll(){
     var y=window.scrollY||0, h=document.documentElement, max=h.scrollHeight-h.clientHeight;
     var p=max>0?Math.min(1,Math.max(0,y/max)):0;
     document.body.classList.toggle('scrolled', y>40);
     if(navRect) navRect.style.strokeDashoffset=(perim*(1-p)).toFixed(2);
-    if(navInner && !mo){
-      var vel=y-lastY; lastY=y;
-      var cvv=Math.max(-16,Math.min(16,vel*0.45));
-      var ty=(cvv*0.3).toFixed(1), sq=(1-Math.abs(cvv)*0.012).toFixed(3), base=(y>40?0.955:1);
-      navInner.style.transform='translateY('+ty+'px) scale('+base+') scaleY('+sq+')';
-      clearTimeout(navTimer);
-      navTimer=setTimeout(function(){ navInner.style.transform='translateY(0) scale('+base+')'; },110);
-    }
   }
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',function(){ sizeRing(); onScroll(); },{passive:true});
