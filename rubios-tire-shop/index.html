@@ -76,6 +76,14 @@
   .trust b{font-weight:700}
   .trust .star{color:var(--crayon)}
 
+  /* scroll-to-explore cue on the hero photo — fades on first scroll */
+  .r-cue{position:absolute;left:50%;bottom:1.1rem;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:#fff;font-family:var(--ui);font-size:.64rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.5);transition:opacity .5s ease;pointer-events:none}
+  .r-cue .track{width:1px;height:2rem;position:relative;overflow:hidden;background:rgba(255,255,255,.3)}
+  .r-cue .track::after{content:"";position:absolute;left:0;top:0;width:100%;height:45%;background:var(--crayon);animation:rcue 1.7s ease infinite}
+  @keyframes rcue{0%{transform:translateY(-110%)}100%{transform:translateY(260%)}}
+  body.scrolled .r-cue{opacity:0}
+  @media(prefers-reduced-motion:reduce){.r-cue .track::after{animation:none}}
+
   /* shingle divider: the awning band */
   .shingle{height:16px;background:
     repeating-linear-gradient(90deg,var(--blue) 0 34px,var(--blue-deep) 34px 36px);
@@ -198,6 +206,7 @@
       <a class="btn btn-ghost" href="#find"><span class="en">Hours &amp; directions</span><span class="es">Horario y dirección</span></a>
     </div>
   </div>
+  <div class="r-cue" aria-hidden="true"><span class="en">Scroll</span><span class="es">Desliza</span><span class="track"></span></div>
 </div>
 <div class="trust" role="note">
   <div class="wrap">
@@ -392,6 +401,10 @@
     var saved = localStorage.getItem('rubios-lang');
     if(saved==='es' || (!saved && navigator.language && navigator.language.startsWith('es'))) setLang('es');
   }catch(e){}
+
+  // fade the scroll cue after the first scroll
+  function rOnScroll(){ document.body.classList.toggle('scrolled',(window.scrollY||0)>40); }
+  window.addEventListener('scroll',rOnScroll,{passive:true}); rOnScroll();
 </script>
 </body>
 </html>
