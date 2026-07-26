@@ -1,481 +1,1035 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eduardo — websites for LA's local businesses</title>
-<meta name="description" content="Premium, bilingual (English/Spanish) websites and Google + Yelp cleanup for family-owned businesses across southeast LA County. Live in about a week.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2314130F'/%3E%3Cg fill='%23F5F4F1'%3E%3Crect x='17' y='16' width='8.5' height='32' rx='1.5'/%3E%3Crect x='17' y='16' width='24' height='8.5' rx='1.5'/%3E%3Crect x='17' y='27.75' width='20' height='8' rx='1.5'/%3E%3Crect x='17' y='39.5' width='24' height='8.5' rx='1.5'/%3E%3C/g%3E%3Crect x='45.5' y='39.5' width='8.5' height='8.5' rx='2.2' fill='%23ff0054'/%3E%3C/svg%3E">
-<script>try{var _t=localStorage.getItem('eddjack-theme');if(_t)document.documentElement.setAttribute('data-theme',_t);var _e=_t||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-eff',_e);}catch(e){}</script>
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap">
-<style>
-  :root{
-    --ink:#14130F;
-    --ink-2:#3a3833;
-    --paper:#F5F4F1;        /* soft structural neutral, cool-warm balance, chroma minimal */
-    --surface:#FBFAF8;
-    --hair:rgba(20,19,15,.09);
-    --shell:rgba(20,19,15,.04);
-    --muted:#78746c;
-    --glass:rgba(251,250,248,.72);       /* floating nav bg */
-    --glass-edge:rgba(255,255,255,.55);
-    --glass-hi:rgba(255,255,255,.7);
-    --glass-sh:rgba(20,19,15,.18);
-    --card-hi:rgba(255,255,255,.7);       /* inset highlight on cards */
-    --sh1:rgba(20,19,15,.24);
-    --sh2:rgba(20,19,15,.16);
-    --dot:20,19,15;                        /* particle rgb (used in rgba) */
-    --flame:#ff0054;
-    --flame-deep:#d10045;
-    --r-lg:2rem;
-    --r-core:calc(2rem - .375rem);
-    --ease:cubic-bezier(.32,.72,0,1);
-    --display:'Clash Display','Futura-CondensedExtraBold','Arial Narrow',sans-serif;
-    --body:'Satoshi','Avenir Next',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    color-scheme:light;
-  }
-  /* dark palette — same tokens, redefined. System-dark unless the user forced light; or forced dark. */
-  @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
-    --ink:#F3F1EC;--ink-2:#c7c3ba;--paper:#121110;--surface:#1c1b19;
-    --hair:rgba(255,255,255,.12);--shell:rgba(255,255,255,.05);--muted:#928d83;
-    --glass:rgba(24,23,21,.62);--glass-edge:rgba(255,255,255,.10);--glass-hi:rgba(255,255,255,.08);--glass-sh:rgba(0,0,0,.5);
-    --card-hi:rgba(255,255,255,.06);--sh1:rgba(0,0,0,.55);--sh2:rgba(0,0,0,.4);--dot:255,255,255;
-    color-scheme:dark;
-  }}
-  :root[data-theme="dark"]{
-    --ink:#F3F1EC;--ink-2:#c7c3ba;--paper:#121110;--surface:#1c1b19;
-    --hair:rgba(255,255,255,.12);--shell:rgba(255,255,255,.05);--muted:#928d83;
-    --glass:rgba(24,23,21,.62);--glass-edge:rgba(255,255,255,.10);--glass-hi:rgba(255,255,255,.08);--glass-sh:rgba(0,0,0,.5);
-    --card-hi:rgba(255,255,255,.06);--sh1:rgba(0,0,0,.55);--sh2:rgba(0,0,0,.4);--dot:255,255,255;
-    color-scheme:dark;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px;overflow-x:hidden}
-  .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.4rem)}
-  a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo — Websites for the businesses your block already loves</title>
+    <meta name="description" content="Ultra-fast bilingual websites and Google/Yelp optimization for family-owned businesses across Southeast Los Angeles. Real photos, real reviews, live in about a week.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://eddjack.github.io/sites/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Eduardo — Websites for local businesses">
+  <meta property="og:title" content="Eduardo — Bilingual websites for local businesses in Southeast LA">
+  <meta property="og:description" content="Ultra-fast bilingual (English/Spanish) websites and Google & Yelp tune-ups for family-owned shops across southeast Los Angeles. Real photos, real reviews, live in about a week.">
+  <meta property="og:url" content="https://eddjack.github.io/sites/">
+  <meta property="og:image" content="https://eddjack.github.io/sites/assets/img/rubios-storefront.jpg">
+  <meta property="og:image:alt" content="Rubio's Tire Shop storefront in Lynwood, a site built by Eduardo">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Eduardo — Bilingual websites for local businesses in Southeast LA">
+  <meta name="twitter:description" content="Ultra-fast bilingual (English/Spanish) websites and Google & Yelp tune-ups for family-owned shops across southeast Los Angeles. Real photos, real reviews, live in about a week.">
+  <meta name="twitter:image" content="https://eddjack.github.io/sites/assets/img/rubios-storefront.jpg">
+  <meta name="author" content="Eduardo Jacinto">
+  <meta name="theme-color" content="#0b0b0c">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"Eduardo — Websites for local businesses",
+   "description":"Bilingual (English/Spanish) websites and Google & Yelp profile optimization for family-owned businesses in southeast Los Angeles County.",
+   "url":"https://eddjack.github.io/sites/","email":"eddjack30@gmail.com","image":"https://eddjack.github.io/sites/assets/img/rubios-storefront.jpg",
+   "priceRange":"$$","knowsLanguage":["en","es"],
+   "address":{"@type":"PostalAddress","addressLocality":"Lynwood","addressRegion":"CA","addressCountry":"US"},
+   "areaServed":[{"@type":"City","name":"Lynwood"},{"@type":"City","name":"South Gate"},{"@type":"City","name":"Huntington Park"},{"@type":"City","name":"Compton"},{"@type":"City","name":"La Mirada"}],
+   "serviceType":["Web design","Local SEO","Google Business Profile optimization","Bilingual website development"]}
+  </script><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23fc0054'/><text x='13' y='47' font-family='Arial Black, Arial, sans-serif' font-weight='900' font-size='46' fill='%23F3EFE9'>E</text><circle cx='50' cy='44' r='5.5' fill='%230B0B0C'/></svg>">
 
-  body[data-lang="en"] .es{display:none!important}
-  body[data-lang="es"] .en{display:none!important}
+    <!-- Bricolage Grotesque (architectural display + body) · JetBrains Mono (survey / blueprint annotation) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  /* subtle film grain — fixed, non-interactive, GPU-cheap */
-  body::before{content:"";position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.025;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Bricolage Grotesque', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        void:     'var(--bg)',       // charcoal (dark) / warm off-white (light)
+                        graphite: 'var(--surface)',
+                        graphite2:'var(--surface2)',
+                        ink:      'var(--ink)',      // typography color
+                        muted:    'var(--muted)',    // secondary text
+                        accent:   '#fc0054',         // interaction accent (both themes)
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);        /* ease-out-expo-ish */
+            --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* demo/context ribbon removed — this is the real portfolio */
+            /* ---- Dark theme (default, the cinematic environment) ---- */
+            --bg:          #0B0B0C;
+            --surface:     #141416;
+            --surface2:    #1B1B1E;
+            --ink:         #F3EFE9;
+            --muted:       #9A958C;
+            --line:        rgba(243, 239, 233, 0.08);
+            --grid:        rgba(243, 239, 233, 0.028);
+            --nav-bg:      rgba(11, 11, 12, 0.72);
+            --ring-border: rgba(243, 239, 233, 0.5);
+            --media-scrim: rgba(11, 11, 12, 0.55);
+            --img-filter:       saturate(0.85) brightness(0.82);
+            --img-filter-hover: saturate(1.05) brightness(1);
+            --grain-op:    0.5;
+            --grain-blend: overlay;
+        }
 
-  /* viewfinder corner ticks (Lusion-style) — desktop only, decorative */
-  .frame{position:fixed;inset:14px;z-index:70;pointer-events:none;display:none}
-  @media(min-width:900px) and (pointer:fine){.frame{display:block}}
-  .frame i{position:absolute;width:13px;height:13px;opacity:.45}
-  .frame i::before,.frame i::after{content:"";position:absolute;background:var(--ink-2)}
-  .frame i::before{left:50%;top:0;width:1px;height:100%;transform:translateX(-50%)}
-  .frame i::after{top:50%;left:0;height:1px;width:100%;transform:translateY(-50%)}
-  .frame .tl{left:0;top:0}.frame .tr{right:0;top:0}.frame .bl{left:0;bottom:0}.frame .br{right:0;bottom:0}
+        /* ---- Light theme (warm off-white, same accent) ---- */
+        html.light {
+            --bg:          #F4F2ED;
+            --surface:     #FFFFFF;
+            --surface2:    #EDEAE3;
+            --ink:         #17140F;
+            --muted:       #6B655C;
+            --line:        rgba(23, 20, 15, 0.12);
+            --grid:        rgba(23, 20, 15, 0.045);
+            --nav-bg:      rgba(244, 242, 237, 0.78);
+            --ring-border: rgba(23, 20, 15, 0.45);
+            --media-scrim: rgba(244, 242, 237, 0.35);
+            --img-filter:       saturate(0.96) brightness(0.98) contrast(1.02);
+            --img-filter-hover: saturate(1.05) brightness(1.03);
+            --grain-op:    0.22;
+            --grain-blend: multiply;
+        }
 
-  /* scroll-to-explore cue — fixed, fades on first scroll */
-  .scroll-cue{position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;align-items:center;gap:.55rem;color:var(--muted);font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;transition:opacity .5s var(--ease);pointer-events:none}
-  .scroll-cue .track{width:1px;height:2.2rem;position:relative;overflow:hidden;background:rgba(var(--dot),.14)}
-  .scroll-cue .track::after{content:"";position:absolute;left:0;top:0;width:100%;height:45%;background:var(--flame);animation:cue 1.7s var(--ease) infinite}
-  @keyframes cue{0%{transform:translateY(-110%)}100%{transform:translateY(260%)}}
-  body.scrolled .scroll-cue{opacity:0}
-  @media(prefers-reduced-motion:reduce){.scroll-cue .track::after{animation:none;transform:none}}
+        html { scroll-behavior: smooth; color-scheme: dark; }
+        html.light { color-scheme: light; }
 
-  /* floating glass nav pill */
-  .nav{position:fixed;top:clamp(.8rem,2vw,1.4rem);left:0;right:0;z-index:90;display:flex;justify-content:center;pointer-events:none}
-  .nav-inner{pointer-events:auto;display:flex;align-items:center;gap:.5rem;background:var(--glass);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid var(--glass-edge);box-shadow:0 1px 0 var(--glass-hi) inset,0 12px 40px -12px var(--glass-sh);border-radius:999px;padding:.4rem .5rem .4rem 1.1rem;transition:box-shadow .5s var(--ease),background .5s var(--ease),border-color .5s var(--ease)}
-  /* #6 nav reacts to scroll — velocity arch (JS) + accent glow + whole-pill progress ring */
-  .nav-inner{position:relative}
-  body.scrolled .nav-inner{border-color:rgba(255,0,84,.32);box-shadow:0 1px 0 var(--glass-hi) inset,0 12px 34px -8px rgba(255,0,84,.2)}
-  .nav-prog{position:absolute;top:-1px;left:-1px;overflow:visible;pointer-events:none;z-index:0}
-  .nav-prog rect{fill:none;stroke:var(--flame);stroke-width:1.5;opacity:.9;transition:stroke-dashoffset .12s linear}
-  .nav-logo{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em;margin-right:.4rem}
-  .nav-logo .dot{color:var(--flame)}
-  .lang{display:flex;background:var(--shell);border-radius:999px;padding:2px;font-family:var(--body);font-weight:700;font-size:.75rem}
-  .lang button{appearance:none;border:0;background:transparent;color:var(--muted);padding:.32rem .7rem;border-radius:999px;cursor:pointer;font:inherit;transition:color .4s var(--ease),background .4s var(--ease)}
-  .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-  .lang button:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
-  .nav-cta{display:none;margin-left:.3rem}
-  @media(min-width:620px){.nav-cta{display:inline-flex}}
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            overflow-x: hidden;
+            font-feature-settings: "ss01", "cv01";
+            -webkit-font-smoothing: antialiased; font-variant-emoji: text;
+            transition: background-color 0.5s var(--ease), color 0.5s var(--ease);
+        }
 
-  /* theme toggle */
-  .theme-btn{appearance:none;border:0;background:transparent;color:var(--ink-2);width:2rem;height:2rem;border-radius:999px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s var(--ease),color .3s var(--ease)}
-  .theme-btn:hover{background:var(--shell);color:var(--ink)}
-  .theme-btn:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
-  .theme-btn .ic-sun{display:none}
-  :root[data-eff="dark"] .theme-btn .ic-sun{display:block}
-  :root[data-eff="dark"] .theme-btn .ic-moon{display:none}
+        ::selection { background: #fc0054; color: #fff; }
 
-  /* #5 custom cursor + trailing ring (pointer-fine only) */
-  .cur-dot,.cur-ring{position:fixed;top:0;left:0;border-radius:999px;pointer-events:none;z-index:100;mix-blend-mode:difference;opacity:0;transition:opacity .3s;will-change:transform}
-  .cur-dot{width:7px;height:7px;background:#fff;margin:-3.5px 0 0 -3.5px}
-  .cur-ring{width:34px;height:34px;border:1.5px solid #fff;margin:-17px 0 0 -17px}
-  body.cur-on .cur-dot,body.cur-on .cur-ring{opacity:1}
-  @media(pointer:fine){body.cur-on,body.cur-on a,body.cur-on button{cursor:none}}
-  @media(pointer:coarse),(prefers-reduced-motion:reduce){.cur-dot,.cur-ring{display:none}}
+        /* ---------- Environment layers (behind everything) ---------- */
 
-  /* island button-in-button */
-  .island{display:inline-flex;align-items:center;gap:.7rem;background:var(--ink);color:var(--paper);font-family:var(--body);font-weight:700;font-size:.95rem;padding:.6rem .7rem .6rem 1.2rem;border-radius:999px;transition:transform .5s var(--ease),background .4s var(--ease)}
-  .island:hover{background:color-mix(in oklab,var(--ink),var(--paper) 14%)}
-  .island:active{transform:scale(.975)}
-  .island .pip{width:1.9rem;height:1.9rem;border-radius:999px;background:color-mix(in srgb,currentColor 16%,transparent);display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:transform .5s var(--ease),background .4s var(--ease)}
-  .island:hover .pip{transform:translate(2px,-2px) scale(1.06);background:var(--flame)}
-  .island.flame{background:var(--flame)}
-  .island.flame:hover{background:var(--flame-deep)}
-  .island.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--hair)}
-  .island.ghost .pip{background:var(--shell)}
-  .island.ghost:hover{background:var(--shell)}
+        #canvas-container {
+            position: fixed; inset: 0;
+            width: 100vw; height: 100vh;
+            z-index: 0; pointer-events: none;
+        }
 
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(2.4rem);filter:blur(6px);transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
-  .reveal.in{opacity:1;transform:none;filter:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;filter:none;transition:none}*{transition:none!important;scroll-behavior:auto}}
+        /* Blueprint / survey grid — almost invisible, structural not decorative */
+        #blueprint {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background-image:
+                linear-gradient(to right,  var(--grid) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse 120% 90% at 50% 0%, #000 30%, transparent 85%);
+            -webkit-mask-image: radial-gradient(ellipse 120% 90% at 50% 0%, #000 30%, transparent 85%);
+        }
 
-  /* hero */
-  .hero{padding:clamp(9rem,20vh,13rem) 0 clamp(4rem,9vh,7rem);position:relative}
-  /* full-page interactive particle field (mouse + scroll reactive, extra pink) */
-  #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-  header.hero,section,footer{position:relative;z-index:1}
-  .eyebrow{display:inline-flex;align-items:center;gap:.55rem;background:var(--surface);border:1px solid var(--hair);border-radius:999px;padding:.4rem .95rem;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
-  .eyebrow .live{width:.5rem;height:.5rem;border-radius:999px;background:var(--flame);box-shadow:0 0 0 0 rgba(255,0,84,.5);animation:pulse 2.6s var(--ease) infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,0,84,.45)}70%{box-shadow:0 0 0 .5rem rgba(255,0,84,0)}100%{box-shadow:0 0 0 0 rgba(255,0,84,0)}}
-  h1{font-family:var(--display);font-weight:700;font-size:clamp(2.9rem,8vw,6.2rem);line-height:.94;letter-spacing:-.02em;margin-top:1.7rem;max-width:15ch;text-wrap:balance}
-  h1 em{font-style:normal;color:var(--flame)}
-  .hero .sub{font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--ink-2);max-width:40rem;margin-top:1.6rem}
-  .hero .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.4rem;align-items:center}
-  .hero .note{font-size:.9rem;color:var(--muted);margin-top:1.4rem}
+        /* Film grain — subtle depth, no banding */
+        #grain {
+            position: fixed; inset: -50%; z-index: 1; pointer-events: none;
+            opacity: var(--grain-op); mix-blend-mode: var(--grain-blend);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+        }
 
-  /* section scaffolding — macro whitespace */
-  section{padding:clamp(4.5rem,10vh,8rem) 0}
-  .sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:2.6rem}
-  h2{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1;letter-spacing:-.02em;text-wrap:balance}
-  .sec-head p{color:var(--muted);max-width:26rem;font-size:.98rem}
+        /* ---------- Custom cursor ---------- */
+        .cursor-dot, .cursor-ring {
+            position: fixed; top: 0; left: 0; z-index: 90;
+            pointer-events: none; border-radius: 9999px;
+            transform: translate3d(-100px, -100px, 0);
+            will-change: transform;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .cursor-dot  { width: 6px;  height: 6px;  margin: -3px 0 0 -3px; background: #fc0054; }
+        .cursor-ring {
+            width: 38px; height: 38px; margin: -19px 0 0 -19px;
+            border: 1px solid var(--ring-border);
+            transition: width 0.35s var(--ease), height 0.35s var(--ease),
+                        margin 0.35s var(--ease), background-color 0.35s var(--ease),
+                        border-color 0.35s var(--ease), opacity 0.3s ease;
+        }
+        .cursor-ready .cursor-dot, .cursor-ready .cursor-ring { opacity: 1; }
+        /* Hide the native pointer once the custom cursor is active */
+        body.has-cursor, body.has-cursor * { cursor: none !important; }
+        /* State: hovering interactive media */
+        .cursor-ring.is-view {
+            width: 96px; height: 96px; margin: -48px 0 0 -48px;
+            background: rgba(252,0,84,0.12); border-color: rgba(252,0,84,0.5);
+        }
+        .cursor-ring.is-link { width: 60px; height: 60px; margin: -30px 0 0 -30px; border-color: rgba(252,0,84,0.6); }
+        .cursor-view-label {
+            position: fixed; top: 0; left: 0; z-index: 91; pointer-events: none;
+            transform: translate3d(-100px,-100px,0);
+            font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #fff; opacity: 0;
+            transition: opacity 0.3s ease; will-change: transform;
+        }
+        @media (hover: none), (pointer: coarse) {
+            .cursor-dot, .cursor-ring, .cursor-view-label { display: none !important; }
+        }
 
-  /* featured work — double-bezel */
-  .feature{background:var(--shell);border:1px solid var(--hair);border-radius:var(--r-lg);padding:.5rem;box-shadow:0 30px 60px -30px var(--sh1),0 8px 24px -16px var(--sh2)}
-  .feature-core{background:var(--surface);border-radius:var(--r-core);overflow:hidden;box-shadow:inset 0 1px 1px var(--card-hi);display:grid}
-  @media(min-width:860px){.feature-core{grid-template-columns:1.1fr .9fr}}
-  .feature-shot{position:relative;min-height:340px;overflow:hidden;background:#16336E}
-  .feature-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 44%;
-    transform:rotate(-1.6deg) scale(1.08);transform-origin:center 55%;transition:transform 1.2s var(--ease)}
-  .feature:hover .feature-shot img{transform:rotate(-1.6deg) scale(1.13)}
-  .feature-shot .float{position:absolute;left:1.1rem;bottom:1.1rem;display:flex;gap:.5rem;flex-wrap:wrap}
-  .chip{background:rgba(10,10,12,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:.42rem .9rem;font-size:.78rem;font-weight:700;color:#fff;letter-spacing:.01em;box-shadow:0 6px 18px -8px rgba(0,0,0,.5)}
-  .chip .st{color:#FFD23F}
-  .feature-body{padding:clamp(1.8rem,3.5vw,2.8rem);display:flex;flex-direction:column}
-  .kicker{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--flame)}
-  .feature-body h3{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.02;margin:.5rem 0 .7rem;letter-spacing:-.01em}
-  .feature-body p{color:var(--ink-2);font-size:1rem}
-  .stats{display:flex;gap:2rem;margin:1.6rem 0}
-  .stats b{font-family:var(--display);font-weight:600;font-size:1.7rem;display:block;line-height:1}
-  .stats span{font-size:.78rem;color:var(--muted)}
-  .feature-body .island{margin-top:auto;align-self:flex-start}
+        /* ---------- Navigation (Apple/Linear — inevitable, not floating) ---------- */
+        #nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 80;
+            transition: transform 0.5s var(--ease), background-color 0.4s ease,
+                        border-color 0.4s ease, backdrop-filter 0.4s ease;
+            border-bottom: 1px solid transparent;
+            will-change: transform;
+        }
+        #nav.docked {
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            border-bottom-color: var(--line);
+        }
+        #nav.hidden-nav { transform: translateY(-105%); }
+        .nav-inner { transition: padding 0.5s var(--ease); }
+        #nav.docked .nav-inner { padding-top: 0.7rem; padding-bottom: 0.7rem; }
 
-  /* what I do — editorial rows, not equal boxes */
-  .offer{display:grid;gap:0}
-  .offer-row{display:grid;gap:.6rem 2rem;padding:2rem 0;border-top:1px solid var(--hair);align-items:baseline}
-  @media(min-width:760px){.offer-row{grid-template-columns:.5fr 1fr;padding:2.4rem 0}}
-  .offer-row:last-child{border-bottom:1px solid var(--hair)}
-  .offer-row h3{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,2.4vw,1.8rem);letter-spacing:-.01em}
-  .offer-row .desc{color:var(--ink-2);font-size:1.02rem;max-width:38rem}
-  .offer-row .desc .em{color:var(--ink);font-weight:700}
+        /* Wordmark doubles as a scroll-progress indicator: pink fills left→right as you scroll */
+        .wordmark {
+            background-image: linear-gradient(90deg, #fc0054 var(--progress, 0%), var(--ink) var(--progress, 0%));
+            -webkit-background-clip: text; background-clip: text;
+            color: transparent; -webkit-text-fill-color: transparent;
+        }
+        #wordmark-dot { color: #fc0054; transition: color 0.4s var(--ease); }
+        #wordmark-dot.complete { color: var(--ink); }
 
-  /* dark contrast band — the pitch */
-  .band{background:#141210;color:#F5F4F1;border:1px solid var(--hair);border-radius:var(--r-lg);padding:clamp(2.6rem,6vw,4.5rem);text-align:center;position:relative;overflow:hidden}
-  .band::after{content:"";position:absolute;left:50%;top:-40%;width:70%;height:120%;transform:translateX(-50%);
-    background:radial-gradient(closest-side,rgba(255,0,84,.28),transparent 70%);pointer-events:none}
-  .band h2{color:#F5F4F1;position:relative;max-width:18ch;margin:0 auto}
-  .band p{color:rgba(245,244,241,.72);max-width:34rem;margin:1.1rem auto 0;position:relative}
-  .band .actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;position:relative}
-  .band .island.ghost{color:#F5F4F1;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.2)}
-  .band .island.ghost .pip{background:color-mix(in srgb,#F5F4F1 16%,transparent)}
-  .band .island.ghost .pip{background:rgba(255,255,255,.12)}
-  .band .island.ghost:hover{background:rgba(255,255,255,.08)}
+        .nav-link { position: relative; color: var(--muted); transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link:focus-visible { color: var(--ink); }
+        .nav-link::after {
+            content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px;
+            background: #fc0054; transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s var(--ease);
+        }
+        .nav-link.active { color: var(--ink); }
+        .nav-link.active::after { transform: scaleX(1); }
 
-  footer{padding:3rem 0 4rem;text-align:center;color:var(--muted);font-size:.86rem}
-  footer .fine{margin-top:.4rem;font-size:.78rem;opacity:.8}
-</style>
+        .lang-btn {
+            font-family: 'JetBrains Mono', monospace; color: var(--muted);
+            transition: color 0.3s ease; display: inline-flex; align-items: center;
+        }
+        .lang-btn .on { color: var(--ink); }
+        .lang-btn:hover, .lang-btn:focus-visible { color: var(--ink); }
+
+        /* Theme toggle icons */
+        #theme-toggle .icon-sun { display: none; }
+        html.light #theme-toggle .icon-sun { display: block; }
+        html.light #theme-toggle .icon-moon { display: none; }
+
+        /* ---------- Reveal / depth choreography (JS-gated so content is visible without JS) ---------- */
+        .js .depth   { opacity: 0; transform: translateY(48px) scale(0.985); transition: opacity 1s var(--ease), transform 1.1s var(--ease); will-change: transform, opacity; }
+        .js .depth.in { opacity: 1; transform: none; }
+
+        .js .rise > * { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.9s var(--ease); }
+        .js .rise.in > * { opacity: 1; transform: none; }
+        .js .rise.in > *:nth-child(2) { transition-delay: 0.08s; }
+        .js .rise.in > *:nth-child(3) { transition-delay: 0.16s; }
+        .js .rise.in > *:nth-child(4) { transition-delay: 0.24s; }
+        .js .rise.in > *:nth-child(5) { transition-delay: 0.32s; }
+
+        /* ---------- Typography — architectural ---------- */
+        .display {
+            font-weight: 700; letter-spacing: -0.04em; line-height: 0.92;
+            text-wrap: balance;
+        }
+        .h-section { font-weight: 700; letter-spacing: -0.035em; line-height: 0.98; text-wrap: balance; }
+        .kicker {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px;
+            letter-spacing: 0.34em; text-transform: uppercase; color: var(--muted);
+        }
+        .prose-lead { max-width: 62ch; }
+
+        /* Animated scroll cue — track hangs below the label so "SCROLL" shares a baseline with the left mark */
+        #scroll-cue { position: relative; transition: opacity 0.35s ease; }
+        .scroll-track {
+            position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+            width: 1px; height: 26px; overflow: hidden;
+            background: var(--line);
+        }
+        .scroll-dot {
+            position: absolute; left: -1px; top: 0;
+            width: 3px; height: 11px; border-radius: 2px;
+            background: #fc0054;
+            animation: scrollTravel 1.9s var(--ease) infinite;
+        }
+        @keyframes scrollTravel {
+            0%   { transform: translateY(-12px); opacity: 0; }
+            25%  { opacity: 1; }
+            75%  { opacity: 1; }
+            100% { transform: translateY(26px); opacity: 0; }
+        }
+
+        /* ---------- Project media ---------- */
+        .project-media { position: relative; overflow: hidden; border-radius: 20px; }
+        .project-media img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transform: scale(1.04); transition: transform 1.1s var(--ease), filter 0.9s var(--ease);
+            filter: var(--img-filter);
+        }
+        .project:hover .project-media img { transform: scale(1.09); filter: var(--img-filter-hover); }
+        .project-media::after {
+            content: ""; position: absolute; inset: 0; border-radius: 20px;
+            box-shadow: inset 0 0 0 1px var(--line);
+            background: linear-gradient(to top, var(--media-scrim), transparent 55%);
+            transition: box-shadow 0.5s ease;
+        }
+        .project:hover .project-media::after { box-shadow: inset 0 0 0 1px rgba(252,0,84,0.35); }
+
+        /* Result chip that animates in on hover */
+        .result-chip {
+            transform: translateY(14px); opacity: 0;
+            transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+        }
+        .project:hover .result-chip, .project:focus-within .result-chip { transform: none; opacity: 1; }
+
+        .review-line { color: var(--muted); }
+        .review-line b { color: var(--ink); font-weight: 600; }
+
+        /* ---------- Work accordion (expanding case-study carousel) ---------- */
+        .accordion { display: flex; gap: 10px; height: min(74vh, 680px); }
+        .panel {
+            position: relative; flex: 1 1 0%; min-width: 0; overflow: hidden;
+            border-radius: 22px; cursor: pointer; background: #0b0b0c;
+            box-shadow: inset 0 0 0 1px var(--line);
+            transition: flex-grow 0.65s var(--ease), box-shadow 0.5s ease;
+        }
+        .panel::before {
+            content: ""; position: absolute; inset: 0; z-index: 0;
+            background-image: var(--img); background-size: cover; background-position: center;
+            transform: scale(1.05); filter: saturate(0.9) brightness(0.66);
+            transition: filter 0.6s var(--ease), transform 0.9s var(--ease);
+        }
+        .panel::after {
+            content: ""; position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(to top, rgba(8,8,9,0.92) 0%, rgba(8,8,9,0.32) 52%, rgba(8,8,9,0.42) 100%);
+        }
+        .panel.is-open { flex-grow: 6; box-shadow: inset 0 0 0 1px rgba(252,0,84,0.35); }
+        .panel.is-open::before { transform: scale(1); filter: saturate(1.03) brightness(0.85); }
+        .panel-tab, .panel-body { position: absolute; inset: 0; z-index: 2; color: #F3EFE9; }
+        .panel-tab { display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 1.1rem; padding: 1.5rem; transition: opacity 0.3s var(--ease); }
+        .panel.is-open .panel-tab { opacity: 0; pointer-events: none; }
+        .panel-num { position: absolute; top: 1.4rem; left: 1.5rem; z-index: 3; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: rgba(243,239,233,0.75); }
+        .panel-vtitle { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font-weight: 700; font-size: clamp(1rem, 1.25vw, 1.35rem); letter-spacing: -0.01em; line-height: 1; }
+        .panel-body { display: flex; flex-direction: column; justify-content: flex-end; gap: 0.45rem; padding: clamp(1.5rem, 2.6vw, 2.75rem); opacity: 0; transition: opacity 0.5s var(--ease) 0.12s; }
+        .panel.is-open .panel-body { opacity: 1; }
+        .panel-body > * { max-width: 52ch; }
+        .panel-k { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #fc0054; }
+        .panel-body h3 { font-weight: 700; letter-spacing: -0.03em; line-height: 0.98; font-size: clamp(1.8rem, 3vw, 2.9rem); margin: 0.35rem 0 0.55rem; }
+        .panel-copy { color: rgba(243,239,233,0.82); line-height: 1.55; font-size: 0.95rem; }
+        .panel-copy b { color: #fff; font-weight: 600; }
+        .panel-result { display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.7rem; font-size: 0.9rem; color: rgba(243,239,233,0.75); }
+        .panel-result b { color: #fc0054; font-weight: 700; }
+        .panel-dot { opacity: 0.4; }
+        .panel-cta { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.3rem; font-weight: 600; color: #fff; width: fit-content; transition: gap 0.3s var(--ease), color 0.3s ease; }
+        .panel-cta:hover { color: #fc0054; gap: 0.85rem; }
+        
+        /* coming-soon slots: no photo, honest placeholder */
+        .panel.is-soon { background:
+            repeating-linear-gradient(135deg, rgba(243,239,233,0.028) 0 10px, transparent 10px 20px), #0d0d0f;
+            box-shadow: inset 0 0 0 1px rgba(243,239,233,0.14); }
+        .panel.is-soon::before { display: none; }
+        .panel.is-soon h3, .panel.is-soon .panel-k { color: rgba(243,239,233,0.62); }
+        .panel.is-soon .panel-copy { color: rgba(243,239,233,0.48); }
+        .panel-soon { align-self: flex-start; margin-bottom: 0.6rem; font-family: 'JetBrains Mono', monospace;
+            font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent);
+            border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); border-radius: 9999px; padding: 0.28rem 0.7rem; }
+        .panel-sample { align-self: flex-start; margin-bottom: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243,239,233,0.9); border: 1px solid rgba(243,239,233,0.32); border-radius: 9999px; padding: 0.28rem 0.7rem; }
+        @media (max-width: 1023px) {
+            /* Vertical expanding accordion — collapsed bars keep a fixed height (no squish on short viewports) */
+            .accordion { flex-direction: column; height: auto; gap: 10px; }
+            .panel { flex: none; height: 78px; transition: height 0.6s var(--ease), box-shadow 0.5s ease; }
+            .panel.is-open { height: min(66vh, 600px); }
+            .panel-tab { flex-direction: row; align-items: flex-end; justify-content: flex-start; gap: 0.9rem; padding: 1.15rem 1.35rem; }
+            .panel-vtitle { writing-mode: horizontal-tb; transform: none; font-size: 1.2rem; }
+            .panel-num { top: 1.15rem; left: 1.35rem; }
+            .panel::before { transform: none; }
+        }
+
+        /* ---------- Services / production timeline ---------- */
+        .stage {
+            transition: transform 0.7s var(--ease), opacity 0.7s var(--ease), color 0.7s var(--ease);
+            transform: scale(0.92); opacity: 0.34;
+        }
+        .stage.is-active { transform: scale(1); opacity: 1; }
+        .stage-num {
+            font-family: 'JetBrains Mono', monospace; font-weight: 500;
+            transition: color 0.7s var(--ease);
+        }
+        .stage.is-active .stage-num { color: #fc0054; }
+        .rail-dot { transition: background-color 0.5s ease, transform 0.5s ease; }
+        .rail-dot.on { background: #fc0054; transform: scale(1.6); }
+
+        /* ---------- Buttons — accent reserved for interaction ---------- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+            border-radius: 9999px; font-weight: 600;
+            transition: transform 0.25s var(--ease), background-color 0.35s var(--ease),
+                        color 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.4s var(--ease);
+            will-change: transform;
+        }
+        .btn-primary { background: var(--ink); color: var(--bg); padding: 1rem 2rem; }
+        .btn-primary:hover, .btn-primary:focus-visible {
+            background: #fc0054; color: #fff; box-shadow: 0 12px 40px -8px rgba(252,0,84,0.5);
+        }
+        .btn-ghost {
+            border: 1px solid var(--line); color: var(--ink); padding: 1rem 2rem;
+        }
+        .btn-ghost:hover, .btn-ghost:focus-visible { border-color: rgba(252,0,84,0.6); color: #fc0054; }
+
+        a, button { outline: none; }
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #fc0054; outline-offset: 4px; border-radius: 4px;
+        }
+
+        .hairline { border-color: var(--line); }
+
+        /* ---------- Language visibility ---------- */
+        .lang-es { display: none; }
+        html[lang="es"] .lang-en { display: none; }
+        html[lang="es"] .lang-es { display: revert; }
+
+        /* Skip link */
+        .skip {
+            position: fixed; top: -60px; left: 1rem; z-index: 100;
+            background: var(--ink); color: var(--bg); padding: 0.6rem 1rem; border-radius: 8px;
+            transition: top 0.3s ease; font-weight: 600;
+        }
+        .skip:focus { top: 1rem; }
+
+        /* ---------- Reduced motion ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+            .js .depth, .js .rise > *, .stage { opacity: 1 !important; transform: none !important; }
+            .project-media img { transform: none; filter: var(--img-filter); }
+            #canvas-container, #grain { display: none; }
+            .cursor-dot, .cursor-ring, .cursor-view-label { display: none !important; }
+        }
+    </style>
 </head>
-<body data-lang="en">
+<body class="font-sans">
+    <script>
+        (function () {
+            var d = document.documentElement;
+            d.classList.add('js');
+            try {
+                var t = localStorage.getItem('theme');
+                if (t === 'light' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches)) d.classList.add('light');
+            } catch (e) {}
+        })();
+    </script>
 
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-<div class="cur-ring" aria-hidden="true"></div><div class="cur-dot" aria-hidden="true"></div>
-<div class="frame" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
-<div class="scroll-cue" aria-hidden="true"><span class="en">Scroll</span><span class="es">Desliza</span><span class="track"></span></div>
+    <a href="#work" class="skip">Skip to work</a>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <svg class="nav-prog" aria-hidden="true"><rect/></svg>
-    <a class="nav-logo" href="#top">Eduardo<span class="dot">.</span></a>
-    <div class="lang" role="group" aria-label="Language / Idioma">
-      <button type="button" id="btn-en" aria-pressed="true" onclick="setLang('en')">EN</button>
-      <button type="button" id="btn-es" aria-pressed="false" onclick="setLang('es')">ES</button>
-    </div>
-    <button type="button" class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
-      <svg class="ic-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      <svg class="ic-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
-    </button>
-    <a class="island nav-cta" href="mailto:eddjack30@gmail.com">
-      <span class="en">Get in touch</span><span class="es">Contáctame</span>
-      <span class="pip" aria-hidden="true">↗</span>
-    </a>
-  </div>
-</nav>
+    <!-- Environment -->
+    <div id="blueprint" aria-hidden="true"></div>
+    <div id="canvas-container" aria-hidden="true"></div>
+    <div id="grain" aria-hidden="true"></div>
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <span class="eyebrow reveal"><span class="live" aria-hidden="true"></span>
-      <span class="en">Lynwood, CA · English &amp; Español</span><span class="es">Lynwood, CA · Español &amp; English</span>
-    </span>
-    <h1 class="reveal">
-      <span class="en">Websites that make local shops <em>impossible to miss.</em></span>
-      <span class="es">Sitios web que hacen que un negocio local <em>no se pueda ignorar.</em></span>
-    </h1>
-    <p class="sub reveal">
-      <span class="en">I build fast, bilingual websites and clean up Google &amp; Yelp for family-owned businesses across southeast LA. Real photos, real reviews, live in about a week.</span>
-      <span class="es">Hago sitios web rápidos y bilingües y arreglo Google y Yelp para negocios familiares del sureste de LA. Fotos reales, reseñas reales, publicado en una semana.</span>
-    </p>
-    <div class="actions reveal">
-      <a class="island flame" href="#work"><span class="en">See the work</span><span class="es">Ver el trabajo</span><span class="pip" aria-hidden="true">↓</span></a>
-      <a class="island ghost" href="mailto:eddjack30@gmail.com"><span class="en">Start a project</span><span class="es">Empezar un proyecto</span><span class="pip" aria-hidden="true">↗</span></a>
-    </div>
-    <p class="note reveal"><span class="en">Try the EN / ES switch up top. Every site I build does that.</span><span class="es">Pruebe el botón EN / ES arriba. Cada sitio que hago lo hace.</span></p>
-  </div>
-</header>
+    <!-- Cursor -->
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <span class="cursor-view-label" aria-hidden="true">View</span>
 
-<section id="work">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2><span class="en">Selected work</span><span class="es">Trabajo seleccionado</span></h2>
-      <p><span class="en">One shop at a time. Real businesses, real results.</span><span class="es">Un negocio a la vez. Negocios reales, resultados reales.</span></p>
-    </div>
-    <article class="feature reveal">
-      <div class="feature-core">
-        <a class="feature-shot" href="rubios-tire-shop/" aria-label="Open the Rubio's Tire Shop website">
-          <img src="rubios-tire-shop/img/storefront.jpg" alt="Rubio's Tire Shop, the blue storefront on Atlantic Ave in Lynwood, tires stacked by the open bays">
-          <span class="float">
-            <span class="chip"><span class="st">★</span> 5.0 Google</span>
-            <span class="chip"><span class="st">★</span> 4.9 Yelp</span>
-            <span class="chip">EN / ES</span>
-          </span>
-        </a>
-        <div class="feature-body">
-          <span class="kicker">Tire shop · Lynwood</span>
-          <h3>Rubio's Tire Shop</h3>
-          <p>
-            <span class="en">A family llantera with a perfect rating and no website at all. I built them a bilingual one-pager around their own hand-painted signage: a live map, their real photos, one-tap calling, and a price board like the one on their wall.</span>
-            <span class="es">Una llantera familiar con calificación perfecta y sin página web. Les hice un sitio bilingüe basado en su propio letrero pintado a mano: mapa en vivo, sus fotos reales, llamada con un toque, y una tabla de precios como la de su pared.</span>
-          </p>
-          <div class="stats">
-            <div><b>48</b><span class="en">5-star reviews</span><span class="es">reseñas 5★</span></div>
-            <div><b>1 wk</b><span class="en">to live</span><span class="es">para publicar</span></div>
-            <div><b>2</b><span class="en">languages</span><span class="es">idiomas</span></div>
-          </div>
-          <a class="island" href="rubios-tire-shop/"><span class="en">View the live site</span><span class="es">Ver el sitio</span><span class="pip" aria-hidden="true">↗</span></a>
+    <!-- Navigation -->
+    <header id="nav">
+        <div class="nav-inner max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
+            <a href="#top" class="flex items-baseline gap-2.5 group" aria-label="Eduardo — home">
+                <span class="text-lg font-bold tracking-tight"><span id="wordmark" class="wordmark">Eduardo</span><span id="wordmark-dot">.</span></span>
+                <span class="kicker hidden sm:inline text-[9px]" style="letter-spacing:0.2em">33.97°N 118.22°W</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-9 text-sm font-medium" aria-label="Sections">
+                <a href="#work" class="nav-link" data-nav="work"><span class="lang-en">Work</span><span class="lang-es">Proyectos</span></a>
+                <a href="#process" class="nav-link" data-nav="process"><span class="lang-en">Process</span><span class="lang-es">Proceso</span></a>
+                <a href="#about" class="nav-link" data-nav="about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span></a>
+            </nav>
+
+            <div class="flex items-center gap-3.5 sm:gap-5">
+                <button id="theme-toggle" onclick="toggleTheme()" class="lang-btn" aria-label="Toggle light or dark theme">
+                    <svg class="icon-moon w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <svg class="icon-sun w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                </button>
+                <button onclick="toggleLang()" class="lang-btn text-xs tracking-widest" aria-label="Switch language / Cambiar idioma">
+                    <span id="l-en" class="on">EN</span><span class="mx-1 opacity-40">/</span><span id="l-es">ES</span>
+                </button>
+                <a href="mailto:eddjack30@gmail.com" class="btn btn-ghost text-xs uppercase tracking-widest !px-4 sm:!px-5 !py-2.5 whitespace-nowrap" data-cursor="link">
+                    <span class="lang-en">Contact</span><span class="lang-es">Contacto</span>
+                </a>
+            </div>
         </div>
-      </div>
-    </article>
-  </div>
-</section>
+        <nav class="md:hidden flex justify-center gap-8 pb-3.5 -mt-1 text-xs font-medium" aria-label="Sections">
+            <a href="#work" class="nav-link" data-nav="work"><span class="lang-en">Work</span><span class="lang-es">Proyectos</span></a>
+            <a href="#process" class="nav-link" data-nav="process"><span class="lang-en">Process</span><span class="lang-es">Proceso</span></a>
+            <a href="#about" class="nav-link" data-nav="about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span></a>
+        </nav>
+    </header>
 
-<section id="services" style="padding-top:clamp(1rem,3vh,2rem)">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2><span class="en">What I do</span><span class="es">Lo que hago</span></h2>
-      <p><span class="en">Three things, done properly.</span><span class="es">Tres cosas, bien hechas.</span></p>
-    </div>
-    <div class="offer">
-      <div class="offer-row reveal">
-        <h3><span class="en">The website</span><span class="es">El sitio web</span></h3>
-        <p class="desc"><span class="en">A clean, fast one-page site in <span class="em">English and Spanish</span>. Your services, hours, photos, and a map, built to bring in phone calls, not to win design awards.</span><span class="es">Un sitio de una página, rápido y limpio, en <span class="em">inglés y español</span>. Sus servicios, horario, fotos y mapa, hecho para traer llamadas, no para ganar premios.</span></p>
-      </div>
-      <div class="offer-row reveal">
-        <h3><span class="en">Google &amp; Yelp</span><span class="es">Google y Yelp</span></h3>
-        <p class="desc"><span class="en">I claim and fill out your profiles, add your photos and services, and write <span class="em">friendly replies to every review</span>, so your reputation actually shows up when people search.</span><span class="es">Reclamo y completo sus perfiles, agrego sus fotos y servicios, y escribo <span class="em">respuestas amables a cada reseña</span>, para que su reputación aparezca cuando la gente busca.</span></p>
-      </div>
-      <div class="offer-row reveal">
-        <h3><span class="en">Keeping it fresh</span><span class="es">Mantenerlo al día</span></h3>
-        <p class="desc"><span class="en">Optional monthly upkeep: new photos and review replies, so your listing keeps working while you run the shop. <span class="em">No contract.</span></span><span class="es">Mantenimiento mensual opcional: fotos nuevas y respuestas a reseñas, para que su perfil siga trabajando mientras usted atiende. <span class="em">Sin contrato.</span></span></p>
-      </div>
-    </div>
-  </div>
-</section>
+    <main id="top">
 
-<section>
-  <div class="wrap">
-    <div class="band reveal">
-      <h2><span class="en">Own a shop that deserves to be found?</span><span class="es">¿Tiene un negocio que merece que lo encuentren?</span></h2>
-      <p><span class="en">Tell me your business and I'll show you what your site could look like, usually before you've decided anything. Free to look.</span><span class="es">Dígame su negocio y le enseño cómo se vería su sitio, normalmente antes de que decida nada. Gratis verlo.</span></p>
-      <div class="actions">
-        <a class="island flame" href="mailto:eddjack30@gmail.com"><span class="en">Email me</span><span class="es">Envíeme un correo</span><span class="pip" aria-hidden="true">↗</span></a>
-        <a class="island ghost" href="rubios-tire-shop/"><span class="en">See a live example</span><span class="es">Ver un ejemplo</span><span class="pip" aria-hidden="true">↗</span></a>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- ============ HERO ============ -->
+        <section class="relative min-h-[100svh] flex flex-col justify-center max-w-7xl mx-auto px-6 sm:px-10" aria-label="Introduction">
+            <div id="hero-content" class="relative z-10 pt-24">
+                <div class="kicker mb-8" data-lag="0.5">
+                    <span class="lang-en">Bilingual web &amp; local search — Southeast Los Angeles</span>
+                    <span class="lang-es">Web bilingüe y búsqueda local — Sureste de Los Ángeles</span>
+                </div>
 
-<footer>
-  <div class="wrap">
-    <div>Eduardo · <span class="en">Websites for local businesses</span><span class="es">Sitios web para negocios locales</span> · Lynwood, CA</div>
-    <div class="fine">eddjack30@gmail.com · <span class="en">Built by hand, hecho con orgullo.</span><span class="es">Hecho a mano, con orgullo.</span></div>
-  </div>
-</footer>
+                <h1 class="display text-[clamp(2.9rem,8.6vw,6.8rem)] max-w-[16ch]">
+                    <span class="lang-en">People already love your business. Your website should show it.</span>
+                    <span class="lang-es">Tu negocio ya es querido. Tu sitio web debería demostrarlo.</span>
+                </h1>
 
-<script src="assets/lenis.min.js"></script>
-<script>
-  function setLang(lang){
-    document.body.dataset.lang = lang;
-    document.documentElement.lang = lang;
-    document.getElementById('btn-en').setAttribute('aria-pressed', lang==='en');
-    document.getElementById('btn-es').setAttribute('aria-pressed', lang==='es');
-    try{localStorage.setItem('eddjack-lang', lang);}catch(e){}
-  }
-  try{
-    var saved = localStorage.getItem('eddjack-lang');
-    if(saved==='es' || (!saved && navigator.language && navigator.language.startsWith('es'))) setLang('es');
-  }catch(e){}
+                <p class="prose-lead mt-10 text-[clamp(1.05rem,1.6vw,1.35rem)] text-muted leading-relaxed">
+                    <span class="lang-en">I build ultra-fast bilingual websites and tune up Google &amp; Yelp for the family-owned shops of Southeast LA. Real photos, real reviews, live in about a week.</span>
+                    <span class="lang-es">Construyo sitios web bilingües ultrarrápidos y optimizo Google y Yelp para los negocios familiares del sureste de Los Ángeles. Fotos reales, reseñas reales, en línea en una semana.</span>
+                </p>
 
-  var mo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fine = window.matchMedia('(pointer: fine)').matches;
+                <div class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+                    <a href="#work" class="btn btn-primary" data-cursor="link">
+                        <span class="lang-en">See the work</span><span class="lang-es">Ver el trabajo</span>
+                    </a>
+                    <a href="mailto:eddjack30@gmail.com" class="text-sm text-muted hover:text-ink transition-colors" data-cursor="link">
+                        <span class="lang-en">or start a conversation →︎</span><span class="lang-es">o inicia una conversación →︎</span>
+                    </a>
+                </div>
+            </div>
 
-  // smooth momentum scroll (Lenis) — skipped under reduced-motion
-  var lenis=null;
-  if(!mo && window.Lenis){
-    lenis=new Lenis({duration:1.1, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});
-    (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })();
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){
-      a.addEventListener('click',function(e){
-        var id=a.getAttribute('href');
-        if(id.length>1){ var t=document.querySelector(id); if(t){ e.preventDefault(); lenis.scrollTo(t,{offset:-90}); } }
-      });
-    });
-  }
+            <!-- Survey marking — subtle brand language, bottom edge -->
+            <div class="absolute bottom-12 left-6 sm:left-10 right-6 sm:right-10 hidden sm:flex items-end justify-between text-muted opacity-70 pointer-events-none select-none">
+                <span class="kicker text-[9px]" style="letter-spacing:0.25em">EST. SOUTHEAST LOS ANGELES</span>
+                <span id="scroll-cue" class="kicker text-[9px] inline-flex items-center" style="letter-spacing:0.25em">
+                    <span class="lang-en">SCROLL</span><span class="lang-es">DESLIZA</span>
+                    <span class="scroll-track"><span class="scroll-dot"></span></span>
+                </span>
+            </div>
+        </section>
 
-  // theme toggle (#dark mode)
-  function effTheme(){ var f=document.documentElement.getAttribute('data-theme'); return f||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'); }
-  function syncThemeIcon(){ document.documentElement.setAttribute('data-eff', effTheme()); }
-  window.toggleTheme=function(){ var n=effTheme()==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme',n); try{localStorage.setItem('eddjack-theme',n);}catch(e){} syncThemeIcon(); if(window.updateParticleTheme) window.updateParticleTheme(n==='dark'); };
-  matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(){ if(!document.documentElement.getAttribute('data-theme')){ syncThemeIcon(); if(window.updateParticleTheme) window.updateParticleTheme(effTheme()==='dark'); } });
-  syncThemeIcon();
+        <!-- ============ WORK -- expanding case-study carousel ============ -->
+        <section id="work" class="relative py-24" aria-label="Selected work">
+            <div class="max-w-7xl mx-auto px-6 sm:px-10 mb-10 depth">
+                <span class="kicker">01 &mdash; <span class="lang-en">Case studies</span><span class="lang-es">Casos</span></span>
+                <h2 class="h-section text-[clamp(2.4rem,6vw,4.5rem)] mt-4 max-w-[14ch]">
+                    <span class="lang-en">Shops the neighborhood already trusts.</span>
+                    <span class="lang-es">Negocios en los que el barrio ya conf&iacute;a.</span>
+                </h2>
+            </div>
 
-  // scroll-driven: cue fade + nav velocity-arch + whole-pill progress ring
-  var navInner=document.querySelector('.nav-inner');
-  var navProg=document.querySelector('.nav-prog'), navRect=navProg?navProg.querySelector('rect'):null, perim=0;
-  function sizeRing(){
-    if(!navProg||!navRect||!navInner) return;
-    var prev=navInner.style.transform; navInner.style.transform='none';
-    var r=navInner.getBoundingClientRect(); navInner.style.transform=prev;
-    var w=Math.round(r.width), h=Math.round(r.height), sw=1.5, ins=sw/2, rx=(h-sw)/2;
-    // SVG rendered box == viewBox == border box (1:1, no aspect scaling), offset to cover the border
-    navProg.style.width=w+'px'; navProg.style.height=h+'px';
-    navProg.setAttribute('viewBox','0 0 '+w+' '+h); navProg.setAttribute('preserveAspectRatio','none');
-    navRect.setAttribute('x',ins); navRect.setAttribute('y',ins); navRect.setAttribute('width',w-sw); navRect.setAttribute('height',h-sw); navRect.setAttribute('rx',rx); navRect.setAttribute('ry',rx);
-    perim=(navRect.getTotalLength?navRect.getTotalLength():2*(w+h)); navRect.style.strokeDasharray=perim;
-  }
-  function onScroll(){
-    var y=window.scrollY||0, h=document.documentElement, max=h.scrollHeight-h.clientHeight;
-    var p=max>0?Math.min(1,Math.max(0,y/max)):0;
-    document.body.classList.toggle('scrolled', y>40);
-    if(navRect) navRect.style.strokeDashoffset=(perim*(1-p)).toFixed(2);
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',function(){ sizeRing(); onScroll(); },{passive:true});
-  setTimeout(function(){ sizeRing(); onScroll(); },120);
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ sizeRing(); onScroll(); });
+            <div class="max-w-7xl mx-auto px-6 sm:px-10 depth">
+                <div class="accordion" role="list">
 
-  // magnetic buttons (pointer-fine, motion-on only)
-  if(fine && !mo){
-    document.querySelectorAll('.island').forEach(function(btn){
-      var r=null;
-      btn.addEventListener('pointerenter',function(){ r=btn.getBoundingClientRect(); });
-      btn.addEventListener('pointermove',function(e){
-        if(!r) r=btn.getBoundingClientRect();
-        var mx=e.clientX-(r.left+r.width/2), my=e.clientY-(r.top+r.height/2);
-        btn.style.transform='translate('+(mx*0.28).toFixed(1)+'px,'+(my*0.4).toFixed(1)+'px)';
-      });
-      btn.addEventListener('pointerleave',function(){ btn.style.transform=''; r=null; });
-    });
-  }
+                    <article class="panel is-open" data-panel data-href="rubios-case-study.html" data-cursor="view" role="listitem" style="--img:url('assets/img/rubios-storefront.jpg')">
+                        <span class="panel-num">01 / 04</span><span class="panel-tab"><span class="panel-vtitle">Rubio&#39;s Tire Shop</span></span>
+                        <div class="panel-body">
+                            <span class="panel-k"><span class="lang-en">Tire shop &middot; Lynwood</span><span class="lang-es">Llantera &middot; Lynwood</span></span>
+                            <h3>Rubio&#39;s Tire Shop</h3>
+                            <p class="panel-copy"><b><span class="lang-en">The problem.</span><span class="lang-es">El problema.</span></b> <span class="lang-en">A perfect 5.0 rating &mdash; and nowhere online to find them.</span><span class="lang-es">Calificaci&oacute;n perfecta de 5.0 &mdash; y sin presencia en l&iacute;nea.</span></p>
+                            <p class="panel-copy"><b><span class="lang-en">The build.</span><span class="lang-es">La soluci&oacute;n.</span></b> <span class="lang-en">A bilingual one-page site with tap-to-call and live directions.</span><span class="lang-es">Un sitio biling&uuml;e con llamada directa e indicaciones en vivo.</span></p>
+                            <div class="panel-result"><span><b>&#9733; 5.0</b> <span class="lang-en">on Google</span><span class="lang-es">en Google</span></span><span class="panel-dot">&middot;</span><span><b><span class="lang-en">Live in 1 week</span><span class="lang-es">En l&iacute;nea en 1 semana</span></b></span></div>
+                            <a href="rubios-case-study.html" class="panel-cta" data-cursor="link"><span class="lang-en">Read the case study</span><span class="lang-es">Ver el caso completo</span> <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </article>
 
-  // scroll reveals — IntersectionObserver, transform/opacity only
-  if(!mo && 'IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el,i){
-      el.style.transitionDelay = Math.min(i*40,180)+'ms';
-      io.observe(el);
-    });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
-  }
+                    <article class="panel is-soon" data-panel role="listitem">
+                        <span class="panel-num">02 / 04</span><span class="panel-tab"><span class="panel-vtitle"><span class="lang-en">Coming soon</span><span class="lang-es">Pr&oacute;ximamente</span></span></span>
+                        <div class="panel-body">
+                            <span class="panel-soon"><span class="lang-en">Open slot</span><span class="lang-es">Lugar disponible</span></span>
+                            <span class="panel-k"><span class="lang-en">Southeast LA</span><span class="lang-es">Sureste de LA</span></span>
+                            <h3><span class="lang-en">Coming soon</span><span class="lang-es">Pr&oacute;ximamente</span></h3>
+                            <p class="panel-copy"><span class="lang-en">This space is held for the next shop I build. It could be yours.</span><span class="lang-es">Este espacio est&aacute; reservado para el pr&oacute;ximo negocio que construya. Puede ser el tuyo.</span></p>
+                            <a href="mailto:eddjack30@gmail.com" class="panel-cta" data-cursor="link"><span class="lang-en">Claim this spot</span><span class="lang-es">Reserva este lugar</span> <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </article>
 
-  // #5 custom cursor + trailing ring (pointer-fine, motion-on only)
-  if(fine && !mo){
-    var dot=document.querySelector('.cur-dot'), ring=document.querySelector('.cur-ring');
-    var mx=innerWidth/2, my=innerHeight/2, rx=mx, ry=my, on=false, ts=1, cs=1;
-    window.addEventListener('pointermove',function(e){
-      mx=e.clientX; my=e.clientY;
-      dot.style.transform='translate('+mx+'px,'+my+'px)';
-      if(!on){ document.body.classList.add('cur-on'); on=true; }
-    },{passive:true});
-    window.addEventListener('pointerdown',function(){ ts=Math.max(.75,ts*.75); });
-    window.addEventListener('pointerup',function(){ ts=document.body.classList.contains('cur-hover')?1.7:1; });
-    document.addEventListener('mouseleave',function(){ document.body.classList.remove('cur-on'); on=false; });
-    document.querySelectorAll('a,button,.island').forEach(function(el){
-      el.addEventListener('pointerenter',function(){ document.body.classList.add('cur-hover'); ts=1.7; });
-      el.addEventListener('pointerleave',function(){ document.body.classList.remove('cur-hover'); ts=1; });
-    });
-    (function trail(){ rx+=(mx-rx)*0.18; ry+=(my-ry)*0.18; cs+=(ts-cs)*0.2; ring.style.transform='translate('+rx.toFixed(2)+'px,'+ry.toFixed(2)+'px) scale('+cs.toFixed(3)+')'; requestAnimationFrame(trail); })();
-  }
+                    <article class="panel is-soon" data-panel role="listitem">
+                        <span class="panel-num">03 / 04</span><span class="panel-tab"><span class="panel-vtitle"><span class="lang-en">Coming soon</span><span class="lang-es">Pr&oacute;ximamente</span></span></span>
+                        <div class="panel-body">
+                            <span class="panel-soon"><span class="lang-en">Open slot</span><span class="lang-es">Lugar disponible</span></span>
+                            <span class="panel-k"><span class="lang-en">Southeast LA</span><span class="lang-es">Sureste de LA</span></span>
+                            <h3><span class="lang-en">Coming soon</span><span class="lang-es">Pr&oacute;ximamente</span></h3>
+                            <p class="panel-copy"><span class="lang-en">This space is held for the next shop I build. It could be yours.</span><span class="lang-es">Este espacio est&aacute; reservado para el pr&oacute;ximo negocio que construya. Puede ser el tuyo.</span></p>
+                            <a href="mailto:eddjack30@gmail.com" class="panel-cta" data-cursor="link"><span class="lang-en">Claim this spot</span><span class="lang-es">Reserva este lugar</span> <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </article>
 
-  // full-page 3D particle field (Three.js) — reacts to mouse (rotation) + scroll (warp).
-  // Loaded only on desktop + motion-on (keeps phones fast; 592KB three.js never downloads on mobile).
-  if(fine && !mo){
-    var s3=document.createElement('script'); s3.src='assets/three.min.js';
-    s3.onload=initParticles; document.head.appendChild(s3);
-  }
-  function initParticles(){
-    var cv=document.getElementById('bg-canvas');
-    if(!cv||!window.THREE) return;
-    var scene=new THREE.Scene();
-    var camera=new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000); camera.position.z=5;
-    var renderer=new THREE.WebGLRenderer({canvas:cv, alpha:true, antialias:true});
-    renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight);
-    var N=1100, geo=new THREE.BufferGeometry();
-    var pos=new Float32Array(N*3), init=new Float32Array(N*3), col=new Float32Array(N*3);
-    for(var i=0;i<N*3;i+=3){ var x=(Math.random()-.5)*18, y=(Math.random()-.55)*18, z=(Math.random()-.5)*18;
-      pos[i]=x;pos[i+1]=y;pos[i+2]=z; init[i]=x;init[i+1]=y;init[i+2]=z; }
-    function fillColors(dark){
-      for(var i=0;i<N*3;i+=3){ var bottom=init[i+1]<-2.5, thr=bottom?0.60:0.75; // extra pink, more near bottom
-        if(Math.random()>thr){ col[i]=1.0; col[i+1]=0.0; col[i+2]=0.33; }            // #ff0054-ish
-        else if(dark){ col[i]=0.42;col[i+1]=0.42;col[i+2]=0.47; }
-        else { col[i]=0.60;col[i+1]=0.60;col[i+2]=0.66; } }
-    }
-    fillColors(document.documentElement.getAttribute('data-eff')==='dark');
-    geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-    geo.setAttribute('color',new THREE.BufferAttribute(col,3));
-    var pts=new THREE.Points(geo,new THREE.PointsMaterial({size:0.045,vertexColors:true,transparent:true,opacity:0.85}));
-    scene.add(pts);
-    window.updateParticleTheme=function(dark){ fillColors(dark); geo.attributes.color.needsUpdate=true; };
-    var tmx=0,tmy=0,tsy=0,vis=true, pa=geo.attributes.position;
-    window.addEventListener('pointermove',function(e){ tmx=(e.clientX/innerWidth-.5)*.6; tmy=(e.clientY/innerHeight-.5)*.6; },{passive:true});
-    window.addEventListener('scroll',function(){ tsy=(window.scrollY||0)*0.0012; },{passive:true});
-    window.addEventListener('resize',function(){ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); },{passive:true});
-    document.addEventListener('visibilitychange',function(){ vis=!document.hidden; if(vis) loop(); });
-    function loop(){ if(!vis) return; requestAnimationFrame(loop);
-      pts.rotation.y+=0.0012+tsy*0.002; pts.rotation.x+=0.0006;
-      pts.rotation.y+=(tmx-pts.rotation.y)*0.04; pts.rotation.x+=(-tmy-pts.rotation.x)*0.04;
-      pts.position.y=tsy;
-      var warp=1+tsy*0.9;
-      for(var i=0;i<N*3;i++){ pa.array[i]=init[i]*warp; }
-      pa.needsUpdate=true; renderer.render(scene,camera);
-    }
-    loop();
-  }
-</script>
+                    <article class="panel is-soon" data-panel role="listitem">
+                        <span class="panel-num">04 / 04</span><span class="panel-tab"><span class="panel-vtitle"><span class="lang-en">Coming soon</span><span class="lang-es">Pr&oacute;ximamente</span></span></span>
+                        <div class="panel-body">
+                            <span class="panel-soon"><span class="lang-en">Open slot</span><span class="lang-es">Lugar disponible</span></span>
+                            <span class="panel-k"><span class="lang-en">Southeast LA</span><span class="lang-es">Sureste de LA</span></span>
+                            <h3><span class="lang-en">Coming soon</span><span class="lang-es">Pr&oacute;ximamente</span></h3>
+                            <p class="panel-copy"><span class="lang-en">This space is held for the next shop I build. It could be yours.</span><span class="lang-es">Este espacio est&aacute; reservado para el pr&oacute;ximo negocio que construya. Puede ser el tuyo.</span></p>
+                            <a href="mailto:eddjack30@gmail.com" class="panel-cta" data-cursor="link"><span class="lang-en">Claim this spot</span><span class="lang-es">Reserva este lugar</span> <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PROCESS — production timeline 01→︎05 ============ -->
+        <section id="process" class="relative py-20 border-t hairline" aria-label="Process">
+            <div class="max-w-7xl mx-auto px-6 sm:px-10">
+                <div class="depth mb-10">
+                    <span class="kicker">02 — <span class="lang-en">How it's made</span><span class="lang-es">Cómo se hace</span></span>
+                    <h2 class="h-section text-[clamp(2.4rem,6vw,4.5rem)] mt-4 max-w-[15ch]">
+                        <span class="lang-en">Five steps, from your block to live.</span>
+                        <span class="lang-es">Cinco pasos, de tu cuadra a en línea.</span>
+                    </h2>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-10">
+                    <!-- Sticky progress rail -->
+                    <div class="hidden lg:block lg:col-span-3">
+                        <div class="sticky top-32 flex flex-col gap-6" id="rail">
+                            <div class="flex items-center gap-4"><span class="rail-dot w-1.5 h-1.5 rounded-full bg-muted"></span><span class="kicker" data-rail="0">Discover</span></div>
+                            <div class="flex items-center gap-4"><span class="rail-dot w-1.5 h-1.5 rounded-full bg-muted"></span><span class="kicker" data-rail="1">Photograph</span></div>
+                            <div class="flex items-center gap-4"><span class="rail-dot w-1.5 h-1.5 rounded-full bg-muted"></span><span class="kicker" data-rail="2">Design</span></div>
+                            <div class="flex items-center gap-4"><span class="rail-dot w-1.5 h-1.5 rounded-full bg-muted"></span><span class="kicker" data-rail="3">Develop</span></div>
+                            <div class="flex items-center gap-4"><span class="rail-dot w-1.5 h-1.5 rounded-full bg-muted"></span><span class="kicker" data-rail="4">Launch</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Stages -->
+                    <div class="lg:col-span-9 flex flex-col">
+                        <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="0">
+                            <span class="stage-num text-muted text-2xl">01</span>
+                            <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Discover</span><span class="lang-es">Descubrir</span></h3>
+                            <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">We talk — usually in the shop. What you do, who walks in, what makes people come back. No jargon, no forms.</span><span class="lang-es">Hablamos — casi siempre en el negocio. Qué haces, quién entra, por qué la gente regresa. Sin tecnicismos, sin formularios.</span></p>
+                        </div>
+                        <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="1">
+                            <span class="stage-num text-muted text-2xl">02</span>
+                            <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Photograph</span><span class="lang-es">Fotografiar</span></h3>
+                            <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">Real photos of your real place — the sign, the counter, the food, you at work. No stock, no laptop mockups.</span><span class="lang-es">Fotos reales de tu lugar real — el letrero, el mostrador, la comida, tú trabajando. Sin bancos de imágenes.</span></p>
+                        </div>
+                        <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="2">
+                            <span class="stage-num text-muted text-2xl">03</span>
+                            <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Design</span><span class="lang-es">Diseñar</span></h3>
+                            <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">A layout built around one thing: getting the call, the visit, the order. Bilingual from the first pixel.</span><span class="lang-es">Un diseño hecho para una cosa: conseguir la llamada, la visita, el pedido. Bilingüe desde el primer pixel.</span></p>
+                        </div>
+                        <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="3">
+                            <span class="stage-num text-muted text-2xl">04</span>
+                            <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Develop</span><span class="lang-es">Desarrollar</span></h3>
+                            <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">Hand-built to load instantly on any phone, on any signal. Fast enough that nobody bounces.</span><span class="lang-es">Hecho a mano para cargar al instante en cualquier teléfono, con cualquier señal. Tan rápido que nadie se va.</span></p>
+                        </div>
+                        <div class="stage min-h-[28vh] flex flex-col justify-center py-6" data-stage="4">
+                            <span class="stage-num text-muted text-2xl">05</span>
+                            <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Launch</span><span class="lang-es">Lanzar</span></h3>
+                            <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">Live, with Google and Yelp claimed and polished. About a week from our first conversation.</span><span class="lang-es">En línea, con Google y Yelp reclamados y pulidos. Cerca de una semana desde nuestra primera charla.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ABOUT — story, not credentials ============ -->
+        <section id="about" class="relative py-28 border-t hairline" aria-label="About Eduardo">
+            <div class="max-w-7xl mx-auto px-6 sm:px-10 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                <div class="lg:col-span-5 depth">
+                    <div class="project-media h-[52vh] lg:h-[72vh]" data-parallax="0.1">
+                        <img src="assets/img/eduardo.jpg" alt="Eduardo Jacinto, founder, smiling in a black polo against a light studio backdrop" loading="lazy" style="object-position:center 18%;">
+                        <span class="absolute bottom-5 left-5 kicker text-[10px]" style="color:rgba(243,239,233,0.9);text-shadow:0 1px 10px rgba(0,0,0,0.75);">EDUARDO JACINTO · 33.97°N 118.22°W</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 depth" data-lag="0.35">
+                    <span class="kicker">03 — <span class="lang-en">Why I do this</span><span class="lang-es">Por qué lo hago</span></span>
+                    <h2 class="h-section text-[clamp(2.2rem,5.2vw,4rem)] mt-4 max-w-[16ch]">
+                        <span class="lang-en">The businesses that raised this neighborhood deserve to be seen.</span>
+                        <span class="lang-es">Los negocios que levantaron este barrio merecen ser vistos.</span>
+                    </h2>
+
+                    <div class="mt-8 space-y-6 text-muted text-lg leading-relaxed prose-lead">
+                        <p><span class="lang-en">I grew up around family shops in Southeast LA — the llantera, the taquería, the florist on the corner. Everyone knows they're good. The block votes with its feet every day.</span><span class="lang-es">Crecí entre negocios familiares en el sureste de LA — la llantera, la taquería, la florería de la esquina. Todos saben que son buenos. La cuadra lo confirma cada día.</span></p>
+                        <p><span class="lang-en">But when someone new searches, these places barely exist online — or worse, look nothing like how good they really are. A great business with a bad first impression loses to a worse one that shows up better.</span><span class="lang-es">Pero cuando alguien nuevo busca, estos lugares casi no existen en línea — o peor, no se ven ni cerca de lo buenos que son. Un gran negocio con una mala primera impresión pierde ante uno peor que se ve mejor.</span></p>
+                        <p class="text-ink"><span class="lang-en">Presentation isn't vanity. For a local shop, it's the difference between being found and being forgotten. That's the gap I close — with real photos, clean bilingual code, and a listing that finally matches the place.</span><span class="lang-es">La presentación no es vanidad. Para un negocio local, es la diferencia entre ser encontrado y ser olvidado. Ese es el espacio que cierro — con fotos reales, código limpio y bilingüe, y un perfil que por fin hace justicia al lugar.</span></p>
+                    </div>
+
+                    <dl class="mt-10 grid grid-cols-2 gap-6 border-t hairline pt-8 font-mono text-sm">
+                        <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Focus</span><span class="lang-es">Enfoque</span></dt><dd class="font-medium mt-1"><span class="lang-en">Bilingual web &amp; local SEO</span><span class="lang-es">Web bilingüe y SEO local</span></dd></div>
+                        <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Based in</span><span class="lang-es">Ubicado en</span></dt><dd class="font-medium mt-1">Southeast LA County</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CTA — everything goes quiet ============ -->
+        <section id="contact" class="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-6 border-t hairline" aria-label="Get in touch">
+            <div class="depth max-w-4xl">
+                <p class="kicker mb-8"><span class="lang-en">Free to look · No obligation</span><span class="lang-es">Gratis mirar · Sin compromiso</span></p>
+                <h2 class="display text-[clamp(2.6rem,8vw,6rem)]">
+                    <span class="lang-en">Ready to make your business impossible to ignore?</span>
+                    <span class="lang-es">¿Todo listo para que tu negocio sea imposible de ignorar?</span>
+                </h2>
+                <div class="mt-14 flex flex-col items-center gap-4">
+                    <a href="mailto:eddjack30@gmail.com" class="btn btn-primary !px-10 !py-5 text-lg" data-cursor="link">
+                        <span class="lang-en">Show me what mine could look like</span>
+                        <span class="lang-es">Muéstrame cómo se vería el mío</span>
+                    </a>
+                    <a href="rubios-tire-shop/" target="_blank" rel="noopener" class="btn btn-ghost !px-8 !py-4" data-cursor="link">
+                        <span class="lang-en">See an example ↗</span>
+                        <span class="lang-es">Ver un ejemplo ↗</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="relative z-10 border-t hairline py-14">
+        <div class="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-xs text-muted">
+            <p><span class="lang-en">Eduardo · Websites for local businesses · Southeast LA</span><span class="lang-es">Eduardo · Sitios web para negocios locales · Sureste de LA</span></p>
+            <p class="flex items-center gap-4">
+                <a href="mailto:eddjack30@gmail.com" class="hover:text-ink transition-colors" data-cursor="link">eddjack30@gmail.com</a>
+                <span class="opacity-40">·</span>
+                <span>Built by hand — hecho con orgullo.</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Three.js particle environment -->
+    <script src="assets/three.min.js"></script>
+    <script>
+    (function () {
+        "use strict";
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const coarse = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+        const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+        const lerp = (a, b, t) => a + (b - a) * t;
+
+        /* ---------------- Theme toggle (light / dark) ---------------- */
+        let repaintParticles = null;
+        window.toggleTheme = function () {
+            const light = document.documentElement.classList.toggle('light');
+            try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch (e) {}
+            if (repaintParticles) repaintParticles(light);
+        };
+
+        /* ---------------- Language toggle ---------------- */
+        window.toggleLang = function () {
+            const html = document.documentElement;
+            const next = (html.getAttribute('lang') === 'es') ? 'en' : 'es';
+            html.setAttribute('lang', next);
+            document.getElementById('l-en').classList.toggle('on', next === 'en');
+            document.getElementById('l-es').classList.toggle('on', next === 'es');
+        };
+
+        /* ---------------- Anchor links (native smooth scroll) ---------------- */
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const id = a.getAttribute('href');
+                if (id.length < 2) return;
+                const el = document.querySelector(id);
+                if (!el) return;
+                e.preventDefault();
+                el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+            });
+        });
+
+        /* ---------------- Navigation: dock + hide/show + active section ---------------- */
+        const nav = document.getElementById('nav');
+        let lastY = window.scrollY, ticking = false;
+        function onScrollNav(y) {
+            nav.classList.toggle('docked', y > 40);   // persistent bar — only the backdrop changes
+            lastY = y;
+        }
+
+        const navLinks = [...document.querySelectorAll('[data-nav]')];   // desktop + mobile links
+        const sectionObs = new IntersectionObserver((entries) => {
+            entries.forEach(en => {
+                if (en.isIntersecting) {
+                    navLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === en.target.id));
+                }
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        ['work', 'process', 'about'].forEach(id => { const s = document.getElementById(id); if (s) sectionObs.observe(s); });
+
+        /* ---------------- Reveal (depth + rise) ---------------- */
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); revealObs.unobserve(en.target); } });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.depth, .rise').forEach(el => revealObs.observe(el));
+
+        /* ---------------- Work accordion (expanding carousel) ---------------- */
+        (function () {
+            const acc = document.querySelector('#work .accordion');
+            if (!acc) return;
+            const panels = [...acc.querySelectorAll('.panel')];
+            let locked = panels[0];   // click/keyboard "locks" a panel; hover-out returns here
+            const animated = new Set();
+            // Count metrics up to their value the first time a panel is revealed
+            function tickPanel(p) {
+                if (animated.has(p)) return;
+                animated.add(p);
+                if (reduceMotion) return;
+                p.querySelectorAll('.panel-result b').forEach(el => {
+                    if (el.children.length) return;                 // skip wordy/bilingual metrics
+                    const m = el.textContent.match(/^(\D*)(\d+(?:\.\d+)?)(\D*)$/);
+                    if (!m) return;
+                    const pre = m[1], target = parseFloat(m[2]), suf = m[3];
+                    const decimals = (m[2].split('.')[1] || '').length;
+                    const dur = 900, t0 = performance.now();
+                    (function step(now) {
+                        const k = Math.min(1, (now - t0) / dur);
+                        const v = target * (1 - Math.pow(1 - k, 3));
+                        el.textContent = pre + v.toFixed(decimals) + suf;
+                        if (k < 1) requestAnimationFrame(step);
+                        else el.textContent = pre + target.toFixed(decimals) + suf;
+                    })(t0);
+                });
+            }
+            const open = p => panels.forEach(x => {
+                const on = x === p;
+                x.classList.toggle('is-open', on);
+                x.setAttribute('aria-expanded', on ? 'true' : 'false');
+                if (on) tickPanel(x);
+            });
+            panels.forEach(p => {
+                const title = (p.querySelector('.panel-vtitle') || {}).textContent || 'Case study';
+                // Placeholders (no destination) become focusable disclosures.
+                // Rubio's stays reachable via its inner CTA link (no nested interactives).
+                if (!p.dataset.href) {
+                    p.setAttribute('tabindex', '0');
+                    p.setAttribute('role', 'button');
+                    p.setAttribute('aria-label', title);
+                }
+                p.setAttribute('aria-expanded', p.classList.contains('is-open') ? 'true' : 'false');
+                p.addEventListener('mouseenter', () => open(p));
+                p.addEventListener('focusin', () => open(p));
+                p.addEventListener('click', e => {
+                    if (e.target.closest('a')) return;                 // inner CTA navigates itself
+                    if (!p.classList.contains('is-open')) { locked = p; open(p); return; }  // first tap expands (mobile)
+                    if (p.dataset.href) window.location.href = p.dataset.href;             // tap again navigates
+                });
+                p.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        if (p.dataset.href) window.location.href = p.dataset.href;
+                        else { locked = p; open(p); }
+                    }
+                });
+                });
+            acc.addEventListener('mouseleave', () => open(locked));
+            // Tick the default-open panel's metrics when the carousel scrolls into view
+            new IntersectionObserver((es) => es.forEach(e => {
+                if (e.isIntersecting) panels.forEach(p => { if (p.classList.contains('is-open')) tickPanel(p); });
+            }), { threshold: 0.35 }).observe(acc);
+        })();
+
+        /* ---------------- Production timeline: active stage ---------------- */
+        const railDots = document.querySelectorAll('.rail-dot');
+        const railLabels = document.querySelectorAll('[data-rail]');
+        const stageObs = new IntersectionObserver((entries) => {
+            entries.forEach(en => {
+                if (en.isIntersecting) {
+                    const i = +en.target.dataset.stage;
+                    document.querySelectorAll('.stage').forEach(s => s.classList.toggle('is-active', +s.dataset.stage === i));
+                    railDots.forEach((d, di) => d.classList.toggle('on', di === i));
+                    railLabels.forEach((l, li) => l.classList.toggle('active', li === i));
+                }
+            });
+        }, { rootMargin: '-45% 0px -45% 0px' });
+        document.querySelectorAll('.stage').forEach(s => stageObs.observe(s));
+
+        /* ---------------- Custom cursor ---------------- */
+        let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+        let magX = 0, magY = 0; // magnetic offset target
+        if (!coarse && !reduceMotion) {
+            document.body.classList.add('has-cursor');   // hide native pointer
+            const dot = document.querySelector('.cursor-dot');
+            const ring = document.querySelector('.cursor-ring');
+            const label = document.querySelector('.cursor-view-label');
+            let rx = mx, ry = my, dx = mx, dy = my;
+
+            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; document.body.classList.add('cursor-ready'); }, { passive: true });
+            document.addEventListener('mouseenter', () => document.body.classList.add('cursor-ready'));
+            window.addEventListener('mouseout', e => { if (!e.relatedTarget) document.body.classList.remove('cursor-ready'); });
+
+            // Context awareness
+            document.querySelectorAll('[data-cursor="view"]').forEach(el => {
+                el.addEventListener('mouseenter', () => { ring.classList.add('is-view'); label.style.opacity = '1'; });
+                el.addEventListener('mouseleave', () => { ring.classList.remove('is-view'); label.style.opacity = '0'; });
+            });
+            document.querySelectorAll('[data-cursor="link"], a, button').forEach(el => {
+                if (el.dataset.cursor === 'view') return;
+                el.addEventListener('mouseenter', () => ring.classList.add('is-link'));
+                el.addEventListener('mouseleave', () => ring.classList.remove('is-link'));
+            });
+
+            (function cursorLoop() {
+                dx = lerp(dx, mx, 0.85); dy = lerp(dy, my, 0.85);
+                rx = lerp(rx, mx, 0.18); ry = lerp(ry, my, 0.18); // ring lags →︎ velocity feel
+                dot.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+                ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
+                label.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+                requestAnimationFrame(cursorLoop);
+            })();
+        }
+
+        /* ---------------- Magnetic buttons ---------------- */
+        if (!coarse && !reduceMotion) {
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('mousemove', e => {
+                    const r = btn.getBoundingClientRect();
+                    const x = e.clientX - r.left - r.width / 2;
+                    const y = e.clientY - r.top - r.height / 2;
+                    btn.style.transform = `translate(${x * 0.28}px, ${y * 0.4}px)`;
+                });
+                btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+            });
+        }
+
+        /* ---------------- Parallax (image leads, text lags ~80ms) ---------------- */
+        const parallaxEls = [...document.querySelectorAll('[data-parallax]')];
+        const lagEls = [...document.querySelectorAll('[data-lag]')].map(el => ({ el, speed: +el.dataset.lag, cur: 0 }));
+        let scrollY = window.scrollY, velocity = 0;
+
+        function updateParallax() {
+            const vh = window.innerHeight;
+            parallaxEls.forEach(el => {
+                const r = el.getBoundingClientRect();
+                const center = r.top + r.height / 2;
+                const p = (center - vh / 2) / vh;                // -1..1 through viewport
+                el.style.transform = `translate3d(0, ${(-p * (+el.dataset.parallax) * vh).toFixed(1)}px, 0)`;
+            });
+        }
+        function updateLag() {
+            // Uses the independent `translate` property so it never clobbers the
+            // `transform`-based reveal animation on the same element.
+            const vh = window.innerHeight;
+            lagEls.forEach(o => {
+                const r = o.el.getBoundingClientRect();
+                const p = (r.top + r.height / 2 - vh / 2) / vh;
+                const target = -p * o.speed * 42;               // gentle counter-move
+                o.cur = lerp(o.cur, target, 0.06);              // slow lerp →︎ trailing lag (type trails imagery)
+                o.el.style.translate = `0px ${o.cur.toFixed(2)}px`;
+            });
+        }
+
+        /* ---------------- Three.js particle environment ---------------- */
+        let particleMotion = 1;   // 1 normal, dampened in calm zones
+        let stretch = 0;          // fast-scroll stretch
+        let orbitBoost = 0;       // near projects
+        (function initParticles() {
+            if (reduceMotion || !window.THREE) return;
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(innerWidth, innerHeight);
+            renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+
+            const COUNT = 1200;
+            const geo = new THREE.BufferGeometry();
+            const pos = new Float32Array(COUNT * 3);
+            const home = new Float32Array(COUNT * 3);
+            const col = new Float32Array(COUNT * 3);
+            const accentFlag = new Uint8Array(COUNT);   // stable across repaints
+            const shade = new Float32Array(COUNT);       // per-particle gray jitter
+            for (let n = 0; n < COUNT; n++) {
+                accentFlag[n] = Math.random() > 0.9 ? 1 : 0;  // accent is a sparse minority
+                shade[n] = Math.random() * 0.08;
+                const i = n * 3;
+                const x = (Math.random() - 0.5) * 18, y = (Math.random() - 0.55) * 18, z = (Math.random() - 0.5) * 18;
+                pos[i] = home[i] = x; pos[i + 1] = home[i + 1] = y; pos[i + 2] = home[i + 2] = z;
+            }
+            // Paints particles for the active theme: light points on dark, dark points on light.
+            function paint(light) {
+                for (let n = 0; n < COUNT; n++) {
+                    const i = n * 3;
+                    if (accentFlag[n]) { col[i] = 0.988; col[i + 1] = 0.0; col[i + 2] = 0.329; }
+                    else { const g = (light ? 0.16 : 0.34) + shade[n]; col[i] = g; col[i + 1] = g; col[i + 2] = g + 0.03; }
+                }
+                if (geo.attributes.color) geo.attributes.color.needsUpdate = true;
+            }
+            paint(document.documentElement.classList.contains('light'));
+            repaintParticles = paint;
+            geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+            geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+            const mat = new THREE.PointsMaterial({ size: 0.04, vertexColors: true, transparent: true, opacity: 0.78, depthWrite: false });
+            const points = new THREE.Points(geo, mat);
+            scene.add(points);
+
+            let scrollTarget = 0, pmx = 0, pmy = 0;
+            window.addEventListener('mousemove', e => { pmx = (e.clientX / innerWidth - 0.5) * 0.6; pmy = (e.clientY / innerHeight - 0.5) * 0.6; }, { passive: true });
+
+            const posAttr = geo.attributes.position;
+            // cursor repel in normalized world-ish space
+            function render() {
+                scrollTarget = scrollY * 0.0012;
+                // rotation continues forever (never resets), damped in calm zones
+                points.rotation.y += (0.0011 + orbitBoost * 0.0016) * particleMotion + scrollTarget * 0.002;
+                points.rotation.x += 0.0006 * particleMotion;
+                points.rotation.y += (pmx - points.rotation.y) * 0.04;
+                points.rotation.x += (-pmy - points.rotation.x) * 0.04;
+                points.position.y = scrollTarget;
+
+                const warp = 1 + scrollTarget * 0.9 + stretch;      // fast scroll stretches the field
+                const repelX = (mx / innerWidth - 0.5) * 18;
+                const repelY = -(my / innerHeight - 0.5) * 18;
+                for (let i = 0; i < COUNT * 3; i += 3) {
+                    let hx = home[i] * warp, hy = home[i + 1] * warp, hz = home[i + 2];
+                    // cursor repulsion (screen-plane approximation)
+                    const ddx = hx - repelX, ddy = hy - repelY;
+                    const d2 = ddx * ddx + ddy * ddy;
+                    if (d2 < 6) { const f = (6 - d2) / 6 * 0.5; hx += ddx * f; hy += ddy * f; }
+                    posAttr.array[i] = hx; posAttr.array[i + 1] = hy; posAttr.array[i + 2] = hz;
+                }
+                posAttr.needsUpdate = true;
+                stretch = lerp(stretch, 0, 0.06);
+                renderer.render(scene, camera);
+                requestAnimationFrame(render);
+            }
+            render();
+            window.addEventListener('resize', () => {
+                camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+                renderer.setSize(innerWidth, innerHeight);
+            });
+
+            // Calm zones: about + CTA slow the field. Projects give a gentle orbit.
+            const calmObs = new IntersectionObserver(es => es.forEach(e => { particleMotion = e.isIntersecting ? 0.35 : 1; }), { threshold: 0.4 });
+            ['about', 'contact'].forEach(id => { const el = document.getElementById(id); if (el) calmObs.observe(el); });
+            const workEl = document.getElementById('work');
+            if (workEl) new IntersectionObserver(es => es.forEach(e => orbitBoost = e.isIntersecting ? 1 : 0), { threshold: 0.15 }).observe(workEl);
+        })();
+
+        /* ---------------- Wordmark scroll-progress indicator ---------------- */
+        const wordmark = document.getElementById('wordmark');
+        const wordmarkDot = document.getElementById('wordmark-dot');
+        const cue = document.getElementById('scroll-cue');   // scroll cue: visible at top, fades as you go down
+        function updateProgress(y) {
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            const p = max > 0 ? clamp(y / max, 0, 1) : 0;
+            if (wordmark) wordmark.style.setProperty('--progress', (p * 100).toFixed(1) + '%');
+            if (wordmarkDot) wordmarkDot.classList.toggle('complete', p > 0.995);
+        }
+
+        /* ---------------- Master scroll loop ---------------- */
+        function frame(time) {
+            const y = window.scrollY;
+            velocity = y - scrollY;
+            scrollY = y;
+            stretch = clamp(Math.abs(velocity) * 0.0016, 0, 0.5);
+            onScrollNav(y);
+            updateProgress(y);
+            if (cue) cue.style.opacity = clamp(1 - y / 200, 0, 1);   // fade out scrolling down, return near the top
+            if (!reduceMotion) { updateParallax(); updateLag(); }
+            requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+    })();
+    </script>
 </body>
 </html>
