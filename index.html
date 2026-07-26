@@ -36,29 +36,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Bricolage Grotesque', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        void:     'var(--bg)',       // charcoal (dark) / warm off-white (light)
-                        graphite: 'var(--surface)',
-                        graphite2:'var(--surface2)',
-                        ink:      'var(--ink)',      // typography color
-                        muted:    'var(--muted)',    // secondary text
-                        accent:   '#fc0054',         // interaction accent (both themes)
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         :root {
             --ease: cubic-bezier(0.16, 1, 0.3, 1);        /* ease-out-expo-ish */
@@ -417,7 +394,8 @@
             .cursor-dot, .cursor-ring, .cursor-view-label { display: none !important; }
         }
     </style>
-</head>
+  <link rel="stylesheet" href="assets/tailwind.css">
+  </head>
 <body class="font-sans">
     <script>
         (function () {
