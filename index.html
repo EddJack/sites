@@ -146,7 +146,7 @@
         .cursor-view-label {
             position: fixed; top: 0; left: 0; z-index: 91; pointer-events: none;
             transform: translate3d(-100px,-100px,0);
-            font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.08em;
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
             text-transform: uppercase; color: #fff; opacity: 0;
             transition: opacity 0.3s ease; will-change: transform;
         }
@@ -221,6 +221,10 @@
             text-wrap: balance;
         }
         .h-section { font-weight: 700; letter-spacing: -0.035em; line-height: 0.98; text-wrap: balance; }
+        /* Type scale — 11 / 14 / 18 / 23px, each step ~1.27x. Shared with the case-study
+           pages so the whole site speaks one scale. */
+        .t-micro { font-size: 11px; line-height: 1.45; }
+        .t-h3    { font-size: 23px; line-height: 1.25; }
         .kicker {
             font-family: 'JetBrains Mono', monospace; font-size: 11px;
             letter-spacing: 0.34em; text-transform: uppercase; color: var(--muted);
@@ -304,9 +308,9 @@
         .panel-body > * { max-width: 52ch; }
         .panel-k { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #fc0054; }
         .panel-body h3 { font-weight: 700; letter-spacing: -0.03em; line-height: 0.98; font-size: clamp(1.8rem, 3vw, 2.9rem); margin: 0.35rem 0 0.55rem; }
-        .panel-copy { color: rgba(243,239,233,0.82); line-height: 1.55; font-size: 0.95rem; }
+        .panel-copy { color: rgba(243,239,233,0.82); line-height: 1.55; font-size: 0.875rem; }
         .panel-copy b { color: #fff; font-weight: 600; }
-        .panel-result { display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.7rem; font-size: 0.9rem; color: rgba(243,239,233,0.75); }
+        .panel-result { display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-top: 0.7rem; font-size: 0.875rem; color: rgba(243,239,233,0.75); }
         .panel-result b { color: #fc0054; font-weight: 700; }
         .panel-dot { opacity: 0.4; }
         .panel-cta { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.3rem; font-weight: 600; color: #fff; width: fit-content; transition: gap 0.3s var(--ease), color 0.3s ease; }
@@ -318,7 +322,7 @@
         .panel-btn {
             display: inline-flex; align-items: center; gap: 0.5rem;
             padding: 0.72rem 1.2rem; border-radius: 9999px;
-            background: #F3EFE9; color: #0B0B0C; font-weight: 700; font-size: 0.92rem;
+            background: #F3EFE9; color: #0B0B0C; font-weight: 700; font-size: 0.875rem;
             white-space: nowrap; will-change: transform;
             /* same contract as .btn — the magnetic loop sets transform, CSS eases it */
             transition: transform 0.25s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
@@ -334,16 +338,16 @@
         .panel.is-soon h3, .panel.is-soon .panel-k { color: rgba(243,239,233,0.62); }
         .panel.is-soon .panel-copy { color: rgba(243,239,233,0.48); }
         .panel-soon { align-self: flex-start; margin-bottom: 0.6rem; font-family: 'JetBrains Mono', monospace;
-            font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent);
+            font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent);
             border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); border-radius: 9999px; padding: 0.28rem 0.7rem; }
-        .panel-sample { align-self: flex-start; margin-bottom: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243,239,233,0.9); border: 1px solid rgba(243,239,233,0.32); border-radius: 9999px; padding: 0.28rem 0.7rem; }
+        .panel-sample { align-self: flex-start; margin-bottom: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(243,239,233,0.9); border: 1px solid rgba(243,239,233,0.32); border-radius: 9999px; padding: 0.28rem 0.7rem; }
         @media (max-width: 1023px) {
             /* Vertical expanding accordion — collapsed bars keep a fixed height (no squish on short viewports) */
             .accordion { flex-direction: column; height: auto; gap: 10px; }
             .panel { flex: none; height: 78px; transition: height 0.6s var(--ease), box-shadow 0.5s ease; }
             .panel.is-open { height: min(66vh, 600px); }
             .panel-tab { flex-direction: row; align-items: flex-end; justify-content: flex-start; gap: 0.9rem; padding: 1.15rem 1.35rem; }
-            .panel-vtitle { writing-mode: horizontal-tb; transform: none; font-size: 1.2rem; }
+            .panel-vtitle { writing-mode: horizontal-tb; transform: none; font-size: 1.125rem; }
             .panel-num { top: 1.15rem; left: 1.35rem; }
             .panel::before { transform: none; }
         }
@@ -444,7 +448,7 @@
         <div class="nav-inner max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
             <a href="#top" class="flex items-baseline gap-2.5 group" aria-label="Eduardo — home">
                 <span class="text-lg font-bold tracking-tight"><span id="wordmark" class="wordmark">Eduardo</span><span id="wordmark-dot">.</span></span>
-                <span class="kicker hidden sm:inline text-[9px]" style="letter-spacing:0.2em">33.97°N 118.22°W</span>
+                <span class="kicker hidden sm:inline" style="letter-spacing:0.2em">33.97°N 118.22°W</span>
             </a>
 
             <nav class="hidden md:flex items-center gap-9 text-sm font-medium" aria-label="Sections">
@@ -458,15 +462,15 @@
                     <svg class="icon-moon w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                     <svg class="icon-sun w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                 </button>
-                <button onclick="toggleLang()" class="lang-btn text-xs tracking-widest" aria-label="Switch language / Cambiar idioma">
+                <button onclick="toggleLang()" class="lang-btn t-micro tracking-widest" aria-label="Switch language / Cambiar idioma">
                     <span id="l-en" class="on">EN</span><span class="mx-1 opacity-40">/</span><span id="l-es">ES</span>
                 </button>
-                <a href="mailto:eddjack30@gmail.com" class="btn btn-ghost text-xs uppercase tracking-widest !px-4 sm:!px-5 !py-2.5 whitespace-nowrap" data-cursor="link">
+                <a href="mailto:eddjack30@gmail.com" class="btn btn-ghost t-micro uppercase tracking-widest !px-4 sm:!px-5 !py-2.5 whitespace-nowrap" data-cursor="link">
                     <span class="lang-en">Contact</span><span class="lang-es">Contacto</span>
                 </a>
             </div>
         </div>
-        <nav class="md:hidden flex justify-center gap-8 pb-3.5 -mt-1 text-xs font-medium" aria-label="Sections">
+        <nav class="md:hidden flex justify-center gap-8 pb-3.5 -mt-1 t-micro font-medium" aria-label="Sections">
             <a href="#work" class="nav-link" data-nav="work"><span class="lang-en">Work</span><span class="lang-es">Proyectos</span></a>
             <a href="#process" class="nav-link" data-nav="process"><span class="lang-en">Process</span><span class="lang-es">Proceso</span></a>
             <a href="#about" class="nav-link" data-nav="about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span></a>
@@ -505,8 +509,8 @@
 
             <!-- Survey marking: subtle brand language, bottom edge -->
             <div class="absolute bottom-12 left-6 sm:left-10 right-6 sm:right-10 hidden sm:flex items-end justify-between text-muted opacity-70 pointer-events-none select-none">
-                <span class="kicker text-[9px]" style="letter-spacing:0.25em">EST. SOUTHEAST LOS ANGELES</span>
-                <span id="scroll-cue" class="kicker text-[9px] inline-flex items-center" style="letter-spacing:0.25em">
+                <span class="kicker" style="letter-spacing:0.25em">EST. SOUTHEAST LOS ANGELES</span>
+                <span id="scroll-cue" class="kicker inline-flex items-center" style="letter-spacing:0.25em">
                     <span class="lang-en">SCROLL</span><span class="lang-es">DESLIZA</span>
                     <span class="scroll-track"><span class="scroll-dot"></span></span>
                 </span>
@@ -608,27 +612,27 @@
                     <!-- Stages -->
                     <div class="lg:col-span-9 flex flex-col">
                         <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="0">
-                            <span class="stage-num text-muted text-2xl">01</span>
+                            <span class="stage-num text-muted t-h3">01</span>
                             <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Discover</span><span class="lang-es">Descubrir</span></h3>
                             <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">We talk, usually in the shop. What you do, who walks in, what makes people come back. No jargon, no forms.</span><span class="lang-es">Hablamos, casi siempre en el negocio. Qué haces, quién entra, por qué la gente regresa. Sin tecnicismos, sin formularios.</span></p>
                         </div>
                         <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="1">
-                            <span class="stage-num text-muted text-2xl">02</span>
+                            <span class="stage-num text-muted t-h3">02</span>
                             <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Photograph</span><span class="lang-es">Fotografiar</span></h3>
                             <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">Real photos of your real place: the sign, the counter, the food, you at work. No stock, no laptop mockups.</span><span class="lang-es">Fotos reales de tu lugar real: el letrero, el mostrador, la comida, tú trabajando. Sin bancos de imágenes.</span></p>
                         </div>
                         <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="2">
-                            <span class="stage-num text-muted text-2xl">03</span>
+                            <span class="stage-num text-muted t-h3">03</span>
                             <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Design</span><span class="lang-es">Diseñar</span></h3>
                             <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">A layout built around one thing: getting the call, the visit, the order. Bilingual from the first pixel.</span><span class="lang-es">Un diseño hecho para una cosa: conseguir la llamada, la visita, el pedido. Bilingüe desde el primer pixel.</span></p>
                         </div>
                         <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="3">
-                            <span class="stage-num text-muted text-2xl">04</span>
+                            <span class="stage-num text-muted t-h3">04</span>
                             <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Develop</span><span class="lang-es">Desarrollar</span></h3>
                             <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">Hand-built to load instantly on any phone, on any signal. Fast enough that nobody bounces.</span><span class="lang-es">Hecho a mano para cargar al instante en cualquier teléfono, con cualquier señal. Tan rápido que nadie se va.</span></p>
                         </div>
                         <div class="stage min-h-[28vh] flex flex-col justify-center py-6" data-stage="4">
-                            <span class="stage-num text-muted text-2xl">05</span>
+                            <span class="stage-num text-muted t-h3">05</span>
                             <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Launch</span><span class="lang-es">Lanzar</span></h3>
                             <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">Live, with Google and Yelp claimed and polished. About a week from our first conversation.</span><span class="lang-es">En línea, con Google y Yelp reclamados y pulidos. Cerca de una semana desde nuestra primera charla.</span></p>
                         </div>
@@ -643,7 +647,7 @@
                 <div class="lg:col-span-5 depth">
                     <div class="project-media h-[52vh] lg:h-[72vh]" data-parallax="0.1">
                         <img src="assets/img/eduardo.jpg" alt="Eduardo Jacinto, founder, smiling in a black polo against a light studio backdrop" loading="lazy" style="object-position:center 18%;">
-                        <span class="absolute bottom-5 left-5 kicker text-[10px]" style="color:rgba(243,239,233,0.9);text-shadow:0 1px 10px rgba(0,0,0,0.75);">EDUARDO JACINTO · 33.97°N 118.22°W</span>
+                        <span class="absolute bottom-5 left-5 kicker" style="color:rgba(243,239,233,0.9);text-shadow:0 1px 10px rgba(0,0,0,0.75);">EDUARDO JACINTO · 33.97°N 118.22°W</span>
                     </div>
                 </div>
 
@@ -661,8 +665,8 @@
                     </div>
 
                     <dl class="mt-10 grid grid-cols-2 gap-6 border-t hairline pt-8 font-mono text-sm">
-                        <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Focus</span><span class="lang-es">Enfoque</span></dt><dd class="font-medium mt-1"><span class="lang-en">Bilingual web &amp; local SEO</span><span class="lang-es">Web bilingüe y SEO local</span></dd></div>
-                        <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Based in</span><span class="lang-es">Ubicado en</span></dt><dd class="font-medium mt-1">Southeast LA County</dd></div>
+                        <div><dt class="text-muted t-micro uppercase tracking-widest"><span class="lang-en">Focus</span><span class="lang-es">Enfoque</span></dt><dd class="font-medium mt-1"><span class="lang-en">Bilingual web &amp; local SEO</span><span class="lang-es">Web bilingüe y SEO local</span></dd></div>
+                        <div><dt class="text-muted t-micro uppercase tracking-widest"><span class="lang-en">Based in</span><span class="lang-es">Ubicado en</span></dt><dd class="font-medium mt-1">Southeast LA County</dd></div>
                     </dl>
                 </div>
             </div>
@@ -691,7 +695,7 @@
     </main>
 
     <footer class="relative z-10 border-t hairline py-14">
-        <div class="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-xs text-muted">
+        <div class="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono t-micro text-muted">
             <p><span class="lang-en">Eduardo · Websites for local businesses · Southeast LA</span><span class="lang-es">Eduardo · Sitios web para negocios locales · Sureste de LA</span></p>
             <p class="flex items-center gap-4">
                 <a href="mailto:eddjack30@gmail.com" class="hover:text-ink transition-colors" data-cursor="link">eddjack30@gmail.com</a>
