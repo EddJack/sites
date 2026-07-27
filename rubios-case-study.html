@@ -90,10 +90,8 @@
         .lang-btn .on{color:var(--ink);}
         #theme-toggle .icon-sun{display:none;} html.light #theme-toggle .icon-sun{display:block;} html.light #theme-toggle .icon-moon{display:none;}
         /* Wordmark doubles as a scroll-progress indicator (matches the portfolio) */
-        .wordmark { color: var(--ink); position: relative; }
-        .wordmark::after { content:""; position:absolute; left:0; right:0; bottom:-4px; height:2px;
-            background:#fc0054; border-radius:2px; transform:scaleX(var(--progress,0)); transform-origin:0 50%;
-            transition:transform .12s linear; }
+        /* impeccable-disable-next-line gradient-text: deliberate: the wordmark fill encodes scroll position, it is functional not decorative */
+        .wordmark { background-image: linear-gradient(90deg, #fc0054 var(--progress,0%), var(--ink) var(--progress,0%)); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
         #wordmark-dot { color:#fc0054; transition: color .4s var(--ease); }
         #wordmark-dot.complete { color: var(--ink); }
 
@@ -474,7 +472,7 @@
             nav.classList.toggle('docked', y > 40);
             const max = document.documentElement.scrollHeight - innerHeight;
             const p = max > 0 ? Math.max(0, Math.min(1, y / max)) : 0;
-            if (wordmark) wordmark.style.setProperty('--progress', p.toFixed(4));
+            if (wordmark) wordmark.style.setProperty('--progress', (p*100).toFixed(1)+'%');
             if (wordmarkDot) wordmarkDot.classList.toggle('complete', p > 0.995);
         }
         window.addEventListener('scroll', onScroll, { passive:true });
