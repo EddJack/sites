@@ -32,7 +32,7 @@
    "serviceType":["Web design","Local SEO","Google Business Profile optimization","Bilingual website development"]}
   </script><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23fc0054'/><text x='13' y='47' font-family='Arial Black, Arial, sans-serif' font-weight='900' font-size='46' fill='%23F3EFE9'>E</text><circle cx='50' cy='44' r='5.5' fill='%230B0B0C'/></svg>">
 
-    <!-- Bricolage Grotesque (architectural display + body) · JetBrains Mono (survey / blueprint annotation) -->
+    <!-- Bricolage Grotesque (architectural display + body) · JetBrains Mono (technical annotation) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -48,7 +48,8 @@
             --ink:         #F3EFE9;
             --muted:       #9A958C;
             --line:        rgba(243, 239, 233, 0.08);
-            --grid:        rgba(243, 239, 233, 0.028);
+            --wash:        rgba(243, 239, 233, 0.055);
+            --wash-accent: rgba(252, 0, 84, 0.05);
             --nav-bg:      rgba(11, 11, 12, 0.72);
             --ring-border: rgba(243, 239, 233, 0.5);
             --media-scrim: rgba(11, 11, 12, 0.55);
@@ -66,7 +67,8 @@
             --ink:         #17140F;
             --muted:       #6B655C;
             --line:        rgba(23, 20, 15, 0.12);
-            --grid:        rgba(23, 20, 15, 0.045);
+            --wash:        rgba(23, 20, 15, 0.05);
+            --wash-accent: rgba(252, 0, 84, 0.04);
             --nav-bg:      rgba(244, 242, 237, 0.78);
             --ring-border: rgba(23, 20, 15, 0.45);
             --media-scrim: rgba(244, 242, 237, 0.35);
@@ -98,15 +100,13 @@
             z-index: 0; pointer-events: none;
         }
 
-        /* Blueprint / survey grid — almost invisible, structural not decorative */
-        #blueprint {
+        /* Ambient lighting — a soft wash from above, not a tiled grid. Reads as the room
+           the page sits in; the particle field carries the texture. */
+        #ambient {
             position: fixed; inset: 0; z-index: 0; pointer-events: none;
-            background-image:
-                linear-gradient(to right,  var(--grid) 1px, transparent 1px),
-                linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-            background-size: 80px 80px;
-            mask-image: radial-gradient(ellipse 120% 90% at 50% 0%, #000 30%, transparent 85%);
-            -webkit-mask-image: radial-gradient(ellipse 120% 90% at 50% 0%, #000 30%, transparent 85%);
+            background:
+                radial-gradient(ellipse 120% 62% at 50% -12%, var(--wash) 0%, transparent 66%),
+                radial-gradient(ellipse 62% 46% at 88% 6%,  var(--wash-accent) 0%, transparent 70%);
         }
 
         /* Film grain — subtle depth, no banding */
@@ -430,7 +430,7 @@
     <a href="#work" class="skip">Skip to work</a>
 
     <!-- Environment -->
-    <div id="blueprint" aria-hidden="true"></div>
+    <div id="ambient" aria-hidden="true"></div>
     <div id="canvas-container" aria-hidden="true"></div>
     <div id="grain" aria-hidden="true"></div>
 

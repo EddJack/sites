@@ -31,14 +31,14 @@
         :root {
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
             --bg:#0B0B0C; --surface:#141416; --surface2:#1B1B1E; --ink:#F3EFE9; --muted:#9A958C;
-            --line: rgba(243,239,233,0.08); --grid: rgba(243,239,233,0.028);
+            --line: rgba(243,239,233,0.08); --wash: rgba(243,239,233,0.055); --wash-accent: rgba(252,0,84,0.05);
             --nav-bg: rgba(11,11,12,0.72); --ring-border: rgba(243,239,233,0.5);
             --media-scrim: rgba(11,11,12,0.55);
             --img-filter: saturate(0.9) brightness(0.9); --grain-op:0.5; --grain-blend:overlay;
         }
         html.light {
             --bg:#F4F2ED; --surface:#FFFFFF; --surface2:#EDEAE3; --ink:#17140F; --muted:#6B655C;
-            --line: rgba(23,20,15,0.12); --grid: rgba(23,20,15,0.045);
+            --line: rgba(23,20,15,0.12); --wash: rgba(23,20,15,0.05); --wash-accent: rgba(252,0,84,0.04);
             --nav-bg: rgba(244,242,237,0.78); --ring-border: rgba(23,20,15,0.45);
             --media-scrim: rgba(244,242,237,0.35);
             --img-filter: saturate(1) brightness(1); --grain-op:0.22; --grain-blend:multiply;
@@ -54,14 +54,13 @@
         ::selection { background: #fc0054; color: #fff; }
 
         #canvas-container { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
-        #blueprint {
+        /* Ambient lighting — a soft wash from above, not a tiled grid. Reads as the room
+           the page sits in; the particle field carries the texture. */
+        #ambient {
             position: fixed; inset: 0; z-index: 0; pointer-events: none;
-            background-image:
-                linear-gradient(to right, var(--grid) 1px, transparent 1px),
-                linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-            background-size: 80px 80px;
-            mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 25%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 25%, transparent 80%);
+            background:
+                radial-gradient(ellipse 120% 62% at 50% -12%, var(--wash) 0%, transparent 66%),
+                radial-gradient(ellipse 62% 46% at 88% 6%,  var(--wash-accent) 0%, transparent 70%);
         }
         #grain {
             position: fixed; inset: -50%; z-index: 1; pointer-events: none;
@@ -106,6 +105,10 @@
         /* Typography */
         .display{font-weight:700;letter-spacing:-0.04em;line-height:0.94;text-wrap:balance;}
         .h-section{font-weight:700;letter-spacing:-0.03em;line-height:1;text-wrap:balance;}
+        /* Type scale — 11 / 14 / 18 / 23px, each step ~1.27x. Tailwind's t-micro (12px)
+           and t-h3 (20px) sat too close to their neighbours, so those two map here. */
+        .t-micro{font-size:11px;line-height:1.45;}
+        .t-h3{font-size:23px;line-height:1.25;}
         .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:var(--muted);}
         .lead{max-width:64ch;}
 
@@ -125,10 +128,10 @@
 
         /* Numbered list */
         .goal{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:baseline;padding:1.6rem 0;border-top:1px solid var(--line);}
-        .goal .n{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:.9rem;}
+        .goal .n{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:0.875rem;}
 
         /* Before/after table */
-        .ba{width:100%;border-collapse:collapse;font-size:0.95rem;}
+        .ba{width:100%;border-collapse:collapse;font-size:0.875rem;}
         .ba th,.ba td{text-align:left;padding:1rem 1.1rem;border-bottom:1px solid var(--line);vertical-align:top;}
         .ba thead th{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:500;}
         .ba td:first-child{font-weight:600;}
@@ -175,7 +178,7 @@
     </script>
 
     <a href="#problem" class="skip"><span class="lang-en">Skip to content</span><span class="lang-es">Saltar al contenido</span></a>
-    <div id="blueprint" aria-hidden="true"></div>
+    <div id="ambient" aria-hidden="true"></div>
     <div id="canvas-container" aria-hidden="true"></div>
     <div id="grain" aria-hidden="true"></div>
     <div class="cursor-ring" aria-hidden="true"></div>
@@ -192,10 +195,10 @@
                     <svg class="icon-moon w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                     <svg class="icon-sun w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                 </button>
-                <button onclick="toggleLang()" class="lang-btn text-xs tracking-widest" aria-label="Switch language / Cambiar idioma">
+                <button onclick="toggleLang()" class="lang-btn t-micro tracking-widest" aria-label="Switch language / Cambiar idioma">
                     <span id="l-en" class="on">EN</span><span class="mx-1 opacity-40">/</span><span id="l-es">ES</span>
                 </button>
-                <a href="gg-auto-body/" target="_blank" rel="noopener" class="btn btn-ghost text-xs uppercase tracking-widest !px-4 sm:!px-5 !py-2.5 whitespace-nowrap" data-cursor="link">
+                <a href="gg-auto-body/" target="_blank" rel="noopener" class="btn btn-ghost t-micro uppercase tracking-widest !px-4 sm:!px-5 !py-2.5 whitespace-nowrap" data-cursor="link">
                     <span class="lang-en">Live site <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span><span class="lang-es">Sitio <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
                 </a>
             </div>
@@ -216,10 +219,10 @@
                     <span class="lang-es">Un taller familiar de colisiones en la calle Alameda de Lynwood que ya había hecho todo bien en línea — menos ser dueño de la última pieza. La página listada en su Yelp se venció y la tomó un revendedor de dominios. Esto es lo que construí para reemplazarla.</span>
                 </p>
                 <dl class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t hairline pt-8 font-mono text-sm">
-                    <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Role</span><span class="lang-es">Rol</span></dt><dd class="mt-1 font-medium"><span class="lang-en">Research, design &amp; build</span><span class="lang-es">Investigación, diseño y desarrollo</span></dd></div>
-                    <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Location</span><span class="lang-es">Ubicación</span></dt><dd class="mt-1 font-medium">Lynwood, CA</dd></div>
-                    <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Status</span><span class="lang-es">Estado</span></dt><dd class="mt-1 font-medium"><span class="lang-en">Preview, not yet live</span><span class="lang-es">Vista previa, aún no publicado</span></dd></div>
-                    <div><dt class="text-muted text-xs uppercase tracking-widest">Stack</dt><dd class="mt-1 font-medium"><span class="lang-en">1 file · vanilla JS</span><span class="lang-es">1 archivo · JS puro</span></dd></div>
+                    <div><dt class="text-muted t-micro uppercase tracking-widest"><span class="lang-en">Role</span><span class="lang-es">Rol</span></dt><dd class="mt-1 font-medium"><span class="lang-en">Research, design &amp; build</span><span class="lang-es">Investigación, diseño y desarrollo</span></dd></div>
+                    <div><dt class="text-muted t-micro uppercase tracking-widest"><span class="lang-en">Location</span><span class="lang-es">Ubicación</span></dt><dd class="mt-1 font-medium">Lynwood, CA</dd></div>
+                    <div><dt class="text-muted t-micro uppercase tracking-widest"><span class="lang-en">Status</span><span class="lang-es">Estado</span></dt><dd class="mt-1 font-medium"><span class="lang-en">Preview, not yet live</span><span class="lang-es">Vista previa, aún no publicado</span></dd></div>
+                    <div><dt class="text-muted t-micro uppercase tracking-widest">Stack</dt><dd class="mt-1 font-medium"><span class="lang-en">1 file · vanilla JS</span><span class="lang-es">1 archivo · JS puro</span></dd></div>
                 </dl>
             </div>
 
@@ -252,28 +255,28 @@
             <div class="lg:col-span-4 depth"><span class="kicker"><span class="lang-en">Research</span><span class="lang-es">Investigación</span></span></div>
             <div class="lg:col-span-8 rise grid sm:grid-cols-1 gap-8">
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Audience</span><span class="lang-es">Público</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Audience</span><span class="lang-es">Público</span></h3>
                     <p class="text-muted mt-2 leading-relaxed max-w-2xl">
                         <span class="lang-en">Someone who just had an accident, is dealing with an insurance adjuster, and is choosing a shop they've never used. Often bilingual — Lynwood is roughly 87% Latino, and the shop's own hand-painted sign already reads <span class="text-ink">"estimado gratis · trabajo de aseguranza."</span></span>
                         <span class="lang-es">Alguien que acaba de chocar, está lidiando con un ajustador y elige un taller que nunca ha usado. Muchas veces bilingüe — Lynwood es cerca de 87% latino, y el letrero pintado a mano del taller ya dice <span class="text-ink">«estimado gratis · trabajo de aseguranza».</span></span>
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Emotional state</span><span class="lang-es">Estado emocional</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Emotional state</span><span class="lang-es">Estado emocional</span></h3>
                     <p class="text-muted mt-2 leading-relaxed max-w-2xl">
                         <span class="lang-en">One of their own reviewers said it better than I could: <span class="text-ink">"There is so much stress that comes with a car accident. The last thing you need to stress about is which body shop to take your car to."</span> That line became the thesis of the whole page.</span>
                         <span class="lang-es">Una de sus clientas lo dijo mejor que yo: <span class="text-ink">«Un accidente trae muchísimo estrés. Lo último que debería preocuparle es a qué taller llevar su carro.»</span> Esa frase se volvió la tesis de toda la página.</span>
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">The buried asset</span><span class="lang-es">El activo enterrado</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">The buried asset</span><span class="lang-es">El activo enterrado</span></h3>
                     <p class="text-muted mt-2 leading-relaxed max-w-2xl">
                         <span class="lang-en">Reading all 33 Yelp reviews turned up a <span class="text-ink">5-year warranty on labor and paint</span> — mentioned once, by one customer, as the thing that gave her peace of mind. No competitor nearby advertises anything like it. It was the strongest selling point they had and it appeared nowhere except inside a review nobody scrolls to.</span>
                         <span class="lang-es">Al leer las 33 reseñas de Yelp apareció una <span class="text-ink">garantía de 5 años en mano de obra y pintura</span> — mencionada una sola vez, por una clienta, como lo que le dio tranquilidad. Ningún competidor cercano anuncia algo así. Era su mejor argumento de venta y no aparecía en ningún lado salvo dentro de una reseña que nadie alcanza a leer.</span>
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">What they specialize in</span><span class="lang-es">En qué se especializan</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">What they specialize in</span><span class="lang-es">En qué se especializan</span></h3>
                     <p class="text-muted mt-2 leading-relaxed max-w-2xl">
                         <span class="lang-en">Sorting 81 Yelp photos and 6 Google ones made the pattern obvious: Chargers, Challengers, a Camaro ZL1, a Corvette, a Fox-body Mustang — but also a Porsche Taycan, a Mercedes S-Class and a Tesla. A muscle-car shop that high-end owners also trust. The design leans into that instead of the generic collision-center look.</span>
                         <span class="lang-es">Ordenar 81 fotos de Yelp y 6 de Google dejó claro el patrón: Chargers, Challengers, un Camaro ZL1, un Corvette, un Mustang clásico — pero también un Porsche Taycan, un Mercedes Clase S y un Tesla. Un taller de muscle cars en el que también confían dueños de autos de lujo. El diseño se apoya en eso en vez del look genérico de centro de colisiones.</span>
@@ -299,19 +302,19 @@
             <div class="depth mb-14"><span class="kicker"><span class="lang-en">Design decisions</span><span class="lang-es">Decisiones de diseño</span></span><h2 class="h-section text-[clamp(2rem,4.5vw,3.4rem)] mt-4 max-w-[18ch]"><span class="lang-en">Calm competence, not clip-art chrome.</span><span class="lang-es">Confianza serena, no cromo de catálogo.</span></h2></div>
             <div class="rise grid md:grid-cols-2 gap-x-14 gap-y-12">
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">The palette came off their sign</span><span class="lang-es">La paleta salió de su letrero</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">The palette came off their sign</span><span class="lang-es">La paleta salió de su letrero</span></h3>
                     <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">Their real signage is red lettering with a chrome bevel on black steel. That became the whole system: near-black ground, one red accent, warm amber borrowed from the shop's ceiling lights. Nothing invented.</span><span class="lang-es">Su letrero real es letra roja con borde cromado sobre acero negro. Eso se volvió todo el sistema: fondo casi negro, un solo acento rojo, y ámbar cálido tomado de las luces del techo del taller. Nada inventado.</span></p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">"Damage in. Driven out."</span><span class="lang-es">«Entra dañado. Sale manejando.»</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">"Damage in. Driven out."</span><span class="lang-es">«Entra dañado. Sale manejando.»</span></h3>
                     <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">A two-column section: wrecks on the left, finished cars on the right. A Corvette coming off a flatbed sits beside a gleaming Charger. The photos are never claimed as matched pairs — that would be a lie a customer could catch — but the contrast does the selling on its own.</span><span class="lang-es">Una sección de dos columnas: choques a la izquierda, carros terminados a la derecha. Un Corvette bajando de una grúa junto a un Charger reluciente. Nunca se presentan como pares del mismo carro — eso sería una mentira que un cliente podría descubrir — pero el contraste vende solo.</span></p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Dark, because the work is dramatic</span><span class="lang-es">Oscuro, porque el trabajo es dramático</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Dark, because the work is dramatic</span><span class="lang-es">Oscuro, porque el trabajo es dramático</span></h3>
                     <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">Most body-shop sites are bright blue and stock photography. Theirs is cinematic and quiet, so the cars under warm shop light carry the drama and the typography stays confident instead of shouting.</span><span class="lang-es">La mayoría de los sitios de talleres son azul brillante y fotos de banco. El suyo es cinematográfico y silencioso, para que los carros bajo la luz cálida del taller lleven el drama y la tipografía se mantenga segura en vez de gritar.</span></p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Their words, both languages</span><span class="lang-es">Sus palabras, en los dos idiomas</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Their words, both languages</span><span class="lang-es">Sus palabras, en los dos idiomas</span></h3>
                     <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">The Spanish isn't translated marketing copy — it uses the register their own sign and customers use: <span class="text-ink">aseguranza, estimado gratis, hojalatería, grúa</span>. A whole-site toggle, not a token line in the footer.</span><span class="lang-es">El español no es publicidad traducida — usa el registro que usan su letrero y sus clientes: <span class="text-ink">aseguranza, estimado gratis, hojalatería, grúa</span>. Un interruptor para todo el sitio, no una línea simbólica en el pie de página.</span></p>
                 </div>
             </div>
@@ -441,7 +444,7 @@
 
 
     <footer class="relative z-10 border-t hairline py-14">
-        <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-xs text-muted">
+        <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono t-micro text-muted">
             <p><span class="lang-en">G&amp;G Auto Body Shop · Case study · Eduardo</span><span class="lang-es">G&amp;G Auto Body Shop · Caso · Eduardo</span></p>
             <p class="flex items-center gap-4">
                 <a href="mailto:eddjack30@gmail.com" class="hover:text-ink transition-colors" data-cursor="link">eddjack30@gmail.com</a>

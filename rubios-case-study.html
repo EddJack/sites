@@ -31,14 +31,14 @@
         :root {
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
             --bg:#0B0B0C; --surface:#141416; --surface2:#1B1B1E; --ink:#F3EFE9; --muted:#9A958C;
-            --line: rgba(243,239,233,0.08); --grid: rgba(243,239,233,0.028);
+            --line: rgba(243,239,233,0.08); --wash: rgba(243,239,233,0.055); --wash-accent: rgba(252,0,84,0.05);
             --nav-bg: rgba(11,11,12,0.72); --ring-border: rgba(243,239,233,0.5);
             --media-scrim: rgba(11,11,12,0.55);
             --img-filter: saturate(0.9) brightness(0.9); --grain-op:0.5; --grain-blend:overlay;
         }
         html.light {
             --bg:#F4F2ED; --surface:#FFFFFF; --surface2:#EDEAE3; --ink:#17140F; --muted:#6B655C;
-            --line: rgba(23,20,15,0.12); --grid: rgba(23,20,15,0.045);
+            --line: rgba(23,20,15,0.12); --wash: rgba(23,20,15,0.05); --wash-accent: rgba(252,0,84,0.04);
             --nav-bg: rgba(244,242,237,0.78); --ring-border: rgba(23,20,15,0.45);
             --media-scrim: rgba(244,242,237,0.35);
             --img-filter: saturate(1) brightness(1); --grain-op:0.22; --grain-blend:multiply;
@@ -54,14 +54,13 @@
         ::selection { background: #fc0054; color: #fff; }
 
         #canvas-container { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
-        #blueprint {
+        /* Ambient lighting — a soft wash from above, not a tiled grid. Reads as the room
+           the page sits in; the particle field carries the texture. */
+        #ambient {
             position: fixed; inset: 0; z-index: 0; pointer-events: none;
-            background-image:
-                linear-gradient(to right, var(--grid) 1px, transparent 1px),
-                linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-            background-size: 80px 80px;
-            mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 25%, transparent 80%);
-            -webkit-mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 25%, transparent 80%);
+            background:
+                radial-gradient(ellipse 120% 62% at 50% -12%, var(--wash) 0%, transparent 66%),
+                radial-gradient(ellipse 62% 46% at 88% 6%,  var(--wash-accent) 0%, transparent 70%);
         }
         #grain {
             position: fixed; inset: -50%; z-index: 1; pointer-events: none;
@@ -106,6 +105,10 @@
         /* Typography */
         .display{font-weight:700;letter-spacing:-0.04em;line-height:0.94;text-wrap:balance;}
         .h-section{font-weight:700;letter-spacing:-0.03em;line-height:1;text-wrap:balance;}
+        /* Type scale — 11 / 14 / 18 / 23px, each step ~1.27x. Tailwind's t-micro (12px)
+           and t-h3 (20px) sat too close to their neighbours, so those two map here. */
+        .t-micro{font-size:11px;line-height:1.45;}
+        .t-h3{font-size:23px;line-height:1.25;}
         .kicker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:var(--muted);}
         .lead{max-width:64ch;}
 
@@ -125,10 +128,10 @@
 
         /* Numbered list */
         .goal{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:baseline;padding:1.6rem 0;border-top:1px solid var(--line);}
-        .goal .n{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:.9rem;}
+        .goal .n{font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:0.875rem;}
 
         /* Before/after table */
-        .ba{width:100%;border-collapse:collapse;font-size:0.95rem;}
+        .ba{width:100%;border-collapse:collapse;font-size:0.875rem;}
         .ba th,.ba td{text-align:left;padding:1rem 1.1rem;border-bottom:1px solid var(--line);vertical-align:top;}
         .ba thead th{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:500;}
         .ba td:first-child{font-weight:600;}
@@ -175,7 +178,7 @@
     </script>
 
     <a href="#problem" class="skip"><span class="lang-en">Skip to content</span><span class="lang-es">Saltar al contenido</span></a>
-    <div id="blueprint" aria-hidden="true"></div>
+    <div id="ambient" aria-hidden="true"></div>
     <div id="canvas-container" aria-hidden="true"></div>
     <div id="grain" aria-hidden="true"></div>
     <div class="cursor-ring" aria-hidden="true"></div>
@@ -192,10 +195,10 @@
                     <svg class="icon-moon w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                     <svg class="icon-sun w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                 </button>
-                <button onclick="toggleLang()" class="lang-btn text-xs tracking-widest" aria-label="Switch language / Cambiar idioma">
+                <button onclick="toggleLang()" class="lang-btn t-micro tracking-widest" aria-label="Switch language / Cambiar idioma">
                     <span id="l-en" class="on">EN</span><span class="mx-1 opacity-40">/</span><span id="l-es">ES</span>
                 </button>
-                <a href="rubios-tire-shop/" target="_blank" rel="noopener" class="btn btn-ghost text-xs uppercase tracking-widest !px-4 sm:!px-5 !py-2.5 whitespace-nowrap" data-cursor="link">
+                <a href="rubios-tire-shop/" target="_blank" rel="noopener" class="btn btn-ghost t-micro uppercase tracking-widest !px-4 sm:!px-5 !py-2.5 whitespace-nowrap" data-cursor="link">
                     <span class="lang-en">Live site <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span><span class="lang-es">Sitio <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
                 </a>
             </div>
@@ -216,10 +219,10 @@
                     <span class="lang-es">Una llantera familiar en Lynwood con 48 reseñas de cinco estrellas y casi sin presencia en línea. El único trabajo del sitio: convertir la búsqueda de un conductor estresado en una llamada, una visita o una ruta en Maps, en unos diez segundos.</span>
                 </p>
                 <dl class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t hairline pt-8 font-mono text-sm">
-                    <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Role</span><span class="lang-es">Rol</span></dt><dd class="mt-1 font-medium"><span class="lang-en">Design &amp; build</span><span class="lang-es">Diseño y desarrollo</span></dd></div>
-                    <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Location</span><span class="lang-es">Ubicación</span></dt><dd class="mt-1 font-medium">Lynwood, CA</dd></div>
-                    <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Timeline</span><span class="lang-es">Tiempo</span></dt><dd class="mt-1 font-medium"><span class="lang-en">~1 week</span><span class="lang-es">~1 semana</span></dd></div>
-                    <div><dt class="text-muted text-xs uppercase tracking-widest">Stack</dt><dd class="mt-1 font-medium"><span class="lang-en">1 file · vanilla JS</span><span class="lang-es">1 archivo · JS puro</span></dd></div>
+                    <div><dt class="text-muted t-micro uppercase tracking-widest"><span class="lang-en">Role</span><span class="lang-es">Rol</span></dt><dd class="mt-1 font-medium"><span class="lang-en">Design &amp; build</span><span class="lang-es">Diseño y desarrollo</span></dd></div>
+                    <div><dt class="text-muted t-micro uppercase tracking-widest"><span class="lang-en">Location</span><span class="lang-es">Ubicación</span></dt><dd class="mt-1 font-medium">Lynwood, CA</dd></div>
+                    <div><dt class="text-muted t-micro uppercase tracking-widest"><span class="lang-en">Timeline</span><span class="lang-es">Tiempo</span></dt><dd class="mt-1 font-medium"><span class="lang-en">~1 week</span><span class="lang-es">~1 semana</span></dd></div>
+                    <div><dt class="text-muted t-micro uppercase tracking-widest">Stack</dt><dd class="mt-1 font-medium"><span class="lang-en">1 file · vanilla JS</span><span class="lang-es">1 archivo · JS puro</span></dd></div>
                 </dl>
             </div>
 
@@ -248,21 +251,21 @@
             <div class="lg:col-span-4 depth"><span class="kicker"><span class="lang-en">Research</span><span class="lang-es">Investigación</span></span></div>
             <div class="lg:col-span-8 rise grid sm:grid-cols-1 gap-8">
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Audience</span><span class="lang-es">Público</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Audience</span><span class="lang-es">Público</span></h3>
                     <p class="text-muted mt-2 leading-relaxed max-w-2xl">
                         <span class="lang-en">Mobile-first and high-intent, often bilingual. Lynwood is ~87% Latino. The searches are urgent: <span class="text-ink">"flat tire near me," "used tires Lynwood," "llantera."</span></span>
                         <span class="lang-es">Prioridad móvil y alta intención, a menudo bilingüe. Lynwood es ~87% latino. Las búsquedas son urgentes: <span class="text-ink">«llanta ponchada cerca de mí», «llantas usadas Lynwood», «llantera».</span></span>
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Emotional state</span><span class="lang-es">Estado emocional</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Emotional state</span><span class="lang-es">Estado emocional</span></h3>
                     <p class="text-muted mt-2 leading-relaxed max-w-2xl">
                         <span class="lang-en">Stressed, unfamiliar with the shop, deciding in roughly ten seconds. The site has to earn trust before it asks for anything.</span>
                         <span class="lang-es">Estresado, sin conocer el taller, decidiendo en unos diez segundos. El sitio debe ganarse la confianza antes de pedir nada.</span>
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Competitive edge</span><span class="lang-es">Ventaja</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Competitive edge</span><span class="lang-es">Ventaja</span></h3>
                     <p class="text-muted mt-2 leading-relaxed max-w-2xl">
                         <span class="lang-en">The reviews and the family/neighborhood story: the proof that a stranger can trust this shop over a faceless chain.</span>
                         <span class="lang-es">Las reseñas y la historia familiar y de barrio: la prueba de que un desconocido puede confiar en este taller antes que en una cadena sin rostro.</span>
@@ -288,19 +291,19 @@
             <div class="depth mb-14"><span class="kicker"><span class="lang-en">Design decisions</span><span class="lang-es">Decisiones de diseño</span></span><h2 class="h-section text-[clamp(2rem,4.5vw,3.4rem)] mt-4 max-w-[18ch]"><span class="lang-en">Make it feel like the shop, never corporate.</span><span class="lang-es">Que se sienta como el taller, nunca corporativo.</span></h2></div>
             <div class="rise grid md:grid-cols-2 gap-x-14 gap-y-12">
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Kept the shop's identity</span><span class="lang-es">Mantener la identidad del taller</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Kept the shop's identity</span><span class="lang-es">Mantener la identidad del taller</span></h3>
                     <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">Blue + crayon-yellow palette, a hand-painted "price board," condensed Oswald headlines, and real photography pulled from the shop's own Google and Yelp pages.</span><span class="lang-es">Paleta azul y amarillo crayón, un "tablero de precios" pintado a mano, titulares Oswald condensados y fotos reales de las páginas de Google y Yelp del taller.</span></p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Trust before everything</span><span class="lang-es">Confianza ante todo</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Trust before everything</span><span class="lang-es">Confianza ante todo</span></h3>
                     <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">★︎★︎★︎★︎★︎ and "trusted by local drivers" in the hero, an icon trust-strip right after, then Google/Yelp review cards moved near the top.</span><span class="lang-es">★︎★︎★︎★︎★︎ y "la confianza de los conductores locales" en el hero, una tira de íconos de confianza enseguida, y tarjetas de reseñas de Google/Yelp subidas casi hasta arriba.</span></p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Conversion everywhere</span><span class="lang-es">Conversión en todas partes</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Conversion everywhere</span><span class="lang-es">Conversión en todas partes</span></h3>
                     <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">Hero Call / Directions buttons, a persistent header call button, a repeated closing CTA, and a sticky mobile bar with live Open/Closed status. Contact is never more than a thumb-tap away.</span><span class="lang-es">Botones de Llamar / Cómo llegar en el hero, un botón de llamada fijo en el encabezado, un CTA de cierre repetido y una barra móvil fija con estado Abierto/Cerrado en vivo. El contacto nunca está a más de un toque.</span></p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold"><span class="lang-en">Reduced friction</span><span class="lang-es">Menos fricción</span></h3>
+                    <h3 class="t-h3 font-semibold"><span class="lang-en">Reduced friction</span><span class="lang-es">Menos fricción</span></h3>
                     <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">Honest "no upsell" pricing, free inspection, and no-appointment messaging repeated at every decision point.</span><span class="lang-es">Precios honestos sin "ventas adicionales", inspección gratis y el mensaje de "sin cita" repetido en cada punto de decisión.</span></p>
                 </div>
             </div>
@@ -419,7 +422,7 @@
     </main>
 
     <footer class="relative z-10 border-t hairline py-14">
-        <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-xs text-muted">
+        <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono t-micro text-muted">
             <p><span class="lang-en">Rubio's Tire Shop · Case study · Eduardo</span><span class="lang-es">Rubio's Tire Shop · Caso · Eduardo</span></p>
             <p class="flex items-center gap-4">
                 <a href="mailto:eddjack30@gmail.com" class="hover:text-ink transition-colors" data-cursor="link">eddjack30@gmail.com</a>
