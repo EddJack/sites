@@ -311,6 +311,18 @@
         .panel-dot { opacity: 0.4; }
         .panel-cta { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.3rem; font-weight: 600; color: #fff; width: fit-content; transition: gap 0.3s var(--ease), color 0.3s ease; }
         .panel-cta:hover { color: #fc0054; gap: 0.85rem; }
+        /* Two destinations per panel: the live site first, the write-up second, so nobody
+           has to open a case study just to look at the website. */
+        .panel-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.4rem; margin-top: 1.3rem; }
+        .panel-ctas .panel-cta { margin-top: 0; }
+        .panel-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.72rem 1.2rem; border-radius: 9999px;
+            background: #F3EFE9; color: #0B0B0C; font-weight: 700; font-size: 0.92rem;
+            white-space: nowrap;
+            transition: background 0.3s var(--ease), color 0.3s var(--ease), transform 0.25s var(--ease);
+        }
+        .panel-btn:hover, .panel-btn:focus-visible { background: #fc0054; color: #fff; transform: translateY(-2px); }
         
         /* coming-soon slots: no photo, honest placeholder */
         .panel.is-soon { background:
@@ -520,7 +532,10 @@
                             <p class="panel-copy"><b><span class="lang-en">The problem.</span><span class="lang-es">El problema.</span></b> <span class="lang-en">A perfect 5.0 rating &mdash; and nowhere online to find them.</span><span class="lang-es">Calificaci&oacute;n perfecta de 5.0 &mdash; y sin presencia en l&iacute;nea.</span></p>
                             <p class="panel-copy"><b><span class="lang-en">The build.</span><span class="lang-es">La soluci&oacute;n.</span></b> <span class="lang-en">A bilingual one-page site with tap-to-call and live directions.</span><span class="lang-es">Un sitio biling&uuml;e con llamada directa e indicaciones en vivo.</span></p>
                             <div class="panel-result"><span><b>&#9733; 5.0</b> <span class="lang-en">on Google</span><span class="lang-es">en Google</span></span><span class="panel-dot">&middot;</span><span><b><span class="lang-en">Live in 1 week</span><span class="lang-es">En l&iacute;nea en 1 semana</span></b></span></div>
-                            <a href="rubios-case-study.html" class="panel-cta" data-cursor="link"><span class="lang-en">Read the case study</span><span class="lang-es">Ver el caso completo</span> <span aria-hidden="true">&rarr;</span></a>
+                            <div class="panel-ctas">
+                                <a href="rubios-tire-shop/" target="_blank" rel="noopener" class="panel-btn" data-cursor="link"><span class="lang-en">See the website</span><span class="lang-es">Ver el sitio</span> <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+                                <a href="rubios-case-study.html" class="panel-cta" data-cursor="link"><span class="lang-en">Read the case study</span><span class="lang-es">Ver el caso completo</span> <span aria-hidden="true">&rarr;</span></a>
+                            </div>
                         </div>
                     </article>
 
@@ -532,7 +547,10 @@
                             <p class="panel-copy"><b><span class="lang-en">The problem.</span><span class="lang-es">El problema.</span></b> <span class="lang-en">189 five-star reviews, and the website on their Yelp had been taken over by a domain squatter.</span><span class="lang-es">189 rese&ntilde;as de cinco estrellas, y la p&aacute;gina en su Yelp la hab&iacute;a tomado un revendedor de dominios.</span></p>
                             <p class="panel-copy"><b><span class="lang-en">The build.</span><span class="lang-es">La soluci&oacute;n.</span></b> <span class="lang-en">A bilingual site around their 5-year warranty, with the before-and-after work up front.</span><span class="lang-es">Un sitio biling&uuml;e sobre su garant&iacute;a de 5 a&ntilde;os, con el antes y despu&eacute;s por delante.</span></p>
                             <div class="panel-result"><span><b>&#9733;&#xFE0E; 4.9</b> <span class="lang-en">Google</span><span class="lang-es">Google</span></span><span class="panel-dot">&middot;</span><span><b>&#9733;&#xFE0E; 5.0</b> Yelp</span><span class="panel-dot">&middot;</span><span><b>189 <span class="lang-en">reviews</span><span class="lang-es">rese&ntilde;as</span></b></span></div>
-                            <a href="gg-case-study.html" class="panel-cta" data-cursor="link"><span class="lang-en">Read the case study</span><span class="lang-es">Ver el caso completo</span> <span aria-hidden="true">&rarr;</span></a>
+                            <div class="panel-ctas">
+                                <a href="gg-auto-body/" target="_blank" rel="noopener" class="panel-btn" data-cursor="link"><span class="lang-en">See the website</span><span class="lang-es">Ver el sitio</span> <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+                                <a href="gg-case-study.html" class="panel-cta" data-cursor="link"><span class="lang-en">Read the case study</span><span class="lang-es">Ver el caso completo</span> <span aria-hidden="true">&rarr;</span></a>
+                            </div>
                         </div>
                     </article>
 
@@ -778,21 +796,30 @@
                 x.setAttribute('aria-expanded', on ? 'true' : 'false');
                 if (on) tickPanel(x);
             });
+            // Touch taps synthesise a mouseenter *before* click, which would open the panel and
+            // then let the same tap navigate. Only wire hover-to-open on real hover pointers.
+            const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
             panels.forEach(p => {
                 const title = (p.querySelector('.panel-vtitle') || {}).textContent || 'Case study';
                 // Placeholders (no destination) become focusable disclosures.
-                // Rubio's stays reachable via its inner CTA link (no nested interactives).
+                // Real entries stay reachable via their inner CTA links (no nested interactives).
                 if (!p.dataset.href) {
                     p.setAttribute('tabindex', '0');
                     p.setAttribute('role', 'button');
                     p.setAttribute('aria-label', title);
                 }
                 p.setAttribute('aria-expanded', p.classList.contains('is-open') ? 'true' : 'false');
-                p.addEventListener('mouseenter', () => open(p));
+                if (canHover) p.addEventListener('mouseenter', () => open(p));
                 p.addEventListener('focusin', () => open(p));
+                // Capture open-state before the press, so a tap that opens the panel can never
+                // also navigate, whatever synthetic events fire in between.
+                let openAtPress = false;
+                p.addEventListener('pointerdown', () => {
+                    openAtPress = p.classList.contains('is-open');
+                }, { passive: true });
                 p.addEventListener('click', e => {
                     if (e.target.closest('a')) return;                 // inner CTA navigates itself
-                    if (!p.classList.contains('is-open')) { locked = p; open(p); return; }  // first tap expands (mobile)
+                    if (!openAtPress) { locked = p; open(p); return; } // first tap only expands
                     if (p.dataset.href) window.location.href = p.dataset.href;             // tap again navigates
                 });
                 p.addEventListener('keydown', e => {
@@ -803,7 +830,7 @@
                     }
                 });
                 });
-            acc.addEventListener('mouseleave', () => open(locked));
+            if (canHover) acc.addEventListener('mouseleave', () => open(locked));
             // Tick the default-open panel's metrics when the carousel scrolls into view
             new IntersectionObserver((es) => es.forEach(e => {
                 if (e.isIntersecting) panels.forEach(p => { if (p.classList.contains('is-open')) tickPanel(p); });
