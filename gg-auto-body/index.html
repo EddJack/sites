@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>G&amp;G Auto Body Shop — Collision Repair in Lynwood, CA</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Collision repair specialist in Lynwood, CA. 5-year warranty on labor and paint, free estimates, insurance work handled. Family owned. 4.9 on Google, 5.0 on Yelp.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0A0C; --panel:#131317; --panel-2:#1A1A20;
+  --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.06);
+  --red:#E11D2A; --red-lo:#9E0F19; --red-hi:#FF4A55;
+  --chrome-1:#F2F3F5; --chrome-2:#A8ACB4;
+  --amber:#F0A83C;
+  --text:#EDEDF0; --muted:#9A9AA6;
+  --display:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --pad:clamp(20px,5vw,80px);
+  --maxw:1280px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:var(--text);
+  font-family:var(--body);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);margin:0;line-height:1.02;letter-spacing:-.025em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.lang-es,body[data-lang="es"] .lang-en{display:none}
+body[data-lang="es"] .lang-es{display:revert}
+
+/* ---------- demo banner ---------- */
+.demo{
+  position:relative;z-index:60;background:linear-gradient(90deg,var(--red-lo),var(--red));
+  color:#fff;font-family:var(--display);font-weight:700;font-size:13px;
+  letter-spacing:.08em;text-transform:uppercase;text-align:center;
+  padding:9px 16px;line-height:1.4;
+}
+.demo b{font-weight:900}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:12px;z-index:50;margin:12px auto 0;
+  width:min(var(--maxw), calc(100% - 2 * var(--pad)));
+  display:flex;align-items:center;gap:14px;
+  padding:9px 9px 9px 22px;border-radius:100px;
+  background:rgba(14,14,17,.72);backdrop-filter:blur(18px) saturate(1.5);
+  -webkit-backdrop-filter:blur(18px) saturate(1.5);
+  border:1px solid var(--line);box-shadow:0 12px 40px rgba(0,0,0,.5);
+}
+/* Scroll progress traces the pill's outline. The SVG is sized in real pixels to the
+   nav's border box (see sizeRing) so the capsule corners match the CSS radius exactly —
+   a scaled viewBox would turn them into ellipses. */
+.nav-ring{position:absolute;top:-1px;left:-1px;pointer-events:none;overflow:visible;z-index:3}
+.nav-ring rect{
+  fill:none;stroke:url(#navGrad);stroke-width:2;stroke-linecap:round;
+  stroke-dasharray:1;stroke-dashoffset:1;
+}
+.brand{font-family:var(--display);font-weight:900;font-style:italic;font-size:21px;
+  letter-spacing:-.02em;white-space:nowrap;text-decoration:none}
+.brand span{color:var(--red)}
+.nav-links{display:flex;gap:clamp(22px,3.2vw,46px);margin-inline:auto;font-size:14.5px;font-weight:500}
+.nav-links a{text-decoration:none;color:var(--muted);transition:color .25s var(--ease);white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+/* nav-links' auto side margins centre it and push nav-tools flush right.
+   When the links are hidden (mobile) nav-tools takes over the auto margin. */
+.nav-tools{display:flex;align-items:center;gap:8px}
+.lang{
+  display:flex;border:1px solid var(--line);border-radius:100px;overflow:hidden;
+  font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.06em;
+}
+.lang button{
+  appearance:none;border:0;background:transparent;color:var(--muted);
+  padding:7px 12px;cursor:pointer;font:inherit;transition:.25s var(--ease);
+}
+.lang button[aria-pressed="true"]{background:var(--red);color:#fff}
+
+/* ---------- mobile section menu ---------- */
+.nav-burger{
+  display:none;appearance:none;padding:0;cursor:pointer;
+  width:44px;height:44px;border-radius:100px;
+  align-items:center;justify-content:center;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);
+  transition:background .25s var(--ease),border-color .25s var(--ease);
+}
+.nav-burger:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28)}
+.nav-burger svg{width:20px;height:20px}
+.nav-burger line{
+  stroke:currentColor;stroke-width:2;stroke-linecap:round;
+  transform-box:fill-box;transform-origin:center;
+  transition:transform .38s var(--ease),opacity .18s var(--ease);
+}
+body.nav-open .nav-burger{background:var(--red);border-color:var(--red);color:#fff}
+body.nav-open .nav-burger .l1{transform:translateY(6px) rotate(45deg)}
+body.nav-open .nav-burger .l2{opacity:0;transform:scaleX(.4)}
+body.nav-open .nav-burger .l3{transform:translateY(-6px) rotate(-45deg)}
+
+.nav-sheet{
+  display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;
+  padding:10px;border-radius:26px;
+  /* nearly solid: the nav's own backdrop-filter makes it a backdrop root, so a
+     translucent sheet composites lighter than its alpha suggests and the hero bled through */
+  background:linear-gradient(180deg,#141419 0%,#0D0D10 100%);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border:1px solid var(--line);box-shadow:0 26px 70px rgba(0,0,0,.72);
+  opacity:0;transform:translateY(-12px) scale(.98);transform-origin:top center;
+  pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);
+}
+body.nav-open .nav-sheet{opacity:1;transform:none;pointer-events:auto}
+.nav-sheet a{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:15px 18px;border-radius:18px;text-decoration:none;color:var(--text);
+  font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;
+  transition:background .2s var(--ease);
+}
+.nav-sheet a:active,.nav-sheet a:hover{background:rgba(255,255,255,.06)}
+.nav-sheet a svg{width:15px;height:15px;flex:none;opacity:.38;
+  stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.nav-sheet hr{border:0;border-top:1px solid var(--line-2);margin:8px 14px}
+.nav-sheet .sheet-call{color:var(--red-hi)}
+.nav-sheet .sheet-call svg{opacity:1;stroke:var(--red-hi)}
+
+.nav-scrim{
+  position:fixed;inset:0;z-index:48;background:rgba(6,6,8,.62);
+  opacity:0;pointer-events:none;transition:opacity .3s var(--ease);
+}
+body.nav-open .nav-scrim{opacity:1;pointer-events:auto}
+body.nav-open .mobile-bar{opacity:0;pointer-events:none}
+.mobile-bar{transition:opacity .25s var(--ease)}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:.01em;
+  padding:12px 22px;border-radius:100px;border:1px solid transparent;
+  transition:transform .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease);
+  white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-hi)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.07)}
+.btn svg{width:17px;height:17px;flex:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:clamp(600px,92svh,940px);display:flex;align-items:flex-end;
+  margin-top:-72px;padding-top:72px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:52% 60%}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(10,10,12,.86) 0%,rgba(10,10,12,.30) 34%,rgba(10,10,12,.58) 66%,var(--ink) 99%),
+    linear-gradient(90deg,rgba(10,10,12,.80) 0%,rgba(10,10,12,.18) 62%);
+}
+.hero-in{position:relative;z-index:1;width:100%;padding-block:clamp(44px,7vw,88px)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;font-family:var(--display);
+  font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--chrome-2);margin-bottom:22px;
+}
+.eyebrow::before{content:'';width:34px;height:2px;background:var(--red)}
+h1{font-size:clamp(44px,8.2vw,104px);font-weight:900;max-width:15ch}
+h1 em{font-style:italic;color:var(--red);font-weight:900}
+.hero p.lede{
+  font-size:clamp(17px,2vw,21px);color:#D3D4D9;max-width:52ch;
+  margin:26px 0 0;line-height:1.55;
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero-cta .btn{padding:15px 28px;font-size:15.5px}
+
+/* ---------- trust strip ---------- */
+.trust{border-block:1px solid var(--line-2);background:var(--panel)}
+.trust-in{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line-2)}
+.trust-item{background:var(--panel);padding:26px 20px;text-align:center}
+.trust-n{font-family:var(--display);font-weight:900;font-size:clamp(24px,2.6vw,34px);
+  letter-spacing:-.03em;display:flex;align-items:center;justify-content:center;gap:6px}
+.trust-n .star{color:var(--amber);font-size:.72em}
+.trust-l{font-size:12.5px;color:var(--muted);margin-top:5px;letter-spacing:.05em;
+  text-transform:uppercase;font-weight:600}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(72px,10vw,140px)}
+.sec-head{max-width:60ch;margin-bottom:clamp(38px,5vw,64px)}
+.sec-head h2{font-size:clamp(32px,5vw,60px);font-weight:800}
+.sec-head p{color:var(--muted);font-size:18px;margin:18px 0 0;max-width:54ch}
+.kicker{font-family:var(--display);font-weight:700;font-size:12.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--red);margin-bottom:16px;display:block}
+
+/* thesis */
+.thesis{background:var(--panel);border-block:1px solid var(--line-2)}
+.thesis-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,72px);align-items:center}
+blockquote{margin:0;font-family:var(--display);font-weight:600;
+  font-size:clamp(23px,3.1vw,38px);line-height:1.24;letter-spacing:-.02em}
+blockquote .hl{color:var(--red)}
+.cite{margin-top:26px;font-size:14.5px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.cite b{color:var(--text);font-weight:600}
+.thesis figure{margin:0}
+.thesis img{border-radius:14px;border:1px solid var(--line)}
+
+/* work: damage in / driven out */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
+.split h3{font-size:clamp(20px,2.4vw,28px);font-weight:800;margin-bottom:6px}
+.split .sub{color:var(--muted);font-size:14.5px;margin-bottom:22px}
+.stack{display:grid;gap:12px}
+.stack img{border-radius:12px;border:1px solid var(--line);aspect-ratio:4/3;object-fit:cover;width:100%}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;
+  font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;padding:5px 11px;
+  border-radius:100px;margin-bottom:14px}
+.tag-in{background:rgba(225,29,42,.14);color:var(--red-hi);border:1px solid rgba(225,29,42,.3)}
+.tag-out{background:rgba(240,168,60,.13);color:var(--amber);border:1px solid rgba(240,168,60,.28)}
+
+/* restoration feature */
+.resto{margin-top:clamp(48px,6vw,88px);display:grid;grid-template-columns:.9fr 1.1fr;
+  gap:clamp(28px,4vw,56px);align-items:center;
+  background:var(--panel);border:1px solid var(--line);border-radius:18px;
+  padding:clamp(24px,3.4vw,44px)}
+.resto img{border-radius:12px;border:1px solid var(--line)}
+.resto h3{font-size:clamp(24px,3vw,38px);font-weight:800;margin-bottom:16px}
+.resto p{color:var(--muted);margin:0}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.svc-card{
+  position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  background:var(--panel);min-height:230px;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:22px;isolation:isolate;
+  transition:border-color .3s var(--ease),transform .3s var(--ease);
+}
+.svc-card:hover{border-color:rgba(225,29,42,.5);transform:translateY(-4px)}
+.svc-card img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;
+  opacity:.62;transition:opacity .4s var(--ease),transform .6s var(--ease)}
+.svc-card:hover img{opacity:.78;transform:scale(1.05)}
+.svc-card::after{content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(10,10,12,.05) 0%,rgba(10,10,12,.45) 45%,rgba(10,10,12,.93) 100%)}
+.svc-card h3{font-size:19px;font-weight:800}
+.svc-card p{font-size:14px;color:var(--muted);margin:7px 0 0;line-height:1.5}
+
+/* why */
+.why{background:var(--panel);border-block:1px solid var(--line-2)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);
+  border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
+.why-item{background:var(--panel-2);padding:clamp(26px,3vw,38px)}
+.why-ico{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+  background:rgba(225,29,42,.13);border:1px solid rgba(225,29,42,.26);margin-bottom:18px}
+.why-ico svg{width:21px;height:21px;stroke:var(--red-hi);fill:none;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.why-item h3{font-size:18.5px;font-weight:800;margin-bottom:9px}
+.why-item p{font-size:15px;color:var(--muted);margin:0;line-height:1.6}
+
+/* gallery */
+.gal{columns:4;column-gap:12px}
+.gal img{width:100%;margin-bottom:12px;border-radius:12px;border:1px solid var(--line);
+  break-inside:avoid;transition:transform .4s var(--ease)}
+.gal img:hover{transform:scale(1.02)}
+
+/* reviews */
+.rev{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column}
+.stars{color:var(--amber);font-size:15px;letter-spacing:3px;margin-bottom:16px}
+.rev-card p{margin:0 0 22px;font-size:15.5px;line-height:1.62;color:#D8D9DE;flex:1}
+.rev-who{display:flex;align-items:center;gap:12px;font-size:14px;padding-top:18px;
+  border-top:1px solid var(--line-2)}
+.avatar{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-family:var(--display);font-weight:800;font-size:14px;color:#fff;
+  background:linear-gradient(140deg,var(--red),var(--red-lo))}
+.rev-who b{display:block;font-weight:600}
+.rev-who span{color:var(--muted);font-size:12.5px}
+.src{margin-left:auto;font-family:var(--display);font-weight:700;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:100px;padding:4px 10px}
+
+/* visit */
+.visit{background:var(--panel);border-block:1px solid var(--line-2)}
+.visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,56px)}
+.info-row{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-2)}
+.info-row:last-child{border-bottom:0}
+.info-ico{width:20px;height:20px;flex:none;margin-top:3px;stroke:var(--red);fill:none;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.info-row h4{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.info-row div p{margin:0;font-size:16px}
+.info-row a{color:var(--text);text-decoration:none;border-bottom:1px solid rgba(225,29,42,.5);
+  padding-bottom:1px}
+.hours{width:100%;border-collapse:collapse;font-size:15px;margin-top:4px}
+.hours td{padding:5px 0}
+.hours td:last-child{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.hours tr.today td{color:var(--red-hi);font-weight:600}
+.map{border-radius:16px;overflow:hidden;border:1px solid var(--line);min-height:420px;height:100%}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:grayscale(.25) contrast(1.05)}
+
+/* review CTA */
+.cta-rev{text-align:center}
+.cta-rev h2{font-size:clamp(30px,4.6vw,54px);font-weight:800;max-width:20ch;margin-inline:auto}
+.cta-rev p{color:var(--muted);max-width:50ch;margin:20px auto 0;font-size:17.5px}
+.cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
+
+/* footer */
+footer{border-top:1px solid var(--line-2);padding-block:44px;font-size:14px;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:var(--text)}
+.foot-note{font-size:12.5px;opacity:.72;margin-top:18px;max-width:70ch}
+
+/* sticky mobile bar */
+.mobile-bar{display:none}
+
+/* reveal */
+.rise{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rise.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .svc{grid-template-columns:repeat(2,1fr)}
+  .gal{columns:3}
+  .rev{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-in{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:860px){
+  .nav-links{display:none}
+  .nav-tools{margin-left:auto}
+  /* the pill's Call button is redundant with the fixed bottom bar — swap it for the menu */
+  .nav-tools > .btn-red{display:none}
+  .nav-burger{display:inline-flex}
+  .nav-sheet{display:block}
+  .thesis-grid,.resto,.visit-grid,.split{grid-template-columns:1fr}
+  .resto{gap:26px}
+  .gal{columns:2}
+  .rev{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .trust-in{grid-template-columns:repeat(2,1fr)}
+  .hero{min-height:88svh}
+  body{padding-bottom:76px}
+  .mobile-bar{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;
+    position:fixed;left:0;right:0;bottom:0;z-index:55;
+    padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(10,10,12,.86);backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);
+  }
+  .mobile-bar .btn{justify-content:center;padding:14px 12px;font-size:14.5px}
+}
+@media (max-width:480px){
+  .trust-in{grid-template-columns:1fr 1fr}
+  .hero-cta .btn{flex:1;justify-content:center}
+  .eyebrow{font-size:11px;letter-spacing:.11em;margin-bottom:16px}
+  .hero-bg img{object-position:58% 66%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  .rise{opacity:1;transform:none}
+}
+</style>
+</head>
+<body data-lang="en">
+
+<div class="demo">
+  <span class="lang-en"><b>Demo preview</b> — a sample site built for G&amp;G Auto Body Shop.</span>
+  <span class="lang-es"><b>Vista de demostración</b> — sitio de muestra hecho para G&amp;G Auto Body Shop.</span>
+</div>
+
+<nav class="nav">
+  <svg class="nav-ring" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="navGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#E11D2A"/>
+        <stop offset=".55" stop-color="#FF4A55"/>
+        <stop offset="1" stop-color="#F0A83C"/>
+      </linearGradient>
+    </defs>
+    <rect pathLength="1"/>
+  </svg>
+  <a class="brand" href="#top">G<span>&amp;</span>G</a>
+  <div class="nav-links">
+    <a href="#work"><span class="lang-en">Our Work</span><span class="lang-es">Trabajo</span></a>
+    <a href="#services"><span class="lang-en">Services</span><span class="lang-es">Servicios</span></a>
+    <a href="#why"><span class="lang-en">Why G&amp;G</span><span class="lang-es">Por Qué</span></a>
+    <a href="#reviews"><span class="lang-en">Reviews</span><span class="lang-es">Reseñas</span></a>
+    <a href="#visit"><span class="lang-en">Visit</span><span class="lang-es">Visítenos</span></a>
+  </div>
+  <div class="nav-tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+    <a class="btn btn-red" href="tel:+13106324711">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="lang-en">Call</span><span class="lang-es">Llamar</span>
+    </a>
+    <button type="button" class="nav-burger" id="navBurger"
+            aria-expanded="false" aria-controls="navSheet"
+            aria-label="Menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <line class="l1" x1="4" y1="7"  x2="20" y2="7"/>
+        <line class="l2" x1="4" y1="13" x2="20" y2="13"/>
+        <line class="l3" x1="4" y1="19" x2="20" y2="19"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="nav-sheet" id="navSheet">
+    <a href="#work"><span class="lang-en">Our Work</span><span class="lang-es">Nuestro Trabajo</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+    <a href="#services"><span class="lang-en">Services</span><span class="lang-es">Servicios</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+    <a href="#why"><span class="lang-en">Why G&amp;G</span><span class="lang-es">Por Qu&eacute; G&amp;G</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+    <a href="#reviews"><span class="lang-en">Reviews</span><span class="lang-es">Rese&ntilde;as</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+    <a href="#visit"><span class="lang-en">Visit</span><span class="lang-es">Vis&iacute;tenos</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+    <hr>
+    <a class="sheet-call" href="tel:+13106324711">(310) 632-4711
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  </div>
+</nav>
+<div class="nav-scrim" id="navScrim" hidden></div>
+
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <img src="img/hero-shop.jpg" alt="The G&amp;G Auto Body Shop building on Alameda Street in Lynwood, with a red Dodge Challenger parked outside the open bay door." fetchpriority="high">
+  </div>
+  <div class="hero-in wrap">
+    <span class="eyebrow"><span class="lang-en">Lynwood, California · Collision Repair Specialist</span><span class="lang-es">Lynwood, California · Especialistas en Colisiones</span></span>
+    <h1>
+      <span class="lang-en">The hard part<br>is <em>already over.</em></span>
+      <span class="lang-es">Lo difícil<br><em>ya pasó.</em></span>
+    </h1>
+    <p class="lede">
+      <span class="lang-en">Collision repair, paint and body work in Lynwood — backed by a <strong>5-year warranty on labor and paint</strong>. Free estimates. We work directly with your insurance.</span>
+      <span class="lang-es">Reparación de colisiones, pintura y hojalatería en Lynwood — con <strong>garantía de 5 años en mano de obra y pintura</strong>. Estimados gratis. Trabajamos con su aseguranza.</span>
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-red" href="tel:+13106324711">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="lang-en">(310) 632-4711</span><span class="lang-es">(310) 632-4711</span>
+      </a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=11104+Alameda+St+Lynwood+CA+90262" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="lang-en">Get Directions</span><span class="lang-es">Cómo Llegar</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap"><div class="trust-in">
+    <div class="trust-item">
+      <div class="trust-n"><span class="star">&#9733;&#xFE0E;</span>4.9</div>
+      <div class="trust-l"><span class="lang-en">156 Google reviews</span><span class="lang-es">156 reseñas Google</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-n"><span class="star">&#9733;&#xFE0E;</span>5.0</div>
+      <div class="trust-l"><span class="lang-en">33 Yelp reviews</span><span class="lang-es">33 reseñas Yelp</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-n">5<span style="font-size:.55em;font-weight:700">yr</span></div>
+      <div class="trust-l"><span class="lang-en">Warranty on labor &amp; paint</span><span class="lang-es">Garantía mano de obra y pintura</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-n">$0</div>
+      <div class="trust-l"><span class="lang-en">Estimates, always free</span><span class="lang-es">Estimados siempre gratis</span></div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-n"><span class="lang-en">Family</span><span class="lang-es">Familia</span></div>
+      <div class="trust-l"><span class="lang-en">Owned &amp; operated</span><span class="lang-es">Negocio familiar</span></div>
+    </div>
+  </div></div>
+</div>
+
+<section class="thesis">
+  <div class="wrap thesis-grid rise">
+    <div>
+      <span class="kicker"><span class="lang-en">Why people call us</span><span class="lang-es">Por qué nos llaman</span></span>
+      <blockquote>
+        <span class="lang-en">“There is so much stress that comes with a car accident. <span class="hl">The last thing you need to stress about is which body shop to take your car to.</span> Call G&amp;G, you won't be disappointed.”</span>
+        <span class="lang-es">“Un accidente trae muchísimo estrés. <span class="hl">Lo último que debería preocuparle es a qué taller llevar su carro.</span> Llame a G&amp;G, no se va a arrepentir.”</span>
+      </blockquote>
+      <div class="cite">
+        <b>Cynthia P.</b> · La Mirada, CA
+        <span style="opacity:.5">—</span>
+        <span class="lang-en">Yelp review</span><span class="lang-es">reseña de Yelp</span>
+      </div>
+    </div>
+    <figure>
+      <img src="img/sign.jpg" width="1000" height="750" loading="lazy"
+           alt="The hand-painted G&amp;G Auto Body Shop sign reading Free Estimate, Insurance Work, Estimado Gratis, Trabajo de Aseguranza, Collision Repair Specialist, Paint and Body Work.">
+    </figure>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="kicker"><span class="lang-en">The work</span><span class="lang-es">El trabajo</span></span>
+      <h2><span class="lang-en">Damage in.<br>Driven out.</span><span class="lang-es">Entra dañado.<br>Sale manejando.</span></h2>
+      <p>
+        <span class="lang-en">Every car below came through the bay on Alameda Street. Frame work, panel replacement, full repaints — and a paint match you can't find with your finger.</span>
+        <span class="lang-es">Cada carro aquí pasó por nuestro taller en la calle Alameda. Chasis, reemplazo de paneles, pintura completa — y un color que ni con el dedo encuentra la diferencia.</span>
+      </p>
+    </div>
+
+    <div class="split rise">
+      <div>
+        <span class="tag tag-in"><span class="lang-en">How they arrive</span><span class="lang-es">Como llegan</span></span>
+        <div class="stack">
+          <img src="img/wreck-corvette.jpg" width="1000" height="750" loading="lazy" alt="A wrecked red Corvette with rear-end damage being unloaded from a flatbed tow truck outside the shop.">
+          <img src="img/wreck-challenger.jpg" width="750" height="1000" loading="lazy" alt="A silver Dodge Challenger with a crushed front end and detached bumper.">
+          <img src="img/stripped-front.jpg" width="750" height="1000" loading="lazy" alt="A white car inside the shop with its front bumper, headlights and grille removed for repair.">
+          <img src="img/frame-mustang.jpg" width="1280" height="960" loading="lazy" alt="A stripped Mustang shell mounted on a frame straightening rack inside the shop.">
+        </div>
+      </div>
+      <div>
+        <span class="tag tag-out"><span class="lang-en">How they leave</span><span class="lang-es">Como salen</span></span>
+        <div class="stack">
+          <img src="img/charger-white.jpg" width="750" height="1000" loading="lazy" alt="A finished white Dodge Charger Widebody under the shop lights, paint gleaming.">
+          <img src="img/challenger-red.jpg" width="750" height="1000" loading="lazy" alt="A finished red Dodge Challenger inside the shop bay.">
+          <img src="img/taycan.jpg" width="750" height="1000" loading="lazy" alt="A white Porsche Taycan finished and parked outside the shop.">
+          <img src="img/corvette-red.jpg" width="960" height="1280" loading="lazy" alt="A bright red Corvette completed and parked in the shop bay.">
+        </div>
+      </div>
+    </div>
+
+    <div class="resto rise">
+      <figure style="margin:0">
+        <img src="img/nova-restoration.jpg" width="1200" height="1200" loading="lazy"
+             alt="Before and after photos of a Chevrolet Nova restoration: the faded, rusted original above, and the finished silver car below.">
+      </figure>
+      <div>
+        <span class="kicker"><span class="lang-en">Full restoration</span><span class="lang-es">Restauración completa</span></span>
+        <h3><span class="lang-en">Restoration work too.</span><span class="lang-es">También restauraciones.</span></h3>
+        <p>
+          <span class="lang-en">This Chevy Nova came in faded, dented and sitting on flat tires. It left on fresh silver paint. If you have a project sitting under a cover in the driveway, bring it by — we'll tell you honestly what it needs.</span>
+          <span class="lang-es">Este Chevy Nova llegó despintado, golpeado y con las llantas ponchadas. Salió con pintura plateada nueva. Si tiene un proyecto guardado bajo una lona, tráigalo — le decimos con honestidad qué necesita.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="kicker"><span class="lang-en">Services</span><span class="lang-es">Servicios</span></span>
+      <h2><span class="lang-en">What we do</span><span class="lang-es">Lo que hacemos</span></h2>
+    </div>
+    <div class="svc rise">
+      <article class="svc-card">
+        <img src="img/wreck-challenger2.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Collision Repair</span><span class="lang-es">Reparación de Colisiones</span></h3>
+        <p><span class="lang-en">From a tapped bumper to a car off a flatbed. Insurance or out of pocket.</span><span class="lang-es">Desde un golpe leve hasta un carro que llega en grúa. Con aseguranza o por su cuenta.</span></p>
+      </article>
+      <article class="svc-card">
+        <img src="img/paint-masked.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Paint &amp; Color Match</span><span class="lang-es">Pintura y Color</span></h3>
+        <p><span class="lang-en">Full repaints and spot work blended so the repair disappears.</span><span class="lang-es">Pintura completa o por partes, mezclada para que no se note la reparación.</span></p>
+      </article>
+      <article class="svc-card">
+        <img src="img/challenger-booth.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Dents &amp; Bumpers</span><span class="lang-es">Abolladuras y Defensas</span></h3>
+        <p><span class="lang-en">Dent removal, bumper repair and panel replacement.</span><span class="lang-es">Remoción de abolladuras, defensas y reemplazo de paneles.</span></p>
+      </article>
+      <article class="svc-card">
+        <img src="img/frame-mustang.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Frame &amp; Structural</span><span class="lang-es">Chasis y Estructura</span></h3>
+        <p><span class="lang-en">Straightening on the rack so the car tracks true again.</span><span class="lang-es">Enderezado en la rampa para que el carro vuelva a alinear.</span></p>
+      </article>
+      <article class="svc-card">
+        <img src="img/silverado.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Steering &amp; Suspension</span><span class="lang-es">Dirección y Suspensión</span></h3>
+        <p><span class="lang-en">Post-collision steering and suspension repair.</span><span class="lang-es">Reparación de dirección y suspensión después del choque.</span></p>
+      </article>
+      <article class="svc-card">
+        <img src="img/bay-pair.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Detailing</span><span class="lang-es">Detallado</span></h3>
+        <p><span class="lang-en">Every car gets washed before you pick it up. That part's on us.</span><span class="lang-es">Todo carro se lava antes de entregarlo. Eso va por nuestra cuenta.</span></p>
+      </article>
+      <article class="svc-card">
+        <img src="img/parts-shelf.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Parts Sourcing</span><span class="lang-es">Búsqueda de Partes</span></h3>
+        <p><span class="lang-en">We track down the panel, light or trim your car needs.</span><span class="lang-es">Localizamos el panel, la luz o la pieza que su carro necesita.</span></p>
+      </article>
+      <article class="svc-card">
+        <img src="img/raptor.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Trucks &amp; Fleet</span><span class="lang-es">Camionetas y Flotillas</span></h3>
+        <p><span class="lang-en">Work trucks, lifted rigs and daily drivers all welcome.</span><span class="lang-es">Camionetas de trabajo, levantadas y de uso diario.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="kicker"><span class="lang-en">Why G&amp;G</span><span class="lang-es">Por qué G&amp;G</span></span>
+      <h2><span class="lang-en">Six reasons people<br>drive past other shops.</span><span class="lang-es">Seis razones por las que<br>pasan de largo otros talleres.</span></h2>
+    </div>
+    <div class="why-grid rise">
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3><span class="lang-en">5-year warranty</span><span class="lang-es">Garantía de 5 años</span></h3>
+        <p><span class="lang-en">On labor and paint. In writing, on every job. If something isn't right, bring it back.</span><span class="lang-es">En mano de obra y pintura. Por escrito, en cada trabajo. Si algo no quedó bien, regréselo.</span></p>
+      </div>
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/></svg></div>
+        <h3><span class="lang-en">Free estimates</span><span class="lang-es">Estimados gratis</span></h3>
+        <p><span class="lang-en">Drive up, we look, you get a number. No appointment and no charge to find out.</span><span class="lang-es">Venga, revisamos y le damos un precio. Sin cita y sin costo por preguntar.</span></p>
+      </div>
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></div>
+        <h3><span class="lang-en">We handle the insurance</span><span class="lang-es">Manejamos la aseguranza</span></h3>
+        <p><span class="lang-en">We deal with the adjuster and the paperwork so you don't have to chase anybody.</span><span class="lang-es">Nosotros hablamos con el ajustador y hacemos el papeleo para que usted no ande batallando.</span></p>
+      </div>
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h1l2-5h11l2 5h1a1 1 0 0 1 1 1v4h-3"/><path d="M9 17H6a1 1 0 0 1-1-1v-3"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="16.5" cy="17.5" r="2"/></svg></div>
+        <h3><span class="lang-en">Pickup, delivery &amp; shuttle</span><span class="lang-es">Recogemos y lo llevamos</span></h3>
+        <p><span class="lang-en">Can't get here? We'll come get the car. Need a ride home? We'll take you.</span><span class="lang-es">¿No puede venir? Recogemos el carro. ¿Necesita aventón? Lo llevamos.</span></p>
+      </div>
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l2-2 4 4 8-8 4 4"/><path d="M3 20h18"/></svg></div>
+        <h3><span class="lang-en">It comes back clean</span><span class="lang-es">Se lo entregamos limpio</span></h3>
+        <p><span class="lang-en">Complimentary wash and detail before pickup. You've had a rough enough week.</span><span class="lang-es">Lavado y detallado de cortesía antes de entregarlo. Ya tuvo suficiente mala semana.</span></p>
+      </div>
+      <div class="why-item">
+        <div class="why-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3><span class="lang-en">You'll talk to an owner</span><span class="lang-es">Hablará con un dueño</span></h3>
+        <p><span class="lang-en">Jonathan, his father and his wife run this shop. You'll talk to an owner, every time.</span><span class="lang-es">Jonathan, su papá y su esposa atienden este taller. Siempre hablará con un dueño.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="kicker"><span class="lang-en">Gallery</span><span class="lang-es">Galería</span></span>
+      <h2><span class="lang-en">Out of our bay</span><span class="lang-es">Salidos de nuestro taller</span></h2>
+      <p><span class="lang-en">Chargers and Challengers, a Taycan, a Tesla, work trucks and a Fox-body. Everything on this page is a real car we finished.</span><span class="lang-es">Chargers y Challengers, un Taycan, un Tesla, camionetas de trabajo y un Mustang clásico. Todo lo que ve aquí es un carro real que nosotros terminamos.</span></p>
+    </div>
+    <div class="gal rise">
+      <img src="img/challenger-purple.jpg" width="750" height="1000" loading="lazy" alt="A purple Dodge Challenger finished inside the shop.">
+      <img src="img/storefront-camaro.jpg" width="1280" height="960" loading="lazy" alt="A white Chevrolet Camaro ZL1 parked in front of the G&amp;G Auto Body Shop building.">
+      <img src="img/mercedes.jpg" width="750" height="1000" loading="lazy" alt="A Mercedes-Benz sedan and SUV parked inside the G&amp;G shop.">
+      <img src="img/charger-blue.jpg" width="1600" height="1200" loading="lazy" alt="A blue Dodge Charger with a rear spoiler finished and parked outside the shop.">
+      <img src="img/tesla.jpg" width="750" height="1000" loading="lazy" alt="A black Tesla Model Y finished and parked outside.">
+      <img src="img/bmw.jpg" width="750" height="1000" loading="lazy" alt="A black BMW sedan on black wheels parked outside the shop.">
+      <img src="img/raptor.jpg" width="750" height="1000" loading="lazy" alt="A Ford Raptor pickup finished at the shop.">
+      <img src="img/silverado.jpg" width="750" height="1000" loading="lazy" alt="A lifted black Chevrolet Silverado on oversized tires.">
+      <img src="img/bay-pair.jpg" width="750" height="1000" loading="lazy" alt="Two Dodge Chargers parked nose to nose under the shop's ceiling lights.">
+      <img src="img/paint-masked.jpg" width="960" height="1280" loading="lazy" alt="A red car masked off with tape and paper, prepped for paint.">
+      <img src="img/challenger-booth.jpg" width="640" height="480" loading="lazy" alt="A white Dodge Challenger Widebody inside the paint booth area.">
+      <img src="img/parts-shelf.jpg" width="900" height="1200" loading="lazy" alt="A tail light on a labeled parts box on the shop's stocked parts shelf.">
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="thesis">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="kicker"><span class="lang-en">Reviews</span><span class="lang-es">Reseñas</span></span>
+      <h2><span class="lang-en">189 reviews across<br>Google and Yelp.</span><span class="lang-es">189 reseñas entre<br>Google y Yelp.</span></h2>
+      <p><span class="lang-en">4.9 across 156 Google reviews, 5.0 across 33 on Yelp &mdash; and Jonathan answers them himself. These are real, and you can read every one of them yourself.</span><span class="lang-es">4.9 en 156 reseñas de Google, 5.0 en 33 de Yelp. Son reales, y usted mismo puede leerlas todas.</span></p>
+    </div>
+    <div class="rev rise">
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">&ldquo;Brought in my dodge charger for some body work and am absolutely in love with the results. Jonathon and his team went above and beyond even doing work I didn&rsquo;t ask for but my car desperately needed.&rdquo;</span><span class="lang-es">&ldquo;Traje mi Dodge Charger para trabajo de hojalater&iacute;a y qued&eacute; encantado con el resultado. Jonathon y su equipo hicieron m&aacute;s de lo que les ped&iacute; &mdash; hasta arreglaron cosas que mi carro necesitaba y yo ni hab&iacute;a mencionado.&rdquo;</span></p>
+        <div class="rev-who"><span class="avatar">R</span><span><b>Ricky G</b><span>Mar 2026</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">&ldquo;The paint match was absolutely perfect &mdash; you can&rsquo;t even tell where the damage was. Their work is 10/10, and they completed the repairs much quicker than I expected. They even gave my car a complimentary wash before returning it.&rdquo;</span><span class="lang-es">&ldquo;El color qued&oacute; perfecto &mdash; ni se nota d&oacute;nde estaba el da&ntilde;o. Su trabajo es 10/10, y terminaron mucho m&aacute;s r&aacute;pido de lo que esperaba. Hasta me lavaron el carro antes de entregarlo.&rdquo;</span></p>
+        <div class="rev-who"><span class="avatar">C</span><span><b>Christian G.</b><span>Jul 2026</span></span><span class="src">Yelp</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">&ldquo;Best auto body shop experience I&rsquo;ve had. Jon made everything easy, from the estimate to dealing with insurance. The turnaround time was quick and the work was flawless. You can tell they care about their customers here.&rdquo;</span><span class="lang-es">&ldquo;La mejor experiencia que he tenido en un taller de hojalater&iacute;a. Jon hizo todo f&aacute;cil, desde el estimado hasta lidiar con la aseguranza. Lo entregaron r&aacute;pido y el trabajo qued&oacute; impecable. Se nota que aqu&iacute; les importan sus clientes.&rdquo;</span></p>
+        <div class="rev-who"><span class="avatar">A</span><span><b>Alex Marquez</b><span>Feb 2026</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">&ldquo;G&amp;G did an amazing job on my car after my accident. Jonathan, his father, and his wife were all incredibly helpful and kind. They even reassured me with their 5-year warranty on labor and paint, which really gave me peace of mind.&rdquo;</span><span class="lang-es">&ldquo;G&amp;G hizo un trabajo incre&iacute;ble con mi carro despu&eacute;s del accidente. Jonathan, su pap&aacute; y su esposa fueron muy amables y serviciales. Me tranquilizaron con su garant&iacute;a de 5 a&ntilde;os en mano de obra y pintura.&rdquo;</span></p>
+        <div class="rev-who"><span class="avatar">A</span><span><b>Ana Romero</b><span>Lynwood, CA &middot; Dec 2025</span></span><span class="src">Yelp</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">&ldquo;I found G&amp;G Autobody shop on Google and decided to give them a try. From the first interaction I had with one of the employees, I knew it was the right place because they were professional, honest &amp; answered all my questions and concerns.&rdquo;</span><span class="lang-es">&ldquo;Encontr&eacute; G&amp;G Autobody en Google y decid&iacute; probarlos. Desde la primera vez que habl&eacute; con uno de los empleados supe que era el lugar indicado: profesionales, honestos y me respondieron todas mis dudas.&rdquo;</span></p>
+        <div class="rev-who"><span class="avatar">J</span><span><b>Josh Gonzalez</b><span>Feb 2026</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">&ldquo;Best body shop in SoCal. Jonathan and his team do it right and stand behind their work. Family owned and operated and they treat customers like family. Cadillac Escalade door and quarter panel repair &mdash; A+.&rdquo;</span><span class="lang-es">&ldquo;El mejor taller del sur de California. Jonathan y su equipo lo hacen bien y respaldan su trabajo. Negocio familiar y tratan a los clientes como familia. Reparaci&oacute;n de puerta y panel de una Cadillac Escalade &mdash; A+.&rdquo;</span></p>
+        <div class="rev-who"><span class="avatar">S</span><span><b>Shawn P.</b><span>Anaheim, CA &middot; Jul 2026</span></span><span class="src">Yelp</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="kicker"><span class="lang-en">Visit</span><span class="lang-es">Visítenos</span></span>
+      <h2><span class="lang-en">On Alameda,<br>just off the 105.</span><span class="lang-es">Sobre Alameda,<br>saliendo de la 105.</span></h2>
+    </div>
+    <div class="visit-grid rise">
+      <div>
+        <div class="info-row">
+          <svg class="info-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <h4><span class="lang-en">Address</span><span class="lang-es">Dirección</span></h4>
+            <p><a href="https://www.google.com/maps/dir/?api=1&amp;destination=11104+Alameda+St+Lynwood+CA+90262" target="_blank" rel="noopener">11104 Alameda St<br>Lynwood, CA 90262</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg class="info-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <h4><span class="lang-en">Phone</span><span class="lang-es">Teléfono</span></h4>
+            <p><a href="tel:+13106324711">(310) 632-4711</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg class="info-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div style="flex:1">
+            <h4><span class="lang-en">Hours</span><span class="lang-es">Horario</span></h4>
+            <table class="hours">
+              <tr><td><span class="lang-en">Monday – Thursday</span><span class="lang-es">Lunes – Jueves</span></td><td>8:00 AM – 5:00 PM</td></tr>
+              <tr><td><span class="lang-en">Friday</span><span class="lang-es">Viernes</span></td><td>8:00 AM – 4:00 PM</td></tr>
+              <tr><td><span class="lang-en">Saturday</span><span class="lang-es">Sábado</span></td><td>8:00 AM – 1:00 PM</td></tr>
+              <tr><td><span class="lang-en">Sunday</span><span class="lang-es">Domingo</span></td><td><span class="lang-en">Closed</span><span class="lang-es">Cerrado</span></td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg class="info-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h9"/></svg>
+          <div>
+            <h4><span class="lang-en">Language</span><span class="lang-es">Idioma</span></h4>
+            <p><span class="lang-en">Se habla español. Ask for Jonathan.</span><span class="lang-es">We speak English. Pregunte por Jonathan.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="map">
+        <iframe title="Map showing G&amp;G Auto Body Shop at 11104 Alameda Street, Lynwood, California"
+          src="https://www.google.com/maps?q=G%26G+Auto+Body+Shop,+11104+Alameda+St,+Lynwood,+CA+90262&amp;output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-rev">
+  <div class="wrap rise">
+    <span class="kicker"><span class="lang-en">One favor</span><span class="lang-es">Un favor</span></span>
+    <h2><span class="lang-en">Did we take care of you?</span><span class="lang-es">¿Le atendimos bien?</span></h2>
+    <p>
+      <span class="lang-en">A review is the only advertising a family shop can afford. If we did right by you, thirty seconds here helps the next person find us.</span>
+      <span class="lang-es">Una reseña es la única publicidad que un taller familiar puede pagar. Si quedó contento, treinta segundos aquí ayudan a que otra persona nos encuentre.</span>
+    </p>
+    <div class="cta-btns">
+      <a class="btn btn-red" href="https://www.google.com/maps?cid=15544259472428903457" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span class="lang-en">Review us on Google</span><span class="lang-es">Reseña en Google</span>
+      </a>
+      <a class="btn btn-ghost" href="https://www.yelp.com/writeareview/biz/g-and-g-auto-body-shop-lynwood-2" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span class="lang-en">Review us on Yelp</span><span class="lang-es">Reseña en Yelp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top" style="font-size:19px">G<span>&amp;</span>G</a>
+        <div style="margin-top:6px">11104 Alameda St, Lynwood, CA 90262 · <a href="tel:+13106324711">(310) 632-4711</a></div>
+      </div>
+      <div style="display:flex;gap:22px">
+        <a href="https://www.yelp.com/biz/g-and-g-auto-body-shop-lynwood-2" target="_blank" rel="noopener">Yelp</a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=11104+Alameda+St+Lynwood+CA+90262" target="_blank" rel="noopener"><span class="lang-en">Directions</span><span class="lang-es">Cómo llegar</span></a>
+      </div>
+    </div>
+    <p class="foot-note">
+      <span class="lang-en">This is a demo preview built for G&amp;G Auto Body Shop, not their official website. Photos and reviews are the shop's own, taken from their public Google and Yelp profiles.</span>
+      <span class="lang-es">Esta es una vista de demostración hecha para G&amp;G Auto Body Shop; no es su sitio oficial. Las fotos y reseñas son del taller, tomadas de sus perfiles públicos de Google y Yelp.</span>
+    </p>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-red" href="tel:+13106324711">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span class="lang-en">Call</span><span class="lang-es">Llamar</span>
+  </a>
+  <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=11104+Alameda+St+Lynwood+CA+90262" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span class="lang-en">Directions</span><span class="lang-es">Cómo llegar</span>
+  </a>
+</div>
+
+<script>
+(function(){
+  var body = document.body;
+  var btns = document.querySelectorAll('.lang button');
+
+  function setLang(l){
+    body.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
+    try { localStorage.setItem('gg-lang', l); } catch(e){}
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+
+  var saved;
+  try { saved = localStorage.getItem('gg-lang'); } catch(e){}
+  setLang(saved || ((navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en'));
+
+  // highlight today's row in the hours table
+  var d = new Date().getDay();                 // 0 Sun … 6 Sat
+  var rowFor = [3, 0, 0, 0, 0, 1, 2][d];       // maps weekday -> table row index
+  var rows = document.querySelectorAll('.hours tr');
+  if (rows[rowFor]) rows[rowFor].classList.add('today');
+
+  // Mobile section menu.
+  var burger = document.getElementById('navBurger');
+  var sheet  = document.getElementById('navSheet');
+  var scrim  = document.getElementById('navScrim');
+
+  function setMenu(open){
+    body.classList.toggle('nav-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    scrim.hidden = !open;
+  }
+  burger.addEventListener('click', function(){
+    setMenu(!body.classList.contains('nav-open'));
+  });
+  scrim.addEventListener('click', function(){ setMenu(false); });
+  sheet.addEventListener('click', function(e){
+    if (e.target.closest('a')) setMenu(false);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && body.classList.contains('nav-open')){
+      setMenu(false); burger.focus();
+    }
+  });
+  // Never leave the sheet open when the layout goes back to the desktop nav.
+  var mq = window.matchMedia('(min-width: 861px)');
+  (mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : mq.addListener.bind(mq))(
+    function(){ if (mq.matches) setMenu(false); }
+  );
+
+  // Scroll progress traced around the nav pill.
+  var nav  = document.querySelector('.nav');
+  var ring = document.querySelector('.nav-ring');
+  var ringRect = ring && ring.querySelector('rect');
+
+  function sizeRing(){
+    if (!ringRect) return;
+    var r = nav.getBoundingClientRect();
+    var w = Math.round(r.width), h = Math.round(r.height);
+    if (!w || !h) return;
+    ring.setAttribute('width', w);
+    ring.setAttribute('height', h);
+    ring.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    ringRect.setAttribute('x', 1);
+    ringRect.setAttribute('y', 1);
+    ringRect.setAttribute('width', w - 2);
+    ringRect.setAttribute('height', h - 2);
+    ringRect.setAttribute('rx', (h - 2) / 2);
+  }
+
+  function drawRing(){
+    if (!ringRect) return;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    ringRect.style.strokeDashoffset = String(1 - p);
+  }
+
+  sizeRing(); drawRing();
+  window.addEventListener('scroll', drawRing, { passive: true });
+  if ('ResizeObserver' in window){
+    new ResizeObserver(function(){ sizeRing(); drawRing(); }).observe(nav);
+  } else {
+    window.addEventListener('resize', function(){ sizeRing(); drawRing(); });
+  }
+
+  // scroll reveal
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    document.querySelectorAll('.rise').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.rise').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

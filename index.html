@@ -289,7 +289,8 @@
         }
         .panel::after {
             content: ""; position: absolute; inset: 0; z-index: 1;
-            background: linear-gradient(to top, rgba(8,8,9,0.92) 0%, rgba(8,8,9,0.32) 52%, rgba(8,8,9,0.42) 100%);
+            /* --veil lets a panel with a bright photo darken its midtones without dulling the others */
+            background: linear-gradient(to top, rgba(8,8,9,0.92) 0%, rgba(8,8,9,var(--veil,0.32)) 52%, rgba(8,8,9,0.42) 100%);
         }
         .panel.is-open { flex-grow: 6; box-shadow: inset 0 0 0 1px rgba(252,0,84,0.35); }
         .panel.is-open::before { transform: scale(1); filter: saturate(1.03) brightness(0.85); }
@@ -523,14 +524,15 @@
                         </div>
                     </article>
 
-                    <article class="panel is-soon" data-panel role="listitem">
-                        <span class="panel-num">02 / 04</span><span class="panel-tab"><span class="panel-vtitle"><span class="lang-en">Coming soon</span><span class="lang-es">Pr&oacute;ximamente</span></span></span>
+                    <article class="panel" data-panel data-href="gg-case-study.html" data-cursor="view" role="listitem" style="--img:url('assets/img/gg-storefront.jpg');--veil:0.60">
+                        <span class="panel-num">02 / 04</span><span class="panel-tab"><span class="panel-vtitle">G&amp;G Auto Body Shop</span></span>
                         <div class="panel-body">
-                            <span class="panel-soon"><span class="lang-en">Open slot</span><span class="lang-es">Lugar disponible</span></span>
-                            <span class="panel-k"><span class="lang-en">Southeast LA</span><span class="lang-es">Sureste de LA</span></span>
-                            <h3><span class="lang-en">Coming soon</span><span class="lang-es">Pr&oacute;ximamente</span></h3>
-                            <p class="panel-copy"><span class="lang-en">This space is held for the next shop I build. It could be yours.</span><span class="lang-es">Este espacio est&aacute; reservado para el pr&oacute;ximo negocio que construya. Puede ser el tuyo.</span></p>
-                            <a href="mailto:eddjack30@gmail.com" class="panel-cta" data-cursor="link"><span class="lang-en">Claim this spot</span><span class="lang-es">Reserva este lugar</span> <span aria-hidden="true">&rarr;</span></a>
+                            <span class="panel-k"><span class="lang-en">Auto body shop &middot; Lynwood</span><span class="lang-es">Taller de hojalater&iacute;a &middot; Lynwood</span></span>
+                            <h3>G&amp;G Auto Body Shop</h3>
+                            <p class="panel-copy"><b><span class="lang-en">The problem.</span><span class="lang-es">El problema.</span></b> <span class="lang-en">189 five-star reviews, and the website on their Yelp had been taken over by a domain squatter.</span><span class="lang-es">189 rese&ntilde;as de cinco estrellas, y la p&aacute;gina en su Yelp la hab&iacute;a tomado un revendedor de dominios.</span></p>
+                            <p class="panel-copy"><b><span class="lang-en">The build.</span><span class="lang-es">La soluci&oacute;n.</span></b> <span class="lang-en">A bilingual site around their 5-year warranty, with the before-and-after work up front.</span><span class="lang-es">Un sitio biling&uuml;e sobre su garant&iacute;a de 5 a&ntilde;os, con el antes y despu&eacute;s por delante.</span></p>
+                            <div class="panel-result"><span><b>&#9733;&#xFE0E; 4.9</b> <span class="lang-en">Google</span><span class="lang-es">Google</span></span><span class="panel-dot">&middot;</span><span><b>&#9733;&#xFE0E; 5.0</b> Yelp</span><span class="panel-dot">&middot;</span><span><b>189 <span class="lang-en">reviews</span><span class="lang-es">rese&ntilde;as</span></b></span></div>
+                            <a href="gg-case-study.html" class="panel-cta" data-cursor="link"><span class="lang-en">Read the case study</span><span class="lang-es">Ver el caso completo</span> <span aria-hidden="true">&rarr;</span></a>
                         </div>
                     </article>
 

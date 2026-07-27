@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 # Client demo mockups are not the businesses' official sites — keep them out of search.
 Disallow: /sites/rubios-tire-shop/
+Disallow: /sites/gg-auto-body/
 
 Sitemap: https://eddjack.github.io/sites/sitemap.xml
