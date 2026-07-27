@@ -172,7 +172,7 @@
         .nav-inner { transition: transform 0.5s var(--ease); transform-origin: center top; }
         #nav.docked .nav-inner { transform: scale(0.955); }
 
-        /* Wordmark doubles as a scroll-progress indicator: pink fills left→right as you scroll */
+        /* Wordmark doubles as a scroll-progress indicator: pink fills left-to-right as you scroll */
         /* impeccable-disable-next-line gradient-text: deliberate: the wordmark fill encodes scroll position, it is functional not decorative */
         .wordmark {
             background-image: linear-gradient(90deg, #fc0054 var(--progress, 0%), var(--ink) var(--progress, 0%));
@@ -396,7 +396,8 @@
             #canvas-container, #grain { display: none; }
             .cursor-dot, .cursor-ring, .cursor-view-label { display: none !important; }
         }
-    </style>
+        .ico{width:1em;height:1em;display:inline-block;vertical-align:-0.12em;flex:none}
+  </style>
   <link rel="stylesheet" href="assets/tailwind.css">
   </head>
 <body class="font-sans">
@@ -482,7 +483,7 @@
                         <span class="lang-en">See the work</span><span class="lang-es">Ver el trabajo</span>
                     </a>
                     <a href="mailto:eddjack30@gmail.com" class="text-sm text-muted hover:text-ink transition-colors" data-cursor="link">
-                        <span class="lang-en">or start a conversation →︎</span><span class="lang-es">o inicia una conversación →︎</span>
+                        <span class="lang-en">or start a conversation <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg></span><span class="lang-es">o inicia una conversación <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg></span>
                     </a>
                 </div>
             </div>
@@ -559,7 +560,7 @@
             </div>
         </section>
 
-        <!-- ============ PROCESS: production timeline 01→︎05 ============ -->
+        <!-- ============ PROCESS: production timeline 01<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg>05 ============ -->
         <section id="process" class="relative py-20 border-t hairline" aria-label="Process">
             <div class="max-w-7xl mx-auto px-6 sm:px-10">
                 <div class="depth mb-10">
@@ -659,8 +660,8 @@
                         <span class="lang-es">Muéstrame cómo se vería el mío</span>
                     </a>
                     <a href="rubios-tire-shop/" target="_blank" rel="noopener" class="btn btn-ghost !px-8 !py-4" data-cursor="link">
-                        <span class="lang-en">See an example ↗</span>
-                        <span class="lang-es">Ver un ejemplo ↗</span>
+                        <span class="lang-en">See an example <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+                        <span class="lang-es">Ver un ejemplo <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
                     </a>
                 </div>
             </div>
@@ -849,7 +850,7 @@
 
             (function cursorLoop() {
                 dx = lerp(dx, mx, 0.85); dy = lerp(dy, my, 0.85);
-                rx = lerp(rx, mx, 0.18); ry = lerp(ry, my, 0.18); // ring lags →︎ velocity feel
+                rx = lerp(rx, mx, 0.18); ry = lerp(ry, my, 0.18); // ring lags <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg> velocity feel
                 dot.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
                 ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
                 label.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
@@ -892,7 +893,7 @@
                 const r = o.el.getBoundingClientRect();
                 const p = (r.top + r.height / 2 - vh / 2) / vh;
                 const target = -p * o.speed * 42;               // gentle counter-move
-                o.cur = lerp(o.cur, target, 0.06);              // slow lerp →︎ trailing lag (type trails imagery)
+                o.cur = lerp(o.cur, target, 0.06);              // slow lerp <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg> trailing lag (type trails imagery)
                 o.el.style.translate = `0px ${o.cur.toFixed(2)}px`;
             });
         }
