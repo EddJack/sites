@@ -319,10 +319,12 @@
             display: inline-flex; align-items: center; gap: 0.5rem;
             padding: 0.72rem 1.2rem; border-radius: 9999px;
             background: #F3EFE9; color: #0B0B0C; font-weight: 700; font-size: 0.92rem;
-            white-space: nowrap;
-            transition: background 0.3s var(--ease), color 0.3s var(--ease), transform 0.25s var(--ease);
+            white-space: nowrap; will-change: transform;
+            /* same contract as .btn — the magnetic loop sets transform, CSS eases it */
+            transition: transform 0.25s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
         }
-        .panel-btn:hover, .panel-btn:focus-visible { background: #fc0054; color: #fff; transform: translateY(-2px); }
+        .panel-btn:hover, .panel-btn:focus-visible { background: #fc0054; color: #fff; }
+        @media (hover: none), (pointer: coarse) { .panel-btn:active { transform: scale(0.97); } }
         
         /* coming-soon slots: no photo, honest placeholder */
         .panel.is-soon { background:
@@ -533,7 +535,7 @@
                             <p class="panel-copy"><b><span class="lang-en">The build.</span><span class="lang-es">La soluci&oacute;n.</span></b> <span class="lang-en">A bilingual one-page site with tap-to-call and live directions.</span><span class="lang-es">Un sitio biling&uuml;e con llamada directa e indicaciones en vivo.</span></p>
                             <div class="panel-result"><span><b>&#9733; 5.0</b> <span class="lang-en">on Google</span><span class="lang-es">en Google</span></span><span class="panel-dot">&middot;</span><span><b><span class="lang-en">Live in 1 week</span><span class="lang-es">En l&iacute;nea en 1 semana</span></b></span></div>
                             <div class="panel-ctas">
-                                <a href="rubios-tire-shop/" target="_blank" rel="noopener" class="panel-btn" data-cursor="link"><span class="lang-en">See the website</span><span class="lang-es">Ver el sitio</span> <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+                                <a href="rubios-tire-shop/" target="_blank" rel="noopener" class="panel-btn" data-cursor="link"><span class="lang-en">See the website</span><span class="lang-es">Ver el sitio</span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
                                 <a href="rubios-case-study.html" class="panel-cta" data-cursor="link"><span class="lang-en">Read the case study</span><span class="lang-es">Ver el caso completo</span> <span aria-hidden="true">&rarr;</span></a>
                             </div>
                         </div>
@@ -548,7 +550,7 @@
                             <p class="panel-copy"><b><span class="lang-en">The build.</span><span class="lang-es">La soluci&oacute;n.</span></b> <span class="lang-en">A bilingual site around their 5-year warranty, with the before-and-after work up front.</span><span class="lang-es">Un sitio biling&uuml;e sobre su garant&iacute;a de 5 a&ntilde;os, con el antes y despu&eacute;s por delante.</span></p>
                             <div class="panel-result"><span><b>&#9733;&#xFE0E; 4.9</b> <span class="lang-en">Google</span><span class="lang-es">Google</span></span><span class="panel-dot">&middot;</span><span><b>&#9733;&#xFE0E; 5.0</b> Yelp</span><span class="panel-dot">&middot;</span><span><b>189 <span class="lang-en">reviews</span><span class="lang-es">rese&ntilde;as</span></b></span></div>
                             <div class="panel-ctas">
-                                <a href="gg-auto-body/" target="_blank" rel="noopener" class="panel-btn" data-cursor="link"><span class="lang-en">See the website</span><span class="lang-es">Ver el sitio</span> <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+                                <a href="gg-auto-body/" target="_blank" rel="noopener" class="panel-btn" data-cursor="link"><span class="lang-en">See the website</span><span class="lang-es">Ver el sitio</span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
                                 <a href="gg-case-study.html" class="panel-cta" data-cursor="link"><span class="lang-en">Read the case study</span><span class="lang-es">Ver el caso completo</span> <span aria-hidden="true">&rarr;</span></a>
                             </div>
                         </div>
@@ -889,7 +891,7 @@
 
         /* ---------------- Magnetic buttons ---------------- */
         if (!coarse && !reduceMotion) {
-            document.querySelectorAll('.btn').forEach(btn => {
+            document.querySelectorAll('.btn, .panel-btn').forEach(btn => {
                 btn.addEventListener('mousemove', e => {
                     const r = btn.getBoundingClientRect();
                     const x = e.clientX - r.left - r.width / 2;
