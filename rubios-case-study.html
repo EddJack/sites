@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rubio's Tire Shop — Case Study · Eduardo</title>
-    <meta name="description" content="How a family tire shop in Lynwood with 48 five-star reviews and no web presence got a fast, bilingual, conversion-first website — built by hand.">
+    <meta name="description" content="How a family tire shop in Lynwood with 48 five-star reviews and no web presence got a fast, bilingual, conversion-first website, built by hand.">
     <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://eddjack.github.io/sites/rubios-case-study.html">
   <meta property="og:type" content="website">
@@ -74,22 +74,26 @@
         /* Cursor */
         .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:90;pointer-events:none;border-radius:9999px;transform:translate3d(-100px,-100px,0);will-change:transform;opacity:0;transition:opacity .3s ease;}
         .cursor-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:#fc0054;}
-        .cursor-ring{width:36px;height:36px;margin:-18px 0 0 -18px;border:1px solid var(--ring-border);transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),border-color .35s var(--ease),opacity .3s ease;}
+        .cursor-ring{width:58px;height:58px;margin:-29px 0 0 -29px;border:0;transition:opacity .3s ease;}
+        .cursor-ring::after{content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid var(--ring-border);transform:scale(.6207);transition:transform .35s var(--ease),border-color .35s var(--ease);}
         .cursor-ready .cursor-dot,.cursor-ready .cursor-ring{opacity:1;}
         body.has-cursor,body.has-cursor *{cursor:none!important;}
-        .cursor-ring.is-link{width:58px;height:58px;margin:-29px 0 0 -29px;border-color:rgba(252,0,84,0.6);}
+        .cursor-ring.is-link::after{transform:scale(1);border-color:rgba(252,0,84,0.6);}
         @media (hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none!important;}}
 
         /* Nav */
         #nav{position:fixed;top:0;left:0;right:0;z-index:80;border-bottom:1px solid transparent;transition:background-color .4s ease,border-color .4s ease,backdrop-filter .4s ease;}
         #nav.docked{background:var(--nav-bg);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom-color:var(--line);}
-        .nav-inner{transition:padding .5s var(--ease);} #nav.docked .nav-inner{padding-top:.7rem;padding-bottom:.7rem;}
+        .nav-inner{transition:transform .5s var(--ease);transform-origin:center top;} #nav.docked .nav-inner{transform:scale(.955);}
         .lang-btn{font-family:'JetBrains Mono',monospace;color:var(--muted);transition:color .3s ease;display:inline-flex;align-items:center;}
         .lang-btn:hover,.lang-btn:focus-visible{color:var(--ink);}
         .lang-btn .on{color:var(--ink);}
         #theme-toggle .icon-sun{display:none;} html.light #theme-toggle .icon-sun{display:block;} html.light #theme-toggle .icon-moon{display:none;}
         /* Wordmark doubles as a scroll-progress indicator (matches the portfolio) */
-        .wordmark { background-image: linear-gradient(90deg, #fc0054 var(--progress,0%), var(--ink) var(--progress,0%)); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+        .wordmark { color: var(--ink); position: relative; }
+        .wordmark::after { content:""; position:absolute; left:0; right:0; bottom:-4px; height:2px;
+            background:#fc0054; border-radius:2px; transform:scaleX(var(--progress,0)); transform-origin:0 50%;
+            transition:transform .12s linear; }
         #wordmark-dot { color:#fc0054; transition: color .4s var(--ease); }
         #wordmark-dot.complete { color: var(--ink); }
 
@@ -209,8 +213,8 @@
                     <span class="lang-es">La llantera azul de Atlantic, por fin visible.</span>
                 </h1>
                 <p class="lead mt-8 text-[clamp(1.05rem,1.5vw,1.3rem)] text-muted leading-relaxed">
-                    <span class="lang-en">A family llantera in Lynwood with 48 five-star reviews and almost no web presence. The whole job of the site: turn a stressed driver's phone search into a call, a walk-in, or a Maps visit — in about ten seconds.</span>
-                    <span class="lang-es">Una llantera familiar en Lynwood con 48 reseñas de cinco estrellas y casi sin presencia en línea. El único trabajo del sitio: convertir la búsqueda de un conductor estresado en una llamada, una visita o una ruta en Maps — en unos diez segundos.</span>
+                    <span class="lang-en">A family llantera in Lynwood with 48 five-star reviews and almost no web presence. The whole job of the site: turn a stressed driver's phone search into a call, a walk-in, or a Maps visit, in about ten seconds.</span>
+                    <span class="lang-es">Una llantera familiar en Lynwood con 48 reseñas de cinco estrellas y casi sin presencia en línea. El único trabajo del sitio: convertir la búsqueda de un conductor estresado en una llamada, una visita o una ruta en Maps, en unos diez segundos.</span>
                 </p>
                 <dl class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t hairline pt-8 font-mono text-sm">
                     <div><dt class="text-muted text-xs uppercase tracking-widest"><span class="lang-en">Role</span><span class="lang-es">Rol</span></dt><dd class="mt-1 font-medium"><span class="lang-en">Design &amp; build</span><span class="lang-es">Diseño y desarrollo</span></dd></div>
@@ -247,8 +251,8 @@
                 <div>
                     <h3 class="text-xl font-semibold"><span class="lang-en">Audience</span><span class="lang-es">Público</span></h3>
                     <p class="text-muted mt-2 leading-relaxed max-w-2xl">
-                        <span class="lang-en">Mobile-first and high-intent, often bilingual — Lynwood is ~87% Latino. The searches are urgent: <span class="text-ink">"flat tire near me," "used tires Lynwood," "llantera."</span></span>
-                        <span class="lang-es">Prioridad móvil y alta intención, a menudo bilingüe — Lynwood es ~87% latino. Las búsquedas son urgentes: <span class="text-ink">«llanta ponchada cerca de mí», «llantas usadas Lynwood», «llantera».</span></span>
+                        <span class="lang-en">Mobile-first and high-intent, often bilingual. Lynwood is ~87% Latino. The searches are urgent: <span class="text-ink">"flat tire near me," "used tires Lynwood," "llantera."</span></span>
+                        <span class="lang-es">Prioridad móvil y alta intención, a menudo bilingüe. Lynwood es ~87% latino. Las búsquedas son urgentes: <span class="text-ink">«llanta ponchada cerca de mí», «llantas usadas Lynwood», «llantera».</span></span>
                     </p>
                 </div>
                 <div>
@@ -261,8 +265,8 @@
                 <div>
                     <h3 class="text-xl font-semibold"><span class="lang-en">Competitive edge</span><span class="lang-es">Ventaja</span></h3>
                     <p class="text-muted mt-2 leading-relaxed max-w-2xl">
-                        <span class="lang-en">The reviews and the family/neighborhood story — the proof that a stranger can trust this shop over a faceless chain.</span>
-                        <span class="lang-es">Las reseñas y la historia familiar y de barrio — la prueba de que un desconocido puede confiar en este taller antes que en una cadena sin rostro.</span>
+                        <span class="lang-en">The reviews and the family/neighborhood story: the proof that a stranger can trust this shop over a faceless chain.</span>
+                        <span class="lang-es">Las reseñas y la historia familiar y de barrio: la prueba de que un desconocido puede confiar en este taller antes que en una cadena sin rostro.</span>
                     </p>
                 </div>
             </div>
@@ -273,16 +277,16 @@
             <div class="lg:col-span-4 depth"><span class="kicker"><span class="lang-en">Goals</span><span class="lang-es">Objetivos</span></span><h2 class="h-section text-[clamp(1.8rem,3.5vw,2.6rem)] mt-4 max-w-[12ch]"><span class="lang-en">Five jobs for one page.</span><span class="lang-es">Cinco tareas para una página.</span></h2></div>
             <div class="lg:col-span-8 depth">
                 <div class="goal"><span class="n">01</span><p class="text-lg"><span class="lang-en">Make the phone number callable from anywhere on the page.</span><span class="lang-es">Que el número se pueda llamar desde cualquier parte de la página.</span></p></div>
-                <div class="goal"><span class="n">02</span><p class="text-lg"><span class="lang-en">Put social proof — reviews, ratings, family-owned — high and above the fold.</span><span class="lang-es">Poner la prueba social — reseñas, calificaciones, negocio familiar — arriba y a la vista.</span></p></div>
+                <div class="goal"><span class="n">02</span><p class="text-lg"><span class="lang-en">Put social proof (reviews, ratings, family-owned) high and above the fold.</span><span class="lang-es">Poner la prueba social (reseñas, calificaciones, negocio familiar) arriba y a la vista.</span></p></div>
                 <div class="goal"><span class="n">03</span><p class="text-lg"><span class="lang-en">Answer "can they help me, and how do I get there?" without scrolling.</span><span class="lang-es">Responder «¿pueden ayudarme y cómo llego?» sin desplazarse.</span></p></div>
                 <div class="goal"><span class="n">04</span><p class="text-lg"><span class="lang-en">Serve English and Spanish from one page.</span><span class="lang-es">Servir inglés y español desde una sola página.</span></p></div>
-                <div class="goal"><span class="n">05</span><p class="text-lg"><span class="lang-en">Rank locally — LocalBusiness schema, nearby-city keywords.</span><span class="lang-es">Posicionar localmente — schema LocalBusiness, palabras clave de ciudades cercanas.</span></p></div>
+                <div class="goal"><span class="n">05</span><p class="text-lg"><span class="lang-en">Rank locally: LocalBusiness schema, nearby-city keywords.</span><span class="lang-es">Posicionar localmente: schema LocalBusiness, palabras clave de ciudades cercanas.</span></p></div>
             </div>
         </section>
 
         <!-- Design decisions -->
         <section class="max-w-6xl mx-auto px-6 sm:px-10 py-24 border-t hairline">
-            <div class="depth mb-14"><span class="kicker"><span class="lang-en">Design decisions</span><span class="lang-es">Decisiones de diseño</span></span><h2 class="h-section text-[clamp(2rem,4.5vw,3.4rem)] mt-4 max-w-[18ch]"><span class="lang-en">Make it feel like the shop — never corporate.</span><span class="lang-es">Que se sienta como el taller — nunca corporativo.</span></h2></div>
+            <div class="depth mb-14"><span class="kicker"><span class="lang-en">Design decisions</span><span class="lang-es">Decisiones de diseño</span></span><h2 class="h-section text-[clamp(2rem,4.5vw,3.4rem)] mt-4 max-w-[18ch]"><span class="lang-en">Make it feel like the shop, never corporate.</span><span class="lang-es">Que se sienta como el taller, nunca corporativo.</span></h2></div>
             <div class="rise grid md:grid-cols-2 gap-x-14 gap-y-12">
                 <div>
                     <h3 class="text-xl font-semibold"><span class="lang-en">Kept the shop's identity</span><span class="lang-es">Mantener la identidad del taller</span></h3>
@@ -294,7 +298,7 @@
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold"><span class="lang-en">Conversion everywhere</span><span class="lang-es">Conversión en todas partes</span></h3>
-                    <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">Hero Call / Directions buttons, a persistent header call button, a repeated closing CTA, and a sticky mobile bar with live Open/Closed status — contact is never more than a thumb-tap away.</span><span class="lang-es">Botones de Llamar / Cómo llegar en el hero, un botón de llamada fijo en el encabezado, un CTA de cierre repetido y una barra móvil fija con estado Abierto/Cerrado en vivo — el contacto nunca está a más de un toque.</span></p>
+                    <p class="text-muted mt-3 leading-relaxed"><span class="lang-en">Hero Call / Directions buttons, a persistent header call button, a repeated closing CTA, and a sticky mobile bar with live Open/Closed status. Contact is never more than a thumb-tap away.</span><span class="lang-es">Botones de Llamar / Cómo llegar en el hero, un botón de llamada fijo en el encabezado, un CTA de cierre repetido y una barra móvil fija con estado Abierto/Cerrado en vivo. El contacto nunca está a más de un toque.</span></p>
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold"><span class="lang-en">Reduced friction</span><span class="lang-es">Menos fricción</span></h3>
@@ -309,7 +313,7 @@
                 <div class="lg:col-span-5">
                     <span class="kicker"><span class="lang-en">The build, live</span><span class="lang-es">El sitio, en vivo</span></span>
                     <h2 class="h-section text-[clamp(2rem,4.5vw,3.2rem)] mt-4 max-w-[16ch]"><span class="lang-en">A working preview, built for the owner.</span><span class="lang-es">Una versión funcional, hecha para el dueño.</span></h2>
-                    <p class="lead mt-6 text-muted text-lg leading-relaxed"><span class="lang-en">Fully built and running — mobile-first, because that's how a driver with a flat finds it. This is the real preview I hand owners before we go live. Tap around inside the phone, or open it full-screen.</span><span class="lang-es">Completamente construido y funcionando — prioridad móvil, porque así lo encuentra un conductor con una llanta ponchada. Es la versión real que le muestro al dueño antes de publicar. Explóralo dentro del teléfono o ábrelo en pantalla completa.</span></p>
+                    <p class="lead mt-6 text-muted text-lg leading-relaxed"><span class="lang-en">Fully built and running, mobile-first, because that's how a driver with a flat finds it. This is the real preview I hand owners before we go live. Tap around inside the phone, or open it full-screen.</span><span class="lang-es">Completamente construido y funcionando, prioridad móvil, porque así lo encuentra un conductor con una llanta ponchada. Es la versión real que le muestro al dueño antes de publicar. Explóralo dentro del teléfono o ábrelo en pantalla completa.</span></p>
                     <div class="mt-8 flex flex-wrap gap-4">
                         <a href="rubios-tire-shop/" target="_blank" rel="noopener" class="btn btn-primary" data-cursor="link"><span class="lang-en">Open live site ↗︎</span><span class="lang-es">Abrir sitio en vivo ↗︎</span></a>
                     </div>
@@ -345,7 +349,7 @@
                     <tbody>
                         <tr>
                             <td><span class="lang-en">Web presence</span><span class="lang-es">Presencia en línea</span></td>
-                            <td class="before"><span class="lang-en">Effectively invisible — 48 five-star reviews and nothing to find online.</span><span class="lang-es">Prácticamente invisible — 48 reseñas de cinco estrellas y nada que encontrar en línea.</span></td>
+                            <td class="before"><span class="lang-en">Effectively invisible: 48 five-star reviews and nothing to find online.</span><span class="lang-es">Prácticamente invisible: 48 reseñas de cinco estrellas y nada que encontrar en línea.</span></td>
                             <td class="after"><span class="lang-en">A real, findable home online: <b>a fast bilingual site that finally exists</b>.</span><span class="lang-es">Un hogar real y localizable en línea: <b>un sitio bilingüe rápido que por fin existe</b>.</span></td>
                         </tr>
                         <tr>
@@ -397,9 +401,9 @@
         <!-- Outcome -->
         <section class="max-w-6xl mx-auto px-6 sm:px-10 py-28 border-t hairline text-center">
             <div class="depth max-w-4xl mx-auto">
-                <span class="kicker"><span class="lang-en">Outcome — the 10-second test</span><span class="lang-es">Resultado — la prueba de 10 segundos</span></span>
+                <span class="kicker"><span class="lang-en">Outcome: the 10-second test</span><span class="lang-es">Resultado: la prueba de 10 segundos</span></span>
                 <p class="display text-[clamp(2rem,5.5vw,4rem)] mt-8"><span class="lang-en">A driver with a flat knows in seconds: this shop is trustworthy, they can help, here's how to reach them.</span><span class="lang-es">Un conductor con una llanta ponchada sabe en segundos: este taller es confiable, pueden ayudar, así los contacto.</span></p>
-                <p class="text-muted mt-8 text-lg"><span class="lang-en">Every section produces one of three actions — call, get directions, or read the reviews.</span><span class="lang-es">Cada sección genera una de tres acciones — llamar, cómo llegar o leer las reseñas.</span></p>
+                <p class="text-muted mt-8 text-lg"><span class="lang-en">Every section produces one of three actions: call, get directions, or read the reviews.</span><span class="lang-es">Cada sección genera una de tres acciones: llamar, cómo llegar o leer las reseñas.</span></p>
             </div>
         </section>
 
@@ -421,7 +425,7 @@
             <p class="flex items-center gap-4">
                 <a href="mailto:eddjack30@gmail.com" class="hover:text-ink transition-colors" data-cursor="link">eddjack30@gmail.com</a>
                 <span class="opacity-40">·</span>
-                <span>Built by hand — hecho con orgullo.</span>
+                <span>Built by hand, hecho con orgullo.</span>
             </p>
         </div>
     </footer>
@@ -470,7 +474,7 @@
             nav.classList.toggle('docked', y > 40);
             const max = document.documentElement.scrollHeight - innerHeight;
             const p = max > 0 ? Math.max(0, Math.min(1, y / max)) : 0;
-            if (wordmark) wordmark.style.setProperty('--progress', (p*100).toFixed(1)+'%');
+            if (wordmark) wordmark.style.setProperty('--progress', p.toFixed(4));
             if (wordmarkDot) wordmarkDot.classList.toggle('complete', p > 0.995);
         }
         window.addEventListener('scroll', onScroll, { passive:true });

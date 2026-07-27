@@ -126,11 +126,13 @@
         }
         .cursor-dot  { width: 6px;  height: 6px;  margin: -3px 0 0 -3px; background: #fc0054; }
         .cursor-ring {
-            width: 38px; height: 38px; margin: -19px 0 0 -19px;
+            width: 60px; height: 60px; margin: -30px 0 0 -30px; border: 0;
+        }
+        .cursor-ring::after {
+            content: ""; position: absolute; inset: 0; border-radius: inherit;
             border: 1px solid var(--ring-border);
-            transition: width 0.35s var(--ease), height 0.35s var(--ease),
-                        margin 0.35s var(--ease), background-color 0.35s var(--ease),
-                        border-color 0.35s var(--ease), opacity 0.3s ease;
+            transform: scale(0.6333);
+            transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), background-color 0.35s var(--ease);
         }
         .cursor-ready .cursor-dot, .cursor-ready .cursor-ring { opacity: 1; }
         /* Hide the native pointer once the custom cursor is active */
@@ -140,7 +142,7 @@
             width: 96px; height: 96px; margin: -48px 0 0 -48px;
             background: rgba(252,0,84,0.12); border-color: rgba(252,0,84,0.5);
         }
-        .cursor-ring.is-link { width: 60px; height: 60px; margin: -30px 0 0 -30px; border-color: rgba(252,0,84,0.6); }
+        .cursor-ring.is-link::after { transform: scale(1); border-color: rgba(252,0,84,0.6); }
         .cursor-view-label {
             position: fixed; top: 0; left: 0; z-index: 91; pointer-events: none;
             transform: translate3d(-100px,-100px,0);
@@ -167,14 +169,16 @@
             border-bottom-color: var(--line);
         }
         #nav.hidden-nav { transform: translateY(-105%); }
-        .nav-inner { transition: padding 0.5s var(--ease); }
-        #nav.docked .nav-inner { padding-top: 0.7rem; padding-bottom: 0.7rem; }
+        .nav-inner { transition: transform 0.5s var(--ease); transform-origin: center top; }
+        #nav.docked .nav-inner { transform: scale(0.955); }
 
-        /* Wordmark doubles as a scroll-progress indicator: pink fills left→right as you scroll */
-        .wordmark {
-            background-image: linear-gradient(90deg, #fc0054 var(--progress, 0%), var(--ink) var(--progress, 0%));
-            -webkit-background-clip: text; background-clip: text;
-            color: transparent; -webkit-text-fill-color: transparent;
+        /* Wordmark doubles as a scroll-progress indicator: an accent rule fills left→right as you scroll */
+        .wordmark { color: var(--ink); position: relative; }
+        .wordmark::after {
+            content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px;
+            background: #fc0054; border-radius: 2px;
+            transform: scaleX(var(--progress, 0)); transform-origin: 0 50%;
+            transition: transform 0.12s linear;
         }
         #wordmark-dot { color: #fc0054; transition: color 0.4s var(--ease); }
         #wordmark-dot.complete { color: var(--ink); }
@@ -460,8 +464,8 @@
         <section class="relative min-h-[100svh] flex flex-col justify-center max-w-7xl mx-auto px-6 sm:px-10" aria-label="Introduction">
             <div id="hero-content" class="relative z-10 pt-24">
                 <div class="kicker mb-8" data-lag="0.5">
-                    <span class="lang-en">Bilingual web &amp; local search — Southeast Los Angeles</span>
-                    <span class="lang-es">Web bilingüe y búsqueda local — Sureste de Los Ángeles</span>
+                    <span class="lang-en">Bilingual web &amp; local search · Southeast Los Angeles</span>
+                    <span class="lang-es">Web bilingüe y búsqueda local · Sureste de Los Ángeles</span>
                 </div>
 
                 <h1 class="display text-[clamp(2.9rem,8.6vw,6.8rem)] max-w-[16ch]">
@@ -484,7 +488,7 @@
                 </div>
             </div>
 
-            <!-- Survey marking — subtle brand language, bottom edge -->
+            <!-- Survey marking: subtle brand language, bottom edge -->
             <div class="absolute bottom-12 left-6 sm:left-10 right-6 sm:right-10 hidden sm:flex items-end justify-between text-muted opacity-70 pointer-events-none select-none">
                 <span class="kicker text-[9px]" style="letter-spacing:0.25em">EST. SOUTHEAST LOS ANGELES</span>
                 <span id="scroll-cue" class="kicker text-[9px] inline-flex items-center" style="letter-spacing:0.25em">
@@ -556,7 +560,7 @@
             </div>
         </section>
 
-        <!-- ============ PROCESS — production timeline 01→︎05 ============ -->
+        <!-- ============ PROCESS: production timeline 01→︎05 ============ -->
         <section id="process" class="relative py-20 border-t hairline" aria-label="Process">
             <div class="max-w-7xl mx-auto px-6 sm:px-10">
                 <div class="depth mb-10">
@@ -584,12 +588,12 @@
                         <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="0">
                             <span class="stage-num text-muted text-2xl">01</span>
                             <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Discover</span><span class="lang-es">Descubrir</span></h3>
-                            <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">We talk — usually in the shop. What you do, who walks in, what makes people come back. No jargon, no forms.</span><span class="lang-es">Hablamos — casi siempre en el negocio. Qué haces, quién entra, por qué la gente regresa. Sin tecnicismos, sin formularios.</span></p>
+                            <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">We talk, usually in the shop. What you do, who walks in, what makes people come back. No jargon, no forms.</span><span class="lang-es">Hablamos, casi siempre en el negocio. Qué haces, quién entra, por qué la gente regresa. Sin tecnicismos, sin formularios.</span></p>
                         </div>
                         <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="1">
                             <span class="stage-num text-muted text-2xl">02</span>
                             <h3 class="text-[clamp(2rem,5vw,3.4rem)] font-bold tracking-tight mt-3"><span class="lang-en">Photograph</span><span class="lang-es">Fotografiar</span></h3>
-                            <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">Real photos of your real place — the sign, the counter, the food, you at work. No stock, no laptop mockups.</span><span class="lang-es">Fotos reales de tu lugar real — el letrero, el mostrador, la comida, tú trabajando. Sin bancos de imágenes.</span></p>
+                            <p class="mt-5 text-muted text-lg leading-relaxed max-w-xl"><span class="lang-en">Real photos of your real place: the sign, the counter, the food, you at work. No stock, no laptop mockups.</span><span class="lang-es">Fotos reales de tu lugar real: el letrero, el mostrador, la comida, tú trabajando. Sin bancos de imágenes.</span></p>
                         </div>
                         <div class="stage min-h-[28vh] flex flex-col justify-center py-6 border-b hairline" data-stage="2">
                             <span class="stage-num text-muted text-2xl">03</span>
@@ -611,7 +615,7 @@
             </div>
         </section>
 
-        <!-- ============ ABOUT — story, not credentials ============ -->
+        <!-- ============ ABOUT: story, not credentials ============ -->
         <section id="about" class="relative py-28 border-t hairline" aria-label="About Eduardo">
             <div class="max-w-7xl mx-auto px-6 sm:px-10 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
                 <div class="lg:col-span-5 depth">
@@ -629,9 +633,9 @@
                     </h2>
 
                     <div class="mt-8 space-y-6 text-muted text-lg leading-relaxed prose-lead">
-                        <p><span class="lang-en">I grew up around family shops in Southeast LA — the llantera, the taquería, the florist on the corner. Everyone knows they're good. The block votes with its feet every day.</span><span class="lang-es">Crecí entre negocios familiares en el sureste de LA — la llantera, la taquería, la florería de la esquina. Todos saben que son buenos. La cuadra lo confirma cada día.</span></p>
-                        <p><span class="lang-en">But when someone new searches, these places barely exist online — or worse, look nothing like how good they really are. A great business with a bad first impression loses to a worse one that shows up better.</span><span class="lang-es">Pero cuando alguien nuevo busca, estos lugares casi no existen en línea — o peor, no se ven ni cerca de lo buenos que son. Un gran negocio con una mala primera impresión pierde ante uno peor que se ve mejor.</span></p>
-                        <p class="text-ink"><span class="lang-en">Presentation isn't vanity. For a local shop, it's the difference between being found and being forgotten. That's the gap I close — with real photos, clean bilingual code, and a listing that finally matches the place.</span><span class="lang-es">La presentación no es vanidad. Para un negocio local, es la diferencia entre ser encontrado y ser olvidado. Ese es el espacio que cierro — con fotos reales, código limpio y bilingüe, y un perfil que por fin hace justicia al lugar.</span></p>
+                        <p><span class="lang-en">I grew up around family shops in Southeast LA: the llantera, the taquería, the florist on the corner. Everyone knows they're good. The block votes with its feet every day.</span><span class="lang-es">Crecí entre negocios familiares en el sureste de LA: la llantera, la taquería, la florería de la esquina. Todos saben que son buenos. La cuadra lo confirma cada día.</span></p>
+                        <p><span class="lang-en">But when someone new searches, these places barely exist online, or worse, look nothing like how good they really are. A great business with a bad first impression loses to a worse one that shows up better.</span><span class="lang-es">Pero cuando alguien nuevo busca, estos lugares casi no existen en línea, o peor, no se ven ni cerca de lo buenos que son. Un gran negocio con una mala primera impresión pierde ante uno peor que se ve mejor.</span></p>
+                        <p class="text-ink"><span class="lang-en">Presentation isn't vanity. For a local shop, it's the difference between being found and being forgotten. That's the gap I close: real photos, clean bilingual code, and a listing that finally matches the place.</span><span class="lang-es">La presentación no es vanidad. Para un negocio local, es la diferencia entre ser encontrado y ser olvidado. Ese es el espacio que cierro: fotos reales, código limpio y bilingüe, y un perfil que por fin hace justicia al lugar.</span></p>
                     </div>
 
                     <dl class="mt-10 grid grid-cols-2 gap-6 border-t hairline pt-8 font-mono text-sm">
@@ -642,7 +646,7 @@
             </div>
         </section>
 
-        <!-- ============ CTA — everything goes quiet ============ -->
+        <!-- ============ CTA: everything goes quiet ============ -->
         <section id="contact" class="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-6 border-t hairline" aria-label="Get in touch">
             <div class="depth max-w-4xl">
                 <p class="kicker mb-8"><span class="lang-en">Free to look · No obligation</span><span class="lang-es">Gratis mirar · Sin compromiso</span></p>
@@ -670,7 +674,7 @@
             <p class="flex items-center gap-4">
                 <a href="mailto:eddjack30@gmail.com" class="hover:text-ink transition-colors" data-cursor="link">eddjack30@gmail.com</a>
                 <span class="opacity-40">·</span>
-                <span>Built by hand — hecho con orgullo.</span>
+                <span>Built by hand, hecho con orgullo.</span>
             </p>
         </div>
     </footer>
@@ -990,7 +994,7 @@
         function updateProgress(y) {
             const max = document.documentElement.scrollHeight - window.innerHeight;
             const p = max > 0 ? clamp(y / max, 0, 1) : 0;
-            if (wordmark) wordmark.style.setProperty('--progress', (p * 100).toFixed(1) + '%');
+            if (wordmark) wordmark.style.setProperty('--progress', p.toFixed(4));
             if (wordmarkDot) wordmarkDot.classList.toggle('complete', p > 0.995);
         }
 
