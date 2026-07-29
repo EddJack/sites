@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D9B466"/>
+      <stop offset="1" stop-color="#9A7130"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="13" fill="#F3DEE4"/>
+  <!-- gown silhouette echoing their own gold line-drawing logo -->
+  <path d="M32 11c2.4 0 4 1.7 4 3.8 0 1.6-.9 2.6-2 3.4l3.4 5.2c.5.8.4 1.7-.2 2.3L32 31l-5.2-5.3c-.6-.6-.7-1.5-.2-2.3l3.4-5.2c-1.1-.8-2-1.8-2-3.4 0-2.1 1.6-3.8 4-3.8z"
+        fill="url(#g)"/>
+  <path d="M32 30.5 44.5 51.5c.5.9-.1 2-1.2 2H20.7c-1.1 0-1.7-1.1-1.2-2L32 30.5z"
+        fill="none" stroke="url(#g)" stroke-width="2.6" stroke-linejoin="round"/>
+</svg>

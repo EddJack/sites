@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dream Maker Bridal Collection — Huntington Park, CA</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Bridal, quinceañera and formal gowns on Pacific Blvd in Huntington Park. Custom made dresses, alterations on site, plus sizes. 4.9 stars across 293 reviews. Se habla español.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCF8F4; --paper-2:#F6EEE8; --blush:#F3DEE4; --blush-deep:#E7C3CD;
+  --ink:#241A20; --ink-soft:#5D4C55; --muted:#8B7681;
+  --gold:#A67C3D; --gold-lt:#C9A257; --wine:#7A2E45;
+  --line:rgba(36,26,32,.12); --line-2:rgba(36,26,32,.07);
+  --display:'Bodoni Moda',Georgia,'Times New Roman',serif;
+  --body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --pad:clamp(20px,5vw,80px);
+  --maxw:1280px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);margin:0;line-height:1.06;letter-spacing:-.015em;font-weight:600}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.lang-es,body[data-lang="es"] .lang-en{display:none}
+body[data-lang="es"] .lang-es{display:revert}
+
+/* ---------- demo banner ---------- */
+.demo{
+  position:relative;z-index:60;background:linear-gradient(90deg,var(--wine),#A2405C);
+  color:#fff;font-family:var(--body);font-weight:700;font-size:13px;
+  letter-spacing:.07em;text-transform:uppercase;text-align:center;
+  padding:9px 16px;line-height:1.4;
+}
+
+/* ---------- nav — centred boutique masthead, deliberately not the pill used elsewhere ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(252,248,244,0);border-bottom:1px solid transparent;
+  /* colour only — animating padding would relayout the page on every scroll frame */
+  transition:background .4s var(--ease),border-color .4s var(--ease);
+  padding-block:16px;
+}
+.nav.docked{
+  background:rgba(252,248,244,.93);border-bottom-color:var(--line-2);
+  backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);
+}
+.nav-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:var(--display);font-weight:500;font-size:clamp(20px,2.3vw,27px);
+  letter-spacing:.01em;white-space:nowrap;text-decoration:none;font-style:italic;
+  position:absolute;left:50%;transform:translateX(-50%)}
+.brand span{color:var(--gold)}
+.nav-top{position:relative}
+/* links sit on their own line, centred under the wordmark — reads like a boutique masthead */
+/* a hairline of gold along the bottom edge carries scroll position — scaleX, no SVG ring */
+.nav-progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;
+  background:linear-gradient(90deg,var(--gold-lt),var(--gold),var(--wine));
+  transform:scaleX(0);transform-origin:left center;will-change:transform}
+/* no chip, no capsule — just type, with a gold hairline marking the active language */
+.lang{display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.17em}
+.lang button{appearance:none;border:0;background:transparent;color:var(--muted);
+  padding:3px 1px;cursor:pointer;font:inherit;position:relative;
+  transition:color .3s var(--ease)}
+.lang button:hover{color:var(--ink)}
+.lang button::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left center;
+  transition:transform .38s var(--ease)}
+.lang button[aria-pressed="true"]{color:var(--ink)}
+.lang button[aria-pressed="true"]::after{transform:scaleX(1)}
+.lang-sep{color:var(--line);font-size:12px;user-select:none;line-height:1}
+.nav-call{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink);display:inline-flex;align-items:center;gap:8px;
+  border-bottom:1px solid var(--gold);padding-bottom:3px;transition:color .25s var(--ease)}
+.nav-call:hover{color:var(--gold)}
+.nav-call svg{width:15px;height:15px}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  font-family:var(--body);font-weight:700;font-size:14.5px;
+  padding:12px 22px;border-radius:100px;border:1px solid transparent;
+  transition:transform .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease);
+  white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#B98C48}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn svg{width:17px;height:17px;flex:none}
+
+
+/* ---------- menu trigger + circular-reveal panel ----------
+   The reveal grows from the button itself via clip-path, so the panel appears to come
+   out of the corner you tapped rather than sliding in from nowhere. */
+.menu-btn{
+  appearance:none;border:0;background:transparent;cursor:pointer;padding:8px;
+  display:inline-flex;flex-direction:column;align-items:flex-end;gap:5px;
+  position:relative;z-index:80;
+}
+/* all three bars are the same box; the staggered look and the X are pure transform,
+   so nothing here animates a layout property */
+.menu-btn i{display:block;width:26px;height:1.5px;background:var(--ink);border-radius:2px;
+  transform-origin:right center;
+  transition:transform .45s var(--ease),opacity .3s var(--ease),background .3s var(--ease)}
+.menu-btn i:nth-child(2){transform:scaleX(.69)}
+.menu-btn i:nth-child(3){transform:scaleX(.85)}
+.menu-btn:hover i{transform:scaleX(1)}
+body.menu-open .menu-btn i{background:var(--gold);transform-origin:center}
+body.menu-open .menu-btn i:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+body.menu-open .menu-btn i:nth-child(2){opacity:0;transform:scaleX(.2)}
+body.menu-open .menu-btn i:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+.menu-panel{
+  position:fixed;inset:0;z-index:70;background:var(--paper);
+  display:flex;flex-direction:column;justify-content:center;
+  /* top padding clears the masthead, which stays on top while the panel is open */
+  padding:clamp(128px,18vh,190px) clamp(28px,7vw,90px) clamp(28px,6vw,72px);
+  clip-path:circle(0% at var(--ox,92%) var(--oy,5%));
+  transition:clip-path .85s cubic-bezier(.76,0,.24,1);
+  pointer-events:none;
+}
+body.menu-open .menu-panel{clip-path:circle(150% at var(--ox,92%) var(--oy,5%));pointer-events:auto}
+.menu-panel a.m-link{
+  display:block;text-decoration:none;color:var(--ink);
+  font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:clamp(34px,7vw,76px);line-height:1.12;letter-spacing:-.02em;
+  padding:clamp(9px,1.4vw,16px) 0;border-bottom:1px solid var(--line-2);
+  opacity:0;transform:translateY(18px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease),color .3s var(--ease);
+}
+.menu-panel a.m-link:hover{color:var(--gold)}
+body.menu-open .menu-panel a.m-link{opacity:1;transform:none}
+body.menu-open .menu-panel a.m-link:nth-child(1){transition-delay:.30s}
+body.menu-open .menu-panel a.m-link:nth-child(2){transition-delay:.36s}
+body.menu-open .menu-panel a.m-link:nth-child(3){transition-delay:.42s}
+body.menu-open .menu-panel a.m-link:nth-child(4){transition-delay:.48s}
+body.menu-open .menu-panel a.m-link:nth-child(5){transition-delay:.54s}
+body.menu-open .menu-panel a.m-link:nth-child(6){transition-delay:.60s}
+.menu-foot{margin-top:clamp(26px,4vw,52px);display:flex;flex-wrap:wrap;gap:8px 40px;
+  font-size:14px;color:var(--ink-soft);opacity:0;transition:opacity .5s var(--ease) .66s}
+body.menu-open .menu-foot{opacity:1}
+.menu-foot a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px}
+/* an explicit class, not `.menu-foot span` — a bare descendant span rule sets display and
+   outranks .lang-es{display:none}, which showed both languages at once */
+.menu-foot .mf-label{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:700;margin-bottom:5px}
+.menu-foot .mf-hours{font-size:14px;color:var(--ink-soft)}
+body.menu-open{overflow:hidden}
+/* the masthead has to outrank the panel while it's open, otherwise the close button
+   is buried underneath it — the nav's own stacking context traps the button's z-index */
+body.menu-open .nav{z-index:80;background:transparent;border-bottom-color:transparent}
+body.menu-open .nav-progress{opacity:0}
+.nav-progress{transition:opacity .3s var(--ease)}
+@media (prefers-reduced-motion:reduce){
+  .menu-panel{transition:none;clip-path:none;opacity:0;visibility:hidden}
+  body.menu-open .menu-panel{opacity:1;visibility:visible}
+  .menu-panel a.m-link{opacity:1;transform:none;transition:none}
+  .menu-foot{opacity:1;transition:none}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:clamp(600px,90svh,920px);display:flex;align-items:center;
+  margin-top:-72px;padding-top:100px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:62% 30%}
+.hero-bg::after{content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(100deg,rgba(252,248,244,.97) 0%,rgba(252,248,244,.90) 34%,rgba(252,248,244,.30) 62%,rgba(252,248,244,0) 82%),
+    linear-gradient(180deg,rgba(252,248,244,.55) 0%,transparent 28%,rgba(252,248,244,.55) 100%)}
+.hero-in{position:relative;z-index:1;width:100%;padding-block:clamp(40px,6vw,80px)}
+.eyebrow{display:inline-flex;align-items:center;gap:11px;font-family:var(--body);
+  font-weight:700;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:22px}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+h1{font-size:clamp(40px,6.6vw,86px);max-width:15ch;font-weight:500}
+h1 em{font-style:italic;color:var(--wine)}
+.hero p.lede{font-size:clamp(16.5px,1.8vw,20px);color:var(--ink-soft);max-width:46ch;
+  margin:26px 0 0;line-height:1.6}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero-cta .btn{padding:15px 28px;font-size:15.5px}
+
+/* ---------- trust ribbon — a line of type, not a stats grid ---------- */
+.ribbon{border-block:1px solid var(--line-2);background:var(--paper-2);
+  padding-block:18px;overflow:hidden}
+.ribbon-in{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:10px 30px;text-align:center}
+/* direct children only — a bare `.ribbon span` also matched the .lang-en/.lang-es
+   spans inside and its display:inline-flex beat .lang-es{display:none} on specificity,
+   which printed both languages at once */
+.ribbon-in > span{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;color:var(--ink-soft);display:inline-flex;align-items:center;gap:8px}
+.ribbon b{color:var(--wine);font-weight:700}
+.ribbon .dot{width:3px;height:3px;border-radius:50%;background:var(--gold);flex:none}
+.ribbon .star{color:var(--gold-lt)}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(70px,9vw,130px)}
+.sec-head{max-width:60ch;margin-bottom:clamp(36px,5vw,60px)}
+.sec-head h2{font-size:clamp(30px,4.6vw,56px)}
+.sec-head p{color:var(--ink-soft);font-size:18px;margin:18px 0 0;max-width:54ch}
+.kicker{font-family:var(--body);font-weight:700;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block}
+
+/* occasions */
+.occ{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.occ-card{position:relative;border-radius:4px;overflow:hidden;isolation:isolate;
+  min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;
+  border:1px solid var(--line-2);
+  transition:transform .4s var(--ease)}
+.occ-card:hover{transform:translateY(-5px)}
+.occ-card img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;
+  transition:transform .7s var(--ease)}
+.occ-card:hover img{transform:scale(1.05)}
+.occ-card::after{content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(36,26,32,0) 34%,rgba(36,26,32,.78) 100%)}
+.occ-card h3{font-size:23px;color:#fff}
+.occ-card p{font-size:13.5px;color:rgba(255,255,255,.82);margin:6px 0 0;line-height:1.5}
+
+/* store */
+.store{background:var(--paper-2);border-block:1px solid var(--line-2)}
+.store-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,4.5vw,64px);align-items:center}
+.store-figs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.store-figs img{border-radius:3px;border:1px solid var(--line-2);aspect-ratio:3/4;object-fit:cover;width:100%}
+.store-figs img.tall{grid-row:span 2;aspect-ratio:3/5.2}
+blockquote{margin:0;font-family:var(--display);font-weight:500;font-style:italic;
+  font-size:clamp(21px,2.7vw,34px);line-height:1.3;color:var(--ink)}
+.cite{margin-top:22px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:9px;
+  flex-wrap:wrap}
+.cite b{color:var(--ink);font-weight:600;font-style:normal}
+
+/* ---------- infinite review marquee ---------- */
+.rev-wrap{overflow:hidden;position:relative;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+/* Pauses on hover/focus, becomes a plain scroller under prefers-reduced-motion, and animates
+   transform only, so it never touches layout. */
+.rev-track{display:flex;gap:18px;width:max-content;will-change:transform;
+  /* impeccable-disable-next-line marquee -- deliberate: 293 reviews is this shop's strongest asset and a moving wall conveys that volume in a way a static grid cannot */
+  animation:marquee var(--dur,64s) linear infinite}
+.rev-wrap:hover .rev-track,.rev-wrap:focus-within .rev-track{animation-play-state:paused}
+.rev-wrap + .rev-wrap{margin-top:18px}
+.rev-wrap.reverse .rev-track{animation-direction:reverse}
+@keyframes marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.rev-card{flex:0 0 clamp(276px,25vw,352px);background:#fff;border:1px solid var(--line-2);
+  border-radius:3px;padding:26px 24px;display:flex;flex-direction:column;
+  box-shadow:0 2px 14px rgba(80,50,60,.05)}
+.stars{color:var(--gold-lt);font-size:14px;letter-spacing:3px;margin-bottom:14px}
+.rev-card p{margin:0 0 20px;font-size:15px;line-height:1.6;color:var(--ink-soft);flex:1}
+.rev-who{display:flex;align-items:center;gap:11px;font-size:13.5px;padding-top:15px;
+  border-top:1px solid var(--line-2)}
+.avatar{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-family:var(--display);font-weight:600;font-size:14px;color:#fff;
+  background:linear-gradient(140deg,var(--gold-lt),var(--gold))}
+.rev-who b{display:block;font-weight:600;color:var(--ink)}
+.rev-who span{color:var(--muted);font-size:12px}
+.src{margin-left:auto;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line-2);border-radius:100px;padding:4px 9px;font-weight:600}
+
+/* custom / betty */
+.custom-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,60px);align-items:center}
+.custom-grid img{border-radius:3px;border:1px solid var(--line-2)}
+
+/* gallery */
+.gal{columns:4;column-gap:12px}
+.gal img{width:100%;margin-bottom:12px;border-radius:3px;border:1px solid var(--line-2);
+  break-inside:avoid;transition:transform .5s var(--ease)}
+.gal img:hover{transform:scale(1.02)}
+
+/* inquiry form */
+.inq{background:var(--paper-2);border-block:1px solid var(--line-2)}
+.inq-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,4.5vw,64px);align-items:start}
+.inq-note{display:inline-flex;align-items:flex-start;gap:10px;margin-top:22px;
+  background:rgba(122,46,69,.07);border:1px solid rgba(122,46,69,.2);border-radius:3px;
+  padding:13px 15px;font-size:13.5px;color:var(--wine);line-height:1.5;max-width:44ch}
+.inq-note svg{width:16px;height:16px;flex:none;margin-top:2px;stroke:currentColor;fill:none;stroke-width:1.9}
+form.inq-form{background:#fff;border:1px solid var(--line-2);border-radius:3px;
+  padding:clamp(24px,3vw,38px);box-shadow:0 2px 18px rgba(80,50,60,.05)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--muted);margin-bottom:7px}
+.field input,.field select,.field textarea{
+  width:100%;font:inherit;font-size:16px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);border-radius:2px;
+  padding:13px 14px;transition:border-color .25s var(--ease),background .25s var(--ease)}
+.field textarea{min-height:104px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--gold);background:#fff}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.inq-form .btn{width:100%;justify-content:center;padding:15px 22px;margin-top:6px}
+.inq-status{margin-top:14px;font-size:14px;line-height:1.55;color:var(--wine);
+  background:rgba(122,46,69,.07);border:1px solid rgba(122,46,69,.2);
+  border-radius:3px;padding:13px 15px;display:none}
+.inq-status.show{display:block}
+
+/* visit */
+.visit{background:var(--paper-2);border-block:1px solid var(--line-2)}
+.visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,56px)}
+.info-row{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-2)}
+.info-row:last-child{border-bottom:0}
+.info-ico{width:20px;height:20px;flex:none;margin-top:3px;stroke:var(--gold);fill:none;
+  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.info-row h4{font-family:var(--body);font-size:11.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.info-row div p{margin:0;font-size:16px}
+.info-row a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(166,124,61,.5);
+  padding-bottom:1px}
+.hours{width:100%;border-collapse:collapse;font-size:15px;margin-top:4px}
+.hours td{padding:5px 0}
+.hours td:last-child{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.hours tr.today td{color:var(--wine);font-weight:600}
+.map{border-radius:3px;overflow:hidden;border:1px solid var(--line-2);min-height:420px;height:100%}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+
+/* CTA */
+.cta-rev{text-align:center}
+.cta-rev h2{font-size:clamp(28px,4.4vw,50px);max-width:20ch;margin-inline:auto}
+.cta-rev p{color:var(--ink-soft);max-width:50ch;margin:20px auto 0;font-size:17.5px}
+.cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px}
+
+footer{border-top:1px solid var(--line-2);padding-block:44px;font-size:14px;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:var(--gold)}
+.foot-note{font-size:12.5px;opacity:.78;margin-top:18px;max-width:72ch;line-height:1.6}
+
+.mobile-bar{display:none}
+.rise{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rise.in{opacity:1;transform:none}
+
+@media (max-width:1100px){
+  .occ{grid-template-columns:repeat(2,1fr)}
+  .gal{columns:3}
+}
+@media (max-width:860px){
+  .brand{position:static;transform:none;font-size:21px}
+  .nav-top{justify-content:space-between}
+  .nav-call .nav-call-t{display:none}
+  .nav-call{border-bottom:0}
+  .store-grid,.visit-grid,.custom-grid,.inq-grid{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr}
+  .gal{columns:2}
+  .hero{min-height:86svh}
+  .hero-bg img{object-position:64% 24%}
+  body{padding-bottom:76px}
+  .mobile-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;
+    position:fixed;left:0;right:0;bottom:0;z-index:55;
+    padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+    background:rgba(252,248,244,.92);backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+  .mobile-bar .btn{justify-content:center;padding:14px 12px;font-size:14.5px}
+  /* the fixed bar is a fallback for when the hero's own buttons have scrolled away,
+     so it stays out of the way until then instead of duplicating them on load */
+  .mobile-bar{opacity:0;transform:translateY(100%);pointer-events:none;
+    transition:opacity .3s var(--ease),transform .3s var(--ease)}
+  body.past-hero .mobile-bar{opacity:1;transform:none;pointer-events:auto}
+}
+@media (max-width:480px){
+  .hero-cta .btn{flex:1;justify-content:center}
+  .eyebrow{font-size:10.5px;letter-spacing:.16em}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  .rise{opacity:1;transform:none}
+  .rev-track{animation:none !important}
+  .rev-wrap{overflow-x:auto}
+}
+</style>
+</head>
+<body data-lang="en">
+
+<div class="demo">
+  <span class="lang-en"><b>Demo preview</b> — a sample site built for Dream Maker Bridal Collection.</span>
+  <span class="lang-es"><b>Vista de demostración</b> — sitio de muestra hecho para Dream Maker Bridal Collection.</span>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <div class="nav-top">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-sep" aria-hidden="true">/</span>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+      <a class="brand" href="#top">Dream <span>Maker</span></a>
+      <div style="display:flex;align-items:center;gap:clamp(14px,2vw,26px)">
+        <a class="nav-call" href="tel:+13239495052">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="nav-call-t">(323) 949-5052</span>
+        </a>
+        <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Menu">
+          <i></i><i></i><i></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
+</nav>
+
+<div class="menu-panel" id="menuPanel">
+  <a class="m-link" href="#occasions"><span class="lang-en">Occasions</span><span class="lang-es">Ocasiones</span></a>
+  <a class="m-link" href="#store"><span class="lang-en">The Store</span><span class="lang-es">La Tienda</span></a>
+  <a class="m-link" href="#custom"><span class="lang-en">Custom Dresses</span><span class="lang-es">Vestidos a Medida</span></a>
+  <a class="m-link" href="#reviews"><span class="lang-en">Reviews</span><span class="lang-es">Reseñas</span></a>
+  <a class="m-link" href="#inquire"><span class="lang-en">Inquire</span><span class="lang-es">Consultar</span></a>
+  <a class="m-link" href="#visit"><span class="lang-en">Visit</span><span class="lang-es">Visítanos</span></a>
+  <div class="menu-foot">
+    <div>
+      <span class="mf-label"><span class="lang-en">Call</span><span class="lang-es">Llamar</span></span>
+      <a href="tel:+13239495052">(323) 949-5052</a>
+    </div>
+    <div>
+      <span class="mf-label"><span class="lang-en">Visit</span><span class="lang-es">Visítenos</span></span>
+      <a href="https://www.google.com/maps/dir/?api=1&amp;destination=6708+Pacific+Blvd+Huntington+Park+CA+90255" target="_blank" rel="noopener">6708 Pacific Blvd, Huntington Park</a>
+    </div>
+    <div>
+      <span class="mf-label"><span class="lang-en">Open</span><span class="lang-es">Abierto</span></span>
+      <span class="mf-hours">11:00 AM – 5:00 PM</span>
+    </div>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <img src="img/quince-blue.jpg" alt="A light blue quinceañera ball gown with floral appliqué and a full tulle skirt." fetchpriority="high">
+  </div>
+  <div class="hero-in wrap">
+    <span class="eyebrow"><span class="lang-en">Pacific Blvd · Huntington Park</span><span class="lang-es">Pacific Blvd · Huntington Park</span></span>
+    <h1>
+      <span class="lang-en">The dress is here.<br>So is the person<br>who'll <em>fit it.</em></span>
+      <span class="lang-es">El vestido está aquí.<br>Y también quien<br>te lo <em>ajusta.</em></span>
+    </h1>
+    <p class="lede">
+      <span class="lang-en">Bridal, quinceañera and formal gowns on Pacific Blvd, with alterations done in the store, custom dresses made to your vision, and sizes that actually fit. Open seven days a week.</span>
+      <span class="lang-es">Vestidos de novia, quinceañera y de gala en Pacific Blvd, con arreglos en la misma tienda, vestidos a la medida según su idea, y tallas que de verdad quedan. Abierto los siete días.</span>
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="tel:+13239495052">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (323) 949-5052
+      </a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=6708+Pacific+Blvd+Huntington+Park+CA+90255" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="lang-en">Visit the store</span><span class="lang-es">Visitar la tienda</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="ribbon">
+  <div class="wrap"><div class="ribbon-in">
+    <span><span class="star">&#9733;&#xFE0E;</span><b>4.9</b>&nbsp;<span class="lang-en">293 Google reviews</span><span class="lang-es">293 reseñas de Google</span></span>
+    <span class="dot" aria-hidden="true"></span>
+    <span><span class="lang-en">Alterations in store</span><span class="lang-es">Arreglos en la tienda</span></span>
+    <span class="dot" aria-hidden="true"></span>
+    <span><span class="lang-en">Custom made dresses</span><span class="lang-es">Vestidos a la medida</span></span>
+    <span class="dot" aria-hidden="true"></span>
+    <span><span class="lang-en">All sizes</span><span class="lang-es">Todas las tallas</span></span>
+    <span class="dot" aria-hidden="true"></span>
+    <span><span class="lang-en">Open 7 days &middot; Se habla espa&ntilde;ol</span><span class="lang-es">Abierto 7 d&iacute;as &middot; We speak English</span></span>
+  </div></div>
+</div>
+
+<section id="occasions">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="kicker"><span class="lang-en">Occasions</span><span class="lang-es">Ocasiones</span></span>
+      <h2><span class="lang-en">Every dress your family will remember.</span><span class="lang-es">Cada vestido que su familia va a recordar.</span></h2>
+      <p><span class="lang-en">Bodas, XV años, damas, graduaciones, bautizos y primeras comuniones. The whole calendar, under one roof on Pacific Blvd.</span><span class="lang-es">Bodas, XV años, damas, graduaciones, bautizos y primeras comuniones. Todo el calendario, bajo un mismo techo en Pacific Blvd.</span></p>
+    </div>
+    <div class="occ rise">
+      <article class="occ-card">
+        <img src="img/quince-blue.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Quinceañera</span><span class="lang-es">XV Años</span></h3>
+        <p><span class="lang-en">Ball gowns, damas and the whole court, fitted together.</span><span class="lang-es">Vestidos de gala, damas y toda la corte, ajustados juntos.</span></p>
+      </article>
+      <article class="occ-card">
+        <img src="img/bridal-lace.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Bridal</span><span class="lang-es">Bodas</span></h3>
+        <p><span class="lang-en">Lace, trains and overskirts — tried on in person, altered here.</span><span class="lang-es">Encaje, colas y sobrefaldas — probados aquí y ajustados aquí.</span></p>
+      </article>
+      <article class="occ-card">
+        <img src="img/gown-magenta.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Prom &amp; Graduation</span><span class="lang-es">Prom y Graduación</span></h3>
+        <p><span class="lang-en">The wall of gowns everyone tells their friends about.</span><span class="lang-es">La pared de vestidos de la que todas les cuentan a sus amigas.</span></p>
+      </article>
+      <article class="occ-card">
+        <img src="img/gown-rose-duo.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Damas &amp; Madrinas</span><span class="lang-es">Damas y Madrinas</span></h3>
+        <p><span class="lang-en">Matched colors across the whole party, in stock.</span><span class="lang-es">Colores coordinados para todo el grupo, en existencia.</span></p>
+      </article>
+      <article class="occ-card">
+        <img src="img/bridal-damas.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Baptisms &amp; Communions</span><span class="lang-es">Bautizos y Comuniones</span></h3>
+        <p><span class="lang-en">Bautizos and primeras comuniones for the little ones.</span><span class="lang-es">Bautizos y primeras comuniones para los más pequeños.</span></p>
+      </article>
+      <article class="occ-card">
+        <img src="img/crowns.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Crowns &amp; Accessories</span><span class="lang-es">Coronas y Accesorios</span></h3>
+        <p><span class="lang-en">Crowns, jewelry and clutches in the case by the door.</span><span class="lang-es">Coronas, joyería y bolsos en la vitrina de la entrada.</span></p>
+      </article>
+      <article class="occ-card">
+        <img src="img/plus-emerald.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Plus Sizes</span><span class="lang-es">Tallas Grandes</span></h3>
+        <p><span class="lang-en">Beautiful gowns in your size, on the floor — not special order.</span><span class="lang-es">Vestidos hermosos en su talla, en la tienda — sin pedido especial.</span></p>
+      </article>
+      <article class="occ-card">
+        <img src="img/gown-black.jpg" alt="" loading="lazy" aria-hidden="true">
+        <h3><span class="lang-en">Evening &amp; Formal</span><span class="lang-es">Noche y Gala</span></h3>
+        <p><span class="lang-en">Satin, sequins and slits for every other night out.</span><span class="lang-es">Satín, lentejuelas y aberturas para cualquier otra noche.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="store" id="store">
+  <div class="wrap store-grid rise">
+    <div>
+      <span class="kicker"><span class="lang-en">The store</span><span class="lang-es">La tienda</span></span>
+      <blockquote>
+        <span class="lang-en">“I came from Sacramento just for this store — and I will be back for all my other events.”</span>
+        <span class="lang-es">“Vine desde Sacramento solo por esta tienda — y voy a volver para todos mis demás eventos.”</span>
+      </blockquote>
+      <div class="cite">
+        <b>Vanessa Valdez</b>
+        <span style="opacity:.5">—</span>
+        <span class="lang-en">Google review</span><span class="lang-es">reseña de Google</span>
+      </div>
+      <p style="color:var(--ink-soft);margin-top:26px;max-width:44ch">
+        <span class="lang-en">Customers drive in from Sacramento, Victorville and out of state, because a dress you can see, touch and try on beats a photo every time. Walk in at 6708 Pacific Blvd, any day of the week.</span>
+        <span class="lang-es">Vienen manejando desde Sacramento, Victorville y de otros estados, porque un vestido que se puede ver, tocar y probar siempre gana. Visítenos en el 6708 de Pacific Blvd, cualquier día de la semana.</span>
+      </p>
+    </div>
+    <div class="store-figs">
+      <img class="tall" src="img/storefront.jpg" width="676" height="1200" loading="lazy"
+           alt="The Dream Maker storefront at 6708 Pacific Blvd, gowns visible through the window.">
+      <img src="img/store-racks.jpg" width="900" height="1200" loading="lazy"
+           alt="Rows of mannequins in gowns beside a lit jewelry case inside the store.">
+      <img src="img/store-cases.jpg" width="900" height="1200" loading="lazy"
+           alt="A glass case of beaded clutch bags with gowns on mannequins behind it.">
+    </div>
+  </div>
+</section>
+
+<section id="custom">
+  <div class="wrap custom-grid rise">
+    <figure style="margin:0">
+      <img src="img/bridal-overskirt.jpg" width="800" height="1200" loading="lazy"
+           alt="A white bridal gown with a detachable tulle overskirt.">
+    </figure>
+    <div>
+      <span class="kicker"><span class="lang-en">Custom &amp; alterations</span><span class="lang-es">A medida y arreglos</span></span>
+      <h2 style="font-size:clamp(28px,3.8vw,46px)">
+        <span class="lang-en">Made to your vision — and hemmed before you leave.</span>
+        <span class="lang-es">Hecho a su idea — y ajustado antes de irse.</span>
+      </h2>
+      <p style="color:var(--ink-soft);margin-top:22px">
+        <span class="lang-en">Ask for <strong>Betty</strong> about custom made dresses. Bring a picture, a sketch or an idea and she'll build it. And if a gown off the floor needs taking in, the alterations happen right here. Customers regularly walk out the same day with it already fitted.</span>
+        <span class="lang-es">Pregunte por <strong>Betty</strong> para vestidos a la medida. Traiga una foto, un dibujo o una idea y ella lo hace realidad. Y si un vestido de la tienda necesita ajuste, los arreglos se hacen aquí mismo. Muchas clientas salen el mismo día con el vestido ya entallado.</span>
+      </p>
+      <blockquote style="font-size:clamp(18px,2.1vw,26px);margin-top:28px">
+        <span class="lang-en">“They are truly the Dream makers, because they brought my daughter's dream prom dress to life.”</span>
+        <span class="lang-es">“De verdad son los Dream Makers, porque hicieron realidad el vestido de prom que soñaba mi hija.”</span>
+      </blockquote>
+      <div class="cite"><b>Lucille Wright</b><span style="opacity:.5">—</span><span class="lang-en">Google review</span><span class="lang-es">reseña de Google</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="store">
+  <div class="wrap">
+    <div class="sec-head rise" style="max-width:64ch">
+      <span class="kicker"><span class="lang-en">Reviews</span><span class="lang-es">Reseñas</span></span>
+      <h2><span class="lang-en">293 reviews. 4.9 stars.</span><span class="lang-es">293 reseñas. 4.9 estrellas.</span></h2>
+      <p><span class="lang-en">Nearly every one of them names a person: Betty, Aracely, Andrea, Conni, Sandra. That is what people remember about this store.</span><span class="lang-es">Casi todas mencionan a alguien por su nombre: Betty, Aracely, Andrea, Conni, Sandra. Eso es lo que la gente recuerda de esta tienda.</span></p>
+    </div>
+  </div>
+
+  <div class="rev-wrap rise" style="--dur:78s">
+    <div class="rev-track" data-marquee>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“Betty is such an amazing person to work with, especially when it comes to customs. She truly brought my vision to life in every aspect.”</span><span class="lang-es">“Betty es una persona increíble, sobre todo para los vestidos a la medida. De verdad hizo realidad mi idea en todos los aspectos.”</span></p>
+        <div class="rev-who"><span class="avatar">A</span><span><b>Anjelle Griffin</b><span>May 2026</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“I'm a tall 270 pound person and they had beautiful dresses in my size. I recommend if you're plus and need a dress for any occasion you should come here.”</span><span class="lang-es">“Soy una persona alta de 270 libras y tenían vestidos hermosos en mi talla. Si usa talla grande y necesita vestido para cualquier ocasión, venga aquí.”</span></p>
+        <div class="rev-who"><span class="avatar">A</span><span><b>Austin Garrido</b><span>Local Guide</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“I finally found my dress for my daughter's quince! Aracely was such a great help. Very patient — and let me tell you, I tried on FIVE dresses.”</span><span class="lang-es">“¡Por fin encontré el vestido para los XV de mi hija! Aracely me ayudó muchísimo. Muy paciente — y déjeme decirle que me probé CINCO vestidos.”</span></p>
+        <div class="rev-who"><span class="avatar">S</span><span><b>Sandy Bautista</b><span>Feb 2026</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“Don't do business anywhere else! I came from Sacramento just for this store and I will be back in the future for all my other events. They secured a hard to get dress for me.”</span><span class="lang-es">“¡No compre en otro lado! Vine desde Sacramento solo por esta tienda y voy a volver para todos mis eventos. Me consiguieron un vestido muy difícil de encontrar.”</span></p>
+        <div class="rev-who"><span class="avatar">V</span><span><b>Vanessa Valdez</b><span>Local Guide</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“Andrea was so much help and such a delight. The dresses here are gorgeous and the customer service was amazing. You don't feel rushed or pressured in the slightest.”</span><span class="lang-es">“Andrea fue de mucha ayuda y un encanto. Los vestidos son preciosos y la atención excelente. No la apuran ni la presionan para nada.”</span></p>
+        <div class="rev-who"><span class="avatar">B</span><span><b>Bethany Rodriguez</b><span>Feb 2026</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“Staff was so wonderful and helpful. Dress came out better than imagined. Thank you so much.”</span><span class="lang-es">“El personal fue maravilloso y muy servicial. El vestido quedó mejor de lo que imaginaba. Muchísimas gracias.”</span></p>
+        <div class="rev-who"><span class="avatar">K</span><span><b>Katina Kellam</b><span>Mar 2026</span></span><span class="src">Google</span></div>
+      </article>
+    </div>
+  </div>
+
+  <div class="rev-wrap reverse rise" style="--dur:92s">
+    <div class="rev-track" data-marquee>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“We drove down from Victorville and are extremely satisfied. The women there made my daughter feel so comfortable. The dress needed to be altered and they also did this there.”</span><span class="lang-es">“Manejamos desde Victorville y quedamos muy satisfechos. Las señoras hicieron que mi hija se sintiera muy cómoda. El vestido necesitaba arreglo y también lo hicieron ahí.”</span></p>
+        <div class="rev-who"><span class="avatar">J</span><span><b>Joanna Vega</b><span>2025</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“Sandra was very nice. They made sure my daughter's dress fit perfectly. Coming from out of state they were very understanding. The alterations were done right then and there.”</span><span class="lang-es">“Sandra fue muy amable. Se aseguraron de que el vestido de mi hija quedara perfecto. Viniendo de otro estado fueron muy comprensivos. Los arreglos se hicieron ahí mismo.”</span></p>
+        <div class="rev-who"><span class="avatar">A</span><span><b>Annabel</b><span>2025</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“Conni was so sweet and helped me with sizing. She allowed my friends and I to try on so many different dresses until we found the perfect one. My prom is gonna be perfect.”</span><span class="lang-es">“Conni fue muy dulce y me ayudó con la talla. Nos dejó a mis amigas y a mí probarnos muchísimos vestidos hasta encontrar el perfecto. Mi prom va a quedar perfecto.”</span></p>
+        <div class="rev-who"><span class="avatar">A</span><span><b>Anastasia Sar</b><span>2024</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“Absolutely beautiful work and wonderful staff. The ordering process was quick and easy and the product was delivered as promised and on time. Betty provided excellent customer service.”</span><span class="lang-es">“Un trabajo precioso y un personal maravilloso. El pedido fue rápido y sencillo y llegó como prometieron y a tiempo. Betty dio una atención excelente.”</span></p>
+        <div class="rev-who"><span class="avatar">C</span><span><b>Cherie</b><span>Local Guide</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“These ladies are amazing and know how to give good service. Five stars for a reason — they were able to get us what we were looking for next day.”</span><span class="lang-es">“Estas señoras son increíbles y saben dar buen servicio. Cinco estrellas por algo — nos consiguieron lo que buscábamos al día siguiente.”</span></p>
+        <div class="rev-who"><span class="avatar">E</span><span><b>Elizabeth Maravillas</b><span>2024</span></span><span class="src">Google</span></div>
+      </article>
+      <article class="rev-card">
+        <div class="stars">&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;&#9733;&#xFE0E;</div>
+        <p><span class="lang-en">“Andrea was wonderful, very helpful. Didn't feel pressure to buy.”</span><span class="lang-es">“Andrea fue maravillosa, muy servicial. No sentí presión para comprar.”</span></p>
+        <div class="rev-who"><span class="avatar">B</span><span><b>Bella Salas</b><span>Feb 2026</span></span><span class="src">Google</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="kicker"><span class="lang-en">The floor</span><span class="lang-es">La tienda</span></span>
+      <h2><span class="lang-en">A wall of gowns, in every color.</span><span class="lang-es">Una pared de vestidos, en todos los colores.</span></h2>
+      <p><span class="lang-en">A sample of what's carried in store. Sizes, colors and styles change weekly, so call or come by to see what's on the floor today.</span><span class="lang-es">Una muestra de lo que hay en la tienda. Tallas, colores y estilos cambian cada semana. Llame o venga a ver lo que hay hoy.</span></p>
+    </div>
+    <div class="gal rise">
+      <img src="img/gown-emerald.jpg" width="1000" height="1000" loading="lazy" alt="An emerald green gown with a beaded bodice and thigh slit.">
+      <img src="img/gown-royal.jpg" width="667" height="1000" loading="lazy" alt="A royal blue satin gown with a corset bodice.">
+      <img src="img/bridal-champagne.jpg" width="782" height="1200" loading="lazy" alt="A champagne beaded bridal gown with off-shoulder straps.">
+      <img src="img/gown-red.jpg" width="667" height="1000" loading="lazy" alt="A red lace gown with a sheer train.">
+      <img src="img/plus-blue.jpg" width="667" height="1000" loading="lazy" alt="A royal blue satin gown modelled in a plus size.">
+      <img src="img/gown-sparkle.jpg" width="667" height="1000" loading="lazy" alt="An emerald sequinned gown with off-shoulder sleeves.">
+      <img src="img/gown-nude.jpg" width="667" height="1000" loading="lazy" alt="A nude beaded gown on a red carpet.">
+      <img src="img/plus-green.jpg" width="667" height="1000" loading="lazy" alt="An emerald satin gown modelled in a plus size.">
+      <img src="img/crowns.jpg" width="900" height="1200" loading="lazy" alt="Crystal crowns and tiaras in a lit glass display case.">
+      <img src="img/gown-black.jpg" width="667" height="1000" loading="lazy" alt="A black satin gown with a corset bodice and slit.">
+      <img src="img/garment-bag.jpg" width="750" height="1000" loading="lazy" alt="A gown in a garment bag with the designer tag showing.">
+      <img src="img/ticket-betty.jpg" width="1000" height="750" loading="lazy" alt="A handwritten order ticket listing the style, size and colour, signed by Betty.">
+    </div>
+  </div>
+</section>
+
+<section class="inq" id="inquire">
+  <div class="wrap inq-grid rise">
+    <div>
+      <span class="kicker"><span class="lang-en">Inquire</span><span class="lang-es">Consultar</span></span>
+      <h2 style="font-size:clamp(28px,4vw,48px)">
+        <span class="lang-en">Tell us about the day.</span>
+        <span class="lang-es">Cuéntenos del día.</span>
+      </h2>
+      <p style="color:var(--ink-soft);margin-top:20px;max-width:42ch">
+        <span class="lang-en">We close at 5, but you can send us the details any time. Tell us the occasion and the date and we'll have dresses pulled and ready when you come in, or we'll call you back.</span>
+        <span class="lang-es">Cerramos a las 5, pero puede mandarnos los detalles a cualquier hora. Díganos la ocasión y la fecha y le apartamos vestidos listos para cuando venga, o le regresamos la llamada.</span>
+      </p>
+      <div class="inq-note">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01" stroke-linecap="round"/></svg>
+        <span>
+          <span class="lang-en"><strong>Demo preview:</strong> this form is here to show the layout. It isn't connected yet and nothing is sent or stored.</span>
+          <span class="lang-es"><strong>Vista de demostración:</strong> este formulario es solo para mostrar el diseño. Todavía no está conectado y no se envía ni se guarda nada.</span>
+        </span>
+      </div>
+    </div>
+
+    <form class="inq-form" id="inqForm" novalidate>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-name"><span class="lang-en">Name</span><span class="lang-es">Nombre</span></label>
+          <input id="f-name" name="name" type="text" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="f-phone"><span class="lang-en">Phone</span><span class="lang-es">Teléfono</span></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-occasion"><span class="lang-en">Occasion</span><span class="lang-es">Ocasión</span></label>
+          <select id="f-occasion" name="occasion">
+            <option value="quince">XV Años / Quinceañera</option>
+            <option value="boda">Boda / Wedding</option>
+            <option value="damas">Damas / Madrinas</option>
+            <option value="prom">Prom / Graduación</option>
+            <option value="bautizo">Bautizo / Primera Comunión</option>
+            <option value="otro">Otro / Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-date"><span class="lang-en">Date of the event</span><span class="lang-es">Fecha del evento</span></label>
+          <input id="f-date" name="date" type="date">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-msg"><span class="lang-en">What are you looking for?</span><span class="lang-es">¿Qué está buscando?</span></label>
+        <textarea id="f-msg" name="message" data-ph-en="Size, color, style, or just tell us about the party." data-ph-es="Talla, color, estilo, o simplemente cuéntenos de la fiesta."></textarea>
+      </div>
+      <button class="btn btn-gold" type="submit">
+        <span class="lang-en">Send inquiry</span><span class="lang-es">Enviar consulta</span>
+      </button>
+      <p class="inq-status" id="inqStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="kicker"><span class="lang-en">Visit</span><span class="lang-es">Visítanos</span></span>
+      <h2><span class="lang-en">On Pacific Blvd,<br>open every day.</span><span class="lang-es">En Pacific Blvd,<br>abierto todos los días.</span></h2>
+    </div>
+    <div class="visit-grid rise">
+      <div>
+        <div class="info-row">
+          <svg class="info-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <h4><span class="lang-en">Address</span><span class="lang-es">Dirección</span></h4>
+            <p><a href="https://www.google.com/maps/dir/?api=1&amp;destination=6708+Pacific+Blvd+Huntington+Park+CA+90255" target="_blank" rel="noopener">6708 Pacific Blvd<br>Huntington Park, CA 90255</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg class="info-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <h4><span class="lang-en">Phone</span><span class="lang-es">Teléfono</span></h4>
+            <p><a href="tel:+13239495052">(323) 949-5052</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg class="info-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div style="flex:1">
+            <h4><span class="lang-en">Hours</span><span class="lang-es">Horario</span></h4>
+            <table class="hours">
+              <tr><td><span class="lang-en">Monday</span><span class="lang-es">Lunes</span></td><td>11:00 AM – 5:00 PM</td></tr>
+              <tr><td><span class="lang-en">Tuesday</span><span class="lang-es">Martes</span></td><td>11:00 AM – 5:00 PM</td></tr>
+              <tr><td><span class="lang-en">Wednesday</span><span class="lang-es">Miércoles</span></td><td>11:00 AM – 5:00 PM</td></tr>
+              <tr><td><span class="lang-en">Thursday</span><span class="lang-es">Jueves</span></td><td>11:00 AM – 5:00 PM</td></tr>
+              <tr><td><span class="lang-en">Friday</span><span class="lang-es">Viernes</span></td><td>11:00 AM – 5:00 PM</td></tr>
+              <tr><td><span class="lang-en">Saturday</span><span class="lang-es">Sábado</span></td><td>11:00 AM – 5:00 PM</td></tr>
+              <tr><td><span class="lang-en">Sunday</span><span class="lang-es">Domingo</span></td><td>11:00 AM – 5:00 PM</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg class="info-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14M5 12h14M5 16h9"/></svg>
+          <div>
+            <h4><span class="lang-en">Language</span><span class="lang-es">Idioma</span></h4>
+            <p><span class="lang-en">Se habla español. Ask for Betty about custom dresses.</span><span class="lang-es">We speak English. Pregunte por Betty para vestidos a la medida.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="map">
+        <iframe title="Map showing Dream Maker Bridal Collection at 6708 Pacific Blvd, Huntington Park, California"
+          src="https://www.google.com/maps?q=Dream+Maker+Bridal+Collection,+6708+Pacific+Blvd,+Huntington+Park,+CA+90255&amp;output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-rev">
+  <div class="wrap rise">
+    <span class="kicker"><span class="lang-en">One favor</span><span class="lang-es">Un favor</span></span>
+    <h2><span class="lang-en">Did we find your dress?</span><span class="lang-es">¿Encontró su vestido?</span></h2>
+    <p>
+      <span class="lang-en">Reviews are how the next mother planning a quinceañera finds us. If we took care of you, thirty seconds here means everything.</span>
+      <span class="lang-es">Las reseñas son como nos encuentra la próxima mamá que está planeando unos XV años. Si la atendimos bien, treinta segundos aquí lo son todo.</span>
+    </p>
+    <div class="cta-btns">
+      <a class="btn btn-gold" href="https://www.google.com/maps?cid=17839341056645699835" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span class="lang-en">Review us on Google</span><span class="lang-es">Reseña en Google</span>
+      </a>
+      <a class="btn btn-ghost" href="https://www.yelp.com/writeareview/biz/dream-maker-boutique-huntington-park" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span class="lang-en">Review us on Yelp</span><span class="lang-es">Reseña en Yelp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top" style="font-size:18px">Dream <span>Maker</span></a>
+        <div style="margin-top:6px">6708 Pacific Blvd, Huntington Park, CA 90255 · <a href="tel:+13239495052">(323) 949-5052</a></div>
+      </div>
+      <div style="display:flex;gap:22px">
+        <a href="https://dreammakerbridal.etsy.com/" target="_blank" rel="noopener">Etsy</a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=6708+Pacific+Blvd+Huntington+Park+CA+90255" target="_blank" rel="noopener"><span class="lang-en">Directions</span><span class="lang-es">Cómo llegar</span></a>
+      </div>
+    </div>
+    <p class="foot-note">
+      <span class="lang-en">This is a demo preview built for Dream Maker Bridal Collection, not their official website. Store photos and reviews are the shop's own, from their public Google and Yelp profiles; gown photography is supplied by the designers they carry.</span>
+      <span class="lang-es">Esta es una vista de demostración hecha para Dream Maker Bridal Collection; no es su sitio oficial. Las fotos de la tienda y las reseñas son del negocio, tomadas de sus perfiles públicos de Google y Yelp; las fotos de vestidos son de los diseñadores que manejan.</span>
+    </p>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-gold" href="tel:+13239495052">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span class="lang-en">Call</span><span class="lang-es">Llamar</span>
+  </a>
+  <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=6708+Pacific+Blvd+Huntington+Park+CA+90255" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span class="lang-en">Directions</span><span class="lang-es">Cómo llegar</span>
+  </a>
+</div>
+
+<script>
+(function(){
+  var body = document.body;
+  var btns = document.querySelectorAll('.lang button');
+
+  function setLang(l){
+    body.setAttribute('data-lang', l);
+    document.documentElement.lang = l;
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
+    var ta = document.getElementById('f-msg');
+    if (ta) ta.placeholder = ta.getAttribute(l === 'es' ? 'data-ph-es' : 'data-ph-en') || '';
+    try { localStorage.setItem('dm-lang', l); } catch(e){}
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+  var saved; try { saved = localStorage.getItem('dm-lang'); } catch(e){}
+  setLang(saved || ((navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en'));
+
+  // Infinite review marquee: duplicate each track once so translating -50% lands
+  // exactly on the seam and the loop is invisible.
+  document.querySelectorAll('[data-marquee]').forEach(function(track){
+    track.querySelectorAll('.rev-card').forEach(function(card){
+      var clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+  });
+
+  // Menu: the reveal circle is anchored to the button's own centre, so it grows from
+  // wherever the trigger actually sits at this viewport width.
+  var menuBtn = document.getElementById('menuBtn');
+  var menuPanel = document.getElementById('menuPanel');
+  function setOrigin(){
+    var r = menuBtn.getBoundingClientRect();
+    menuPanel.style.setProperty('--ox', ((r.left + r.width / 2) / window.innerWidth * 100).toFixed(2) + '%');
+    menuPanel.style.setProperty('--oy', ((r.top + r.height / 2) / window.innerHeight * 100).toFixed(2) + '%');
+  }
+  function setMenu(open){
+    if (open) setOrigin();
+    body.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+  }
+  menuBtn.addEventListener('click', function(){ setMenu(!body.classList.contains('menu-open')); });
+  menuPanel.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && body.classList.contains('menu-open')){ setMenu(false); menuBtn.focus(); }
+  });
+  window.addEventListener('resize', function(){ if (body.classList.contains('menu-open')) setOrigin(); });
+
+  // Nav docks on scroll; a gold hairline along its bottom edge carries scroll position.
+  var nav = document.getElementById('nav');
+  var prog = document.getElementById('navProgress');
+  function onScroll(){
+    var y = window.scrollY;
+    nav.classList.toggle('docked', y > 24);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
+    prog.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+    // the fixed bar is a fallback, so it only appears once the hero's own buttons are gone
+    if (heroCta) document.body.classList.toggle('past-hero', heroCta.getBoundingClientRect().bottom < 0);
+  }
+  var heroCta = document.querySelector('.hero-cta');
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  // The inquiry form is intentionally inert in the demo — nothing is sent or stored.
+  var inqForm = document.getElementById('inqForm');
+  var inqStatus = document.getElementById('inqStatus');
+  if (inqForm){
+    inqForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var es = document.body.getAttribute('data-lang') === 'es';
+      inqStatus.textContent = es
+        ? 'Esta es una vista de demostración, así que la consulta no se envió. En el sitio final llegaría directo al teléfono o correo de la tienda.'
+        : "This is a demo preview, so the inquiry wasn't sent. On the real site it would go straight to the store's phone or inbox.";
+      inqStatus.classList.add('show');
+    });
+  }
+
+  // Today's row in the hours table
+  var d = new Date().getDay();                 // 0 Sun … 6 Sat
+  var rowFor = [6, 0, 1, 2, 3, 4, 5][d];
+  var rows = document.querySelectorAll('.hours tr');
+  if (rows[rowFor]) rows[rowFor].classList.add('today');
+
+  // Scroll reveal
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    document.querySelectorAll('.rise').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.rise').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

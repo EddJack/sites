@@ -3,5 +3,6 @@ Allow: /
 # Client demo mockups are not the businesses' official sites — keep them out of search.
 Disallow: /sites/rubios-tire-shop/
 Disallow: /sites/gg-auto-body/
+Disallow: /sites/dream-maker-bridal/
 
 Sitemap: https://eddjack.github.io/sites/sitemap.xml
