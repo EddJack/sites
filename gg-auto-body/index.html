@@ -323,7 +323,9 @@ footer{border-top:1px solid var(--line-2);padding-block:44px;font-size:14px;colo
   .gal{columns:3}
   .rev{grid-template-columns:repeat(2,1fr)}
   .why-grid{grid-template-columns:repeat(2,1fr)}
-  .trust-in{grid-template-columns:repeat(3,1fr)}
+  .trust-in{grid-template-columns:repeat(6,1fr)}
+  .trust-item{grid-column:span 2}
+  .trust-item:nth-child(4),.trust-item:nth-child(5){grid-column:span 3}
 }
 @media (max-width:860px){
   .nav-links{display:none}
@@ -338,6 +340,8 @@ footer{border-top:1px solid var(--line-2);padding-block:44px;font-size:14px;colo
   .rev{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
   .trust-in{grid-template-columns:repeat(2,1fr)}
+  .trust-item,.trust-item:nth-child(4),.trust-item:nth-child(5){grid-column:auto}
+  .trust-item:last-child{grid-column:1 / -1}
   .hero{min-height:88svh}
   body{padding-bottom:76px}
   .mobile-bar{
@@ -357,6 +361,7 @@ footer{border-top:1px solid var(--line-2);padding-block:44px;font-size:14px;colo
 }
 @media (max-width:480px){
   .trust-in{grid-template-columns:1fr 1fr}
+  .trust-item:last-child{grid-column:1 / -1}
   .hero-cta .btn{flex:1;justify-content:center}
   .eyebrow{font-size:11px;letter-spacing:.11em;margin-bottom:16px}
   .hero-bg img{object-position:58% 66%}
