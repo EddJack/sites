@@ -135,7 +135,6 @@ body.nav-open .nav-sheet{opacity:1;transform:none;pointer-events:auto}
 }
 body.nav-open .nav-scrim{opacity:1;pointer-events:auto}
 body.nav-open .mobile-bar{opacity:0;pointer-events:none}
-.mobile-bar{transition:opacity .25s var(--ease)}
 .btn{
   display:inline-flex;align-items:center;gap:9px;text-decoration:none;
   font-family:var(--display);font-weight:700;font-size:14.5px;letter-spacing:.01em;
@@ -349,6 +348,12 @@ footer{border-top:1px solid var(--line-2);padding-block:44px;font-size:14px;colo
     -webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);
   }
   .mobile-bar .btn{justify-content:center;padding:14px 12px;font-size:14.5px}
+  /* the fixed bar is a fallback for once the hero's own buttons have scrolled away —
+     without this it duplicates them on load, four buttons doing two jobs */
+  .mobile-bar{opacity:0;transform:translateY(100%);pointer-events:none;
+    transition:opacity .3s var(--ease),transform .3s var(--ease)}
+  body.past-hero .mobile-bar{opacity:1;transform:none;pointer-events:auto}
+  body.nav-open .mobile-bar{opacity:0;transform:translateY(100%);pointer-events:none}
 }
 @media (max-width:480px){
   .trust-in{grid-template-columns:1fr 1fr}
@@ -879,7 +884,9 @@ footer{border-top:1px solid var(--line-2);padding-block:44px;font-size:14px;colo
     ringRect.setAttribute('rx', (h - 2) / 2);
   }
 
+  var heroCta = document.querySelector('.hero-cta');
   function drawRing(){
+    if (heroCta) body.classList.toggle('past-hero', heroCta.getBoundingClientRect().bottom < 0);
     if (!ringRect) return;
     var max = document.documentElement.scrollHeight - window.innerHeight;
     var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
